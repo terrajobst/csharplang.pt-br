@@ -277,13 +277,13 @@ A tabela a seguir resume os operadores do #, listando as categorias de operador 
 |                                  | `x != y`          | Não é igual a |
 | AND lógico                      | `x & y`           | Inteiro bit a bit, AND lógico booliano |
 | XOR lógico                      | `x ^ y`           | XOR bit a bit inteiro, XOR lógico booliano |
-| OR lógico                       | ' x | y'           | OR bit a bit inteiro, OR lógico booliano |
+| OR lógico                       | <code>x &#124; y</code> | OR bit a bit inteiro, OR lógico booliano |
 | AND condicional                  | `x && y`          | Avalia `y` somente se `x` é `true` |
-| OR condicional                   | ' x || y'          | Avalia `y` somente se `x` é `false` |
+| OR condicional                   | <code>x &#124;&#124; y</code> | Avalia `y` somente se `x` é `false` |
 | Coalescência nula                  | `X ?? y`          | É avaliada como `y` se `x` é `null`, para `x` caso contrário, |
 | Condicional                      | `x ? y : z`       | Avalia `y` se `x` é `true`, `z` se `x` é `false` |
 | Atribuição ou função anônima | `x = y`           | Atribuição |
-|                                  | `x op= y`         | Atribuição composta; operadores com suporte são `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` `|=` |
+|                                  | `x op= y`         | Atribuição composta; operadores com suporte são `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` <code>&#124;=</code> |
 |                                  | `(T x) => y`      | Função anônima (expressão lambda) |
 
 ## <a name="statements"></a>Instruções
