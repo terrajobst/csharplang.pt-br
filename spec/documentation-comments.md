@@ -597,13 +597,13 @@ O gerador de documentação segue as seguintes regras ao gerar as cadeias de car
 *  A segunda parte da cadeia de caracteres é o nome totalmente qualificado do elemento, começando na raiz do namespace. O nome do elemento, seu tipo (s) delimitador e o namespace são separados por pontos. Se o nome do próprio item tiver pontos, elas serão substituídas por `#(U+0023)` caracteres. (Ele é considerado que o elemento não tem esse caractere em seu nome.)
 *  Para métodos e propriedades com argumentos, da seguinte maneira lista de argumentos entre parênteses. Para aqueles sem argumentos, os parênteses serão omitidos. Os argumentos são separados por vírgulas. A codificação de cada argumento é o mesmo que uma assinatura da CLI, da seguinte maneira:
    *  Argumentos são representados por seu nome de documentação, que se baseia em seu nome totalmente qualificado, modificada da seguinte maneira:
-      * Argumentos que representam tipos genéricos possuem um acrescentadas "'" caractere seguido pelo número de parâmetros de tipo
+      * Argumentos que representam tipos genéricos possuem um acrescentadas `` ` `` caractere (acento grave) seguido pelo número de parâmetros de tipo
       * Argumentos com o `out` ou `ref` modificador têm um `@` seu nome de tipo a seguir. Argumentos passados por valor ou por meio de `params` não ter nenhuma anotação especial.
-      * Os argumentos que são matrizes são representados como `[lowerbound:size, ... , lowerbound:size]` em que o número de vírgulas é a classificação menos um, e os limites inferior e o tamanho de cada dimensão, se conhecidos, são representados no formato decimal. Se um limite inferior ou o tamanho não for especificado, ele é omitido. Se o limite inferior e o tamanho de uma determinada dimensão forem omitidos, o "`:`" também é omitido. Matrizes denteadas são representadas por um "`[]`" por nível.
+      * Os argumentos que são matrizes são representados como `[lowerbound:size, ... , lowerbound:size]` em que o número de vírgulas é a classificação menos um, e os limites inferior e o tamanho de cada dimensão, se conhecidos, são representados no formato decimal. Se um limite inferior ou o tamanho não for especificado, ele é omitido. Se o limite inferior e o tamanho de uma determinada dimensão forem omitidos, o `:` será omitido também. Matrizes denteadas são representadas por um `[]` por nível.
       * Os argumentos que têm tipos de ponteiro que não seja nulo são representados usando um `*` seguindo o nome do tipo. Um ponteiro nulo é representado usando um nome de tipo de `System.Void`.
-      * Argumentos que se referem a definidos nos tipos de parâmetros de tipo genérico são codificados usando o "'" caractere seguido pelo índice baseado em zero do parâmetro de tipo.
-      * Argumentos que usam parâmetros de tipo genérico definidos em métodos usam um double-acento grave "\`\`" em vez do "\`" usado para tipos.
-      * Argumentos que se referem a tipos genéricos construídos são codificados usando o tipo genérico, seguido por "{", seguido por uma lista separada por vírgulas de argumentos de tipo, seguido por "}".
+      * Argumentos que se referem a definidos nos tipos de parâmetros de tipo genérico são codificados usando o `` ` `` caractere (acento grave) seguido pelo índice baseado em zero do parâmetro de tipo.
+      * Argumentos que usam parâmetros de tipo genérico definidos em métodos usam um double-acento grave ``` `` ``` em vez do `` ` `` usado para tipos.
+      * Argumentos que se referem a tipos genéricos construídos são codificados usando o tipo genérico, seguido por `{`, seguido por uma lista separada por vírgulas de argumentos de tipo, seguido por `}`.
 
 ### <a name="id-string-examples"></a>Exemplos de cadeia de caracteres de ID
 

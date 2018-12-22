@@ -28,7 +28,7 @@ Cada arquivo de origem em um programa c# deve estar de acordo com o *entrada* pr
 
 A gramática sintática do c# é apresentada em capítulos e apêndices seguir este capítulo. Os símbolos de terminal da gramática sintático são os tokens definidos pela gramática lexical e sintática gramática Especifica como os tokens são combinados para programas em c# formulário.
 
-Cada arquivo de origem em um programa c# deve estar de acordo com o *compilation_unit* produção da gramática sintática ([unidades de compilação](namespaces.md#compilation-units)).
+Cada arquivo de origem em um C# programa deve estar em conformidade com a *compilation_unit* produção da gramática sintática ([unidades de compilação](namespaces.md#compilation-units)).
 
 ## <a name="lexical-analysis"></a>Análise léxica
 
@@ -55,7 +55,7 @@ input_element
     ;
 ```
 
-Cinco elementos básicos compõem a estrutura lexical de um arquivo de origem c#: terminadores de linha ([terminadores de linha](lexical-structure.md#line-terminators)), espaço em branco ([espaço em branco](lexical-structure.md#white-space)), comentários ([comentários](lexical-structure.md#comments)), tokens ([Tokens](lexical-structure.md#tokens)) e em diretivas de pré-processamento ([diretivas de pré-processamento](lexical-structure.md#pre-processing-directives)). Esses elementos básicos, somente os tokens são significativos na gramática sintática de um programa em c# ([gramática sintática](lexical-structure.md#syntactic-grammar)).
+Cinco elementos básicos compõem a estrutura lexical de um C# arquivo de origem: Terminadores de linha ([terminadores de linha](lexical-structure.md#line-terminators)), espaço em branco ([espaço em branco](lexical-structure.md#white-space)), comentários ([comentários](lexical-structure.md#comments)), tokens ([Tokens](lexical-structure.md#tokens)), e diretivas de pré-processamento ([diretivas de pré-processamento](lexical-structure.md#pre-processing-directives)). Esses elementos básicos, somente os tokens são significativos na gramática sintática de um programa em c# ([gramática sintática](lexical-structure.md#syntactic-grammar)).
 
 O processamento léxico de um arquivo de origem c# consiste em reduzir o arquivo em uma sequência de tokens que se torna a entrada para a análise sintática. Terminadores de linha, espaço em branco e comentários podem ser usado para separar os tokens e diretivas de pré-processamento podem causar a seções do arquivo de origem a serem ignoradas, mas caso contrário, esses elementos léxicos não têm impacto sobre a estrutura sintática de um programa c#.
 

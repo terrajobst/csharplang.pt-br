@@ -202,7 +202,7 @@ int F(int x) {
 
 Execução de uma instrução rotulada corresponde exatamente à execução da instrução a seguir o rótulo.
 
-O problema de acessibilidade fornecido pelo fluxo de controle normal, além de uma instrução rotulada é acessível se o rótulo é referenciado por uma acessível `goto` instrução. (Exceção: se um `goto` instrução está dentro de uma `try` que inclui um `finally` é de bloco e a instrução rotulada fora o `try`e o ponto de extremidade do `finally` bloco está inacessível e, em seguida, a instrução rotulada não é acessível do que `goto` instrução.)
+O problema de acessibilidade fornecido pelo fluxo de controle normal, além de uma instrução rotulada é acessível se o rótulo é referenciado por uma acessível `goto` instrução. (Exceção: Se um `goto` instrução está dentro de uma `try` que inclui um `finally` é de bloco e a instrução rotulada fora o `try`e o ponto de extremidade do `finally` bloco está inacessível, então a instrução rotulada não é acessível a partir que `goto` instrução.)
 
 ## <a name="declaration-statements"></a>Instruções de declaração
 
@@ -801,7 +801,7 @@ O corpo da, por fim, o bloco é construído acordo com as seguintes etapas:
 
    A variável local `d` não é visível ou acessível para qualquer código do usuário. Em particular, ele não entra em conflito com qualquer outra variável cujo escopo inclui o bloco finally.
 
-A ordem na qual `foreach` percorre os elementos de uma matriz, é da seguinte maneira: para elementos de matrizes unidimensionais são percorridos em ordem de índice crescente, começando com o índice `0` e terminando com um índice `Length - 1`. Para matrizes multidimensionais, os elementos são percorridos, de modo que os índices da dimensão mais à direita são primeiro maior, em seguida, a próxima dimensão à esquerda, e assim por diante para a esquerda.
+A ordem na qual `foreach` atravessa os elementos de uma matriz, é da seguinte maneira: Para elementos de matrizes unidimensionais são percorridos em ordem de índice crescente, começando com o índice `0` e terminando com um índice `Length - 1`. Para matrizes multidimensionais, os elementos são percorridos, de modo que os índices da dimensão mais à direita são primeiro maior, em seguida, a próxima dimensão à esquerda, e assim por diante para a esquerda.
 
 O exemplo a seguir imprime cada valor em uma matriz bidimensional, na ordem dos elementos:
 ```csharp

@@ -601,7 +601,7 @@ Métodos parciais podem ser definidos em uma parte de uma declaração de tipo e
 
 Métodos parciais não é possível definir os modificadores de acesso, mas são implicitamente `private`. Tipo de retorno deve ser `void`, e seus parâmetros não podem ter o `out` modificador. O identificador `partial` é reconhecido como uma palavra-chave especial em uma declaração de método somente se ela aparecer imediatamente antes o `void` tipo; caso contrário, ele pode ser usado como um identificador normal. Um método parcial não pode implementar métodos de interface explicitamente.
 
-Há dois tipos de declarações de método parcial: se o corpo da declaração do método é um ponto e vírgula, a declaração é considerada um ***definindo a declaração de método parcial***. Se o corpo é fornecido como uma *bloco*, a declaração deve ser um ***implementar a declaração de método parcial***. Entre as partes de uma declaração de tipo pode haver apenas uma definição de declaração de método parcial com uma determinada assinatura e pode haver apenas uma implementação de declaração de método parcial com uma determinada assinatura. Se uma declaração de método parcial de implementação é fornecida, uma definição de declaração de método parcial correspondente deve existir e as declarações devem corresponder como especificado no seguinte:
+Há dois tipos de declaração de método parcial: Se o corpo da declaração do método é um ponto e vírgula, a declaração é considerada um ***definindo a declaração de método parcial***. Se o corpo é fornecido como uma *bloco*, a declaração deve ser um ***implementar a declaração de método parcial***. Entre as partes de uma declaração de tipo pode haver apenas uma definição de declaração de método parcial com uma determinada assinatura e pode haver apenas uma implementação de declaração de método parcial com uma determinada assinatura. Se uma declaração de método parcial de implementação é fornecida, uma definição de declaração de método parcial correspondente deve existir e as declarações devem corresponder como especificado no seguinte:
 
 * As declarações devem ter os mesmos modificadores (embora não necessariamente na mesma ordem), nome do método, o número de parâmetros de tipo e o número de parâmetros.
 * Parâmetros correspondentes nas declarações devem ter os mesmos modificadores (embora não necessariamente na mesma ordem) e os mesmos tipos (módulo diferenças nos nomes de parâmetro de tipo).
@@ -2207,7 +2207,7 @@ class Test
     }
 }
 ```
-o `C` e `D` classes contêm dois métodos virtuais com a mesma assinatura: aquela introduzido pela `A` e um introduzido por `C`. O método introduzido por `C` oculta o método herdado de `A`. Assim, a declaração de substituição em `D` substitui o método introduzido pela `C`, e não é possível `D` substituir o método introduzido por `A`. O exemplo produz a saída:
+o `C` e `D` classes contêm dois métodos virtuais com a mesma assinatura: Aquele introduzido por `A` e um introduzido por `C`. O método introduzido por `C` oculta o método herdado de `A`. Assim, a declaração de substituição em `D` substitui o método introduzido pela `C`, e não é possível `D` substituir o método introduzido por `A`. O exemplo produz a saída:
 ```
 B.F
 B.F
@@ -2694,7 +2694,7 @@ public class Button: Control
     }
 }
 ```
-o `Button` controle declara um público `Caption` propriedade. O `get` acessador do `Caption` propriedade retorna a cadeia de caracteres armazenada em particular `caption` campo. O `set` acessador verifica se o novo valor é diferente do valor atual e, nesse caso, ele armazena o novo valor e redesenha o controle. Propriedades geralmente seguem o padrão mostrado acima: O `get` acessador simplesmente retorna um valor armazenado em um campo privado e o `set` acessador modifica esse campo particular e, em seguida, executa ações adicionais necessárias para o estado de uma atualização completa do objeto.
+o `Button` controle declara um público `Caption` propriedade. O `get` acessador do `Caption` propriedade retorna a cadeia de caracteres armazenada em particular `caption` campo. O `set` acessador verifica se o novo valor é diferente do valor atual e, nesse caso, ele armazena o novo valor e redesenha o controle. Propriedades geralmente seguem o padrão mostrado acima: O `get` acessador simplesmente retorna um valor armazenado em um campo privado e o `set` acessador modifica esse campo particular e, em seguida, executa ações adicionais necessárias para atualizar totalmente o estado do objeto.
 
 Dada a `Button` classe acima, o seguinte é um exemplo de uso do `Caption` propriedade:
 ```csharp
@@ -3532,7 +3532,7 @@ binary_operator_declarator
 
 overloadable_binary_operator
     : '+'   | '-'   | '*'   | '/'   | '%'   | '&'   | '|'   | '^'   | '<<'
-    | 'right_shift' | '=='  | '!='  | '>'   | '<'   | '>='  | '<='
+    | right_shift | '=='  | '!='  | '>'   | '<'   | '>='  | '<='
     ;
 
 conversion_operator_declarator
@@ -3547,7 +3547,7 @@ operator_body
     ;
 ```
 
-Há três categorias de operadores sobrecarregáveis: operadores unários ([operadores unários](classes.md#unary-operators)), operadores binários ([operadores binários](classes.md#binary-operators)) e os operadores de conversão ([operadores de conversão ](classes.md#conversion-operators)).
+Há três categorias de operadores sobrecarregáveis: Operadores unários ([operadores unários](classes.md#unary-operators)), operadores binários ([operadores binários](classes.md#binary-operators)) e os operadores de conversão ([operadores de conversão](classes.md#conversion-operators)).
 
 O *operator_body* é um vírgula, um ***corpo da instrução*** ou uma ***corpo da expressão***. Um corpo de declaração consiste em uma *bloco*, que especifica as instruções para executar quando o operador é invocado. O *bloco* deve obedecer às regras para retornar o valor métodos descritos [corpo do método](classes.md#method-body). Consiste em um corpo de expressão `=>` seguido por uma expressão e um ponto e vírgula e denota uma única expressão para executar quando o operador é invocado.
 
@@ -4115,7 +4115,7 @@ produz a saída
 X = 1, Y = 2
 ```
 
-Para executar o `Main` método, o sistema pela primeira vez é executado o inicializador para `B.Y`, antes de classe `B`do construtor estático. `Y`do inicializador faz com que `A`do construtor estático para ser executado porque o valor de `A.X` é referenciado. O construtor estático de `A` por sua vez prossegue para calcular o valor da `X`e fazer buscas caso o valor padrão de `Y`, que é zero. `A.X` Portanto, é inicializado como 1. O processo de execução `A`do construtor estático e inicializadores de campo estático, em seguida, for concluído, retornando para o cálculo do valor inicial do `Y`, cujo resultado se torna 2.
+Para executar o `Main` método, o sistema pela primeira vez é executado o inicializador para `B.Y`, antes de classe `B`do construtor estático. `Y`do inicializador faz com que `A`do construtor estático para ser executado porque o valor de `A.X` é referenciado. O construtor estático de `A` por sua vez prossegue para calcular o valor da `X`e fazer buscas caso o valor padrão de `Y`, que é zero. `A.X` Portanto, é inicializado como 1. O processo de execução `A`do construtor estático e inicializadores de campo estático, em seguida, for concluído, retornando para o cálculo do valor inicial do `Y`, cujo resultado se torna 2.
 
 Como o construtor estático é executado exatamente uma vez para cada fechado o tipo de classe construída, é um local conveniente para impor verificações de tempo de execução no parâmetro de tipo não podem ser verificados em tempo de compilação por meio de restrições ([parâmetro de tipo restrições de](classes.md#type-parameter-constraints)). Por exemplo, o tipo a seguir usa um construtor estático para impor que o argumento de tipo é um enum:
 ```csharp
@@ -4272,7 +4272,7 @@ O `MoveNext` método de um objeto de enumerador encapsula o código de um bloco 
 *  Se for o estado do objeto enumerador ***após***, chamar `MoveNext` retorna `false`.
 
 
-Quando `MoveNext` executa o bloco de iteradores, execução pode ser interrompida de quatro maneiras: por um `yield return` instrução, por um `yield break` instrução, encontrando o final do bloco de iterador e por uma exceção sendo lançada e propagada da bloco de iteradores.
+Quando `MoveNext` executa o bloco de iteradores, execução pode ser interrompida de quatro maneiras: Por um `yield return` instrução, por um `yield break` instrução, encontrando o final do bloco de iterador e por uma exceção sendo lançada e propagada para fora do bloco de iterador.
 
 *  Quando um `yield return` instrução for encontrada ([a instrução yield](statements.md#the-yield-statement)):
    * A expressão fornecida na instrução é avaliada implicitamente convertida no tipo de rendimento e atribuída ao `Current` propriedade do objeto enumerador.
@@ -4734,6 +4734,6 @@ Quando o corpo da função async é encerrado, a tarefa de retornada é movida p
 
 ### <a name="evaluation-of-a-void-returning-async-function"></a>Avaliação de uma função de async que retornam void
 
-Se for o tipo de retorno da função async `void`, avaliação difere acima da seguinte maneira: porque nenhuma tarefa é retornada, a função se comunica em vez disso, conclusão e exceções para o thread atual ***sincronização contexto***. A definição exata de contexto de sincronização é dependente da implementação, mas é uma representação de "onde" o thread atual está em execução. O contexto de sincronização é notificado quando a avaliação de uma função de async que retornam void começa, for concluída com êxito ou faz com que uma exceção não percebida seja lançada.
+Se o tipo de retorno da função async é `void`, avaliação difere acima da seguinte maneira: Porque nenhuma tarefa é retornada, a função se comunica em vez disso, conclusão e exceções para o thread atual ***contexto de sincronização***. A definição exata de contexto de sincronização é dependente da implementação, mas é uma representação de "onde" o thread atual está em execução. O contexto de sincronização é notificado quando a avaliação de uma função de async que retornam void começa, for concluída com êxito ou faz com que uma exceção não percebida seja lançada.
 
 Isso permite que o contexto para controlar a execução de funções de async que retornam void quantos sob ele e decidir como propagar exceções provenientes proveito delas.

@@ -821,7 +821,7 @@ Para invocações que ocorrem dentro de declarações de construtores de instân
 
 ## <a name="attributes-for-interoperation"></a>Atributos para interoperação
 
-Observação: Esta seção é aplicável somente para a implementação do Microsoft .NET da linguagem c#.
+Observação: Esta seção é aplicável somente para a implementação do Microsoft .NET do C#.
 
 ### <a name="interoperation-with-com-and-win32-components"></a>Interoperação com componentes COM e Win32
 

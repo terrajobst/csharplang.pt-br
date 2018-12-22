@@ -276,7 +276,7 @@ Em um contexto inseguro, várias construções estão disponíveis para a opera�
 
 ## <a name="fixed-and-moveable-variables"></a>Variáveis fixas e móveis
 
-O operador address-of ([o operador address-of](unsafe-code.md#the-address-of-operator)) e o `fixed` instrução ([a instrução fixed](unsafe-code.md#the-fixed-statement)) dividir as variáveis em duas categorias: ***fixo variáveis***e ***moveable variáveis***.
+O operador address-of ([o operador address-of](unsafe-code.md#the-address-of-operator)) e o `fixed` instrução ([a instrução fixed](unsafe-code.md#the-fixed-statement)) dividir as variáveis em duas categorias: ***Corrigido variáveis*** e ***variáveis moveable***.
 
 Variáveis fixas residem em locais de armazenamento que não são afetados pela operação do coletor de lixo. (Exemplos de variáveis fixas incluem variáveis locais, parâmetros de valor e variáveis criadas por desreferenciar ponteiros.) Por outro lado, as variáveis moveable residem em locais de armazenamento que estão sujeitos a realocação ou a eliminação pelo coletor de lixo. (Variáveis moveable exemplos de campos em elementos de matrizes e objetos.)
 

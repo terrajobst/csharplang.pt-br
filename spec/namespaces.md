@@ -496,7 +496,7 @@ o *using_static_directive* importa o método de extensão `M` contidos no `N1.A`
 
 Um *using_static_directive* importa somente os membros e tipos declarados diretamente no tipo especificado, não os tipos e membros declarados em classes base.
 
-TODO: exemplo
+TODO: Exemplo
 
 Ambiguidades entre vários *using_namespace_directives* e *using_static_directives* são discutidos na [usando diretivas de namespace](namespaces.md#using-namespace-directives).
 
@@ -561,22 +561,22 @@ Um *qualified_alias_member* tem uma das duas formas:
 Usando essa notação, o significado de um *qualified_alias_member* é determinado da seguinte maneira:
 
 *  Se `N` é o identificador `global`, em seguida, o namespace global é pesquisado `I`:
-   * Se o namespace global contém um namespace chamado `I` e `K` for zero, em seguida, a *qualified_alias_member* refere-se ao namespace.
-   * Caso contrário, se o namespace global contém um tipo não genérico chamado `I` e `K` for zero, em seguida, a *qualified_alias_member* refere-se a esse tipo.
-   * Caso contrário, se o namespace global contém um tipo chamado `I` que tem `K` parâmetros de tipo, o *qualified_alias_member* refere-se ao tipo construído com os argumentos de tipo em questão.
+   * Se o namespace global contém um namespace chamado `I` e `K` for zero, em seguida, a *qualified_alias_member* refere-se ao namespace.
+   * Caso contrário, se o namespace global contém um tipo não genérico chamado `I` e `K` for zero, em seguida, a *qualified_alias_member* refere-se a esse tipo.
+   * Caso contrário, se o namespace global contém um tipo chamado `I` que tem `K`  parâmetros de tipo, o *qualified_alias_member* refere-se ao tipo construído com os argumentos de tipo em questão.
    * Caso contrário, o *qualified_alias_member* é indefinido e ocorrer um erro de tempo de compilação.
 
 *  Caso contrário, começando com a declaração de namespace ([declarações de Namespace](namespaces.md#namespace-declarations)) imediatamente que contém o *qualified_alias_member* (se houver), continuando com cada declaração de namespace delimitador (se houver) e terminando com a unidade de compilação que contém o *qualified_alias_member*, as etapas a seguir são avaliadas até que uma entidade está localizada:
 
    * Se a unidade de compilação ou de declaração de namespace contém uma *using_alias_directive* que associa `N` com um tipo, em seguida, o *qualified_alias_member* é indefinido e um tempo de compilação erro ocorre.
    * Caso contrário, se a unidade de compilação ou de declaração de namespace contém um *extern_alias_directive* ou *using_alias_directive* que associa `N` com um namespace, então:
-     * Se o namespace associado `N` contém um namespace chamado `I` e `K` for zero, o *qualified_alias_member* refere-se ao namespace.
-     * Caso contrário, se o namespace associado `N` contém um tipo não genérico chamado `I` e `K` for zero, o *qualified_alias_member* refere-se a esse tipo.
-     * Caso contrário, se o namespace associado `N` contém um tipo denominado `I` que tem `K` parâmetros de tipo, o *qualified_alias_member* refere-se ao tipo construído com o tipo fornecido argumentos.
+     * Se o namespace associado `N` contém um namespace chamado `I` e `K` for zero, o *qualified_alias_member* refere-se ao namespace.
+     * Caso contrário, se o namespace associado `N` contém um tipo não genérico chamado `I` e `K` for zero, o *qualified_alias_member* refere-se a esse tipo.
+     * Caso contrário, se o namespace associado `N` contém um tipo denominado `I` que tem `K`  parâmetros de tipo, o *qualified_alias_member* refere-se ao que o tipo construído com os argumentos de tipo em questão.
      * Caso contrário, o *qualified_alias_member* é indefinido e ocorrer um erro de tempo de compilação.
 *  Caso contrário, o *qualified_alias_member* é indefinido e ocorrer um erro de tempo de compilação.
 
-Observe que usando o qualificador alias de namespace com um alias que faz referência a um tipo causa um erro de tempo de compilação. Observe também que, se o identificador `N` é `global`, em seguida, a pesquisa é executada no namespace global, mesmo se houver um alias associando usando `global` com um tipo ou namespace.
+Observe que usando o qualificador alias de namespace com um alias que faz referência a um tipo causa um erro de tempo de compilação. Observe também que, se o identificador `N` é `global`, em seguida, a pesquisa é executada no namespace global, mesmo se houver um alias associando usando `global` com um tipo ou namespace.
 
 ### <a name="uniqueness-of-aliases"></a>Exclusividade de aliases
 

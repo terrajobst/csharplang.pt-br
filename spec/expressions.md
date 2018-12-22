@@ -20,7 +20,7 @@ Uma expressão é classificada como um dos seguintes:
 
 O resultado final de uma expressão nunca é um namespace, tipo, o grupo de método ou acesso ao evento. Em vez disso, conforme observado acima, essas categorias de expressões são construções intermediárias que são permitidas somente em determinados contextos.
 
-Um acesso de propriedade ou o acesso do indexador é sempre reclassificado como um valor pela execução de uma invocação do *acessador get* ou o *acessador set*. O acessador particular é determinado pelo contexto de acesso de propriedade ou indexador: se o acesso é o destino de uma atribuição, o *acessador set* é chamado para atribuir um novo valor ([atribuição simples](expressions.md#simple-assignment)) . Caso contrário, o *acessador get* é chamado para obter o valor atual ([valores das expressões](expressions.md#values-of-expressions)).
+Um acesso de propriedade ou o acesso do indexador é sempre reclassificado como um valor pela execução de uma invocação do *acessador get* ou o *acessador set*. O acessador particular é determinado pelo contexto de acesso de propriedade ou indexador: Se o acesso é o destino de uma atribuição, o *acessador set* é chamado para atribuir um novo valor ([atribuição simples](expressions.md#simple-assignment)). Caso contrário, o *acessador get* é chamado para obter o valor atual ([valores das expressões](expressions.md#values-of-expressions)).
 
 ### <a name="values-of-expressions"></a>Valores de expressões
 
@@ -141,7 +141,7 @@ Precedência e associatividade podem ser controladas usando parênteses. Por exe
 
 ### <a name="operator-overloading"></a>Sobrecarga de operador
 
-Todos os operadores unários e binários têm predefinidos implementações que ficam automaticamente disponíveis em qualquer expressão. As implementações predefinidas, além de implementações definidas pelo usuário podem ser introduzidas, incluindo `operator` declarações em classes e structs ([operadores](classes.md#operators)). Implementações de operador definido pelo usuário sempre têm precedência sobre implementações de operadores predefinidos: somente quando não há implementações aplicável operador definido pelo usuário existem serão as implementações de operador pré-definido ser considerado, conforme descrito em [ Resolução de sobrecarga de operador unário](expressions.md#unary-operator-overload-resolution) e [resolução de sobrecarga de operador binário](expressions.md#binary-operator-overload-resolution).
+Todos os operadores unários e binários têm predefinidos implementações que ficam automaticamente disponíveis em qualquer expressão. As implementações predefinidas, além de implementações definidas pelo usuário podem ser introduzidas, incluindo `operator` declarações em classes e structs ([operadores](classes.md#operators)). Implementações de operador definido pelo usuário sempre têm precedência sobre implementações de operadores predefinidos: Somente quando não há implementações aplicável operador definido pelo usuário existem serão as implementações de operador pré-definido ser considerado, conforme descrito em [resolução de sobrecarga de operador unário](expressions.md#unary-operator-overload-resolution) e [sobrecarga de operador binário resolução](expressions.md#binary-operator-overload-resolution).
 
 O ***operadores sobrecarregáveis unários*** são:
 ```csharp
@@ -304,14 +304,14 @@ Se um membro é um método ou evento, ou se for uma constante, campo ou propried
 
 Pesquisa de membro considera não apenas o nome de um membro, mas também o número de parâmetros de tipo que do membro e se o membro for acessível. Para fins de pesquisa de membro, métodos genéricos e tipos genéricos aninhados têm o número de parâmetros de tipo indicado em suas respectivas declarações e todos os outros membros têm zero parâmetros de tipo.
 
-Uma pesquisa de um nome de membro `N` com `K` parâmetros de tipo em um tipo `T` é processado da seguinte maneira:
+Uma pesquisa de um nome de membro `N` com `K`  parâmetros de tipo em um tipo `T` é processado da seguinte maneira:
 
-*  Primeiro, um conjunto de membros acessíveis chamado `N` é determinado:
-    * Se `T` é um parâmetro de tipo, em seguida, o conjunto é a união dos conjuntos de membros acessíveis nomeados `N` em cada um dos tipos especificados como uma restrição primária ou restrição secundária ([restrições de parâmetro de tipo](classes.md#type-parameter-constraints)) para `T`, juntamente com o conjunto de membros acessíveis nomeados `N` em `object`.
-    * Caso contrário, o conjunto consiste em todos os acessível ([acesso de membro](basic-concepts.md#member-access)) membros nomeados `N` na `T`, incluindo membros herdados e os membros acessíveis nomeados `N` em `object`. Se `T` é um tipo construído, o conjunto de membros é obtido, substituindo os argumentos de tipo, conforme descrito em [membros de tipos construídos](classes.md#members-of-constructed-types). Os membros que incluem um `override` modificador são excluídos do conjunto.
+*  Primeiro, um conjunto de membros acessíveis chamado `N` é determinado:
+    * Se `T` é um parâmetro de tipo, em seguida, o conjunto é a união dos conjuntos de membros acessíveis nomeados `N` em cada um dos tipos especificados como uma restrição primária ou restrição secundária ([restrições de parâmetro de tipo](classes.md#type-parameter-constraints)) para  `T`, juntamente com o conjunto de membros acessíveis nomeados `N` em `object`.
+    * Caso contrário, o conjunto consiste em todos os acessível ([acesso de membro](basic-concepts.md#member-access)) membros nomeados `N` na `T`, incluindo membros herdados e os membros acessíveis nomeados `N` em `object`. Se `T` é um tipo construído, o conjunto de membros é obtido, substituindo os argumentos de tipo, conforme descrito em [membros de tipos construídos](classes.md#members-of-constructed-types). Os membros que incluem um `override` modificador são excluídos do conjunto.
 *  Em seguida, se `K` for zero, todos os aninhados de tipos cujas declarações incluem parâmetros de tipo são removidos. Se `K` for diferente de zero, todos os membros com um número diferente de tipo de parâmetros são removidos. Observe que, quando `K` é zero, métodos com parâmetros não forem removidos, desde que o processo de inferência de tipo do tipo ([inferência de tipo](expressions.md#type-inference)) pode ser capaz de inferir os argumentos de tipo.
 *  Em seguida, se o membro é *invocado*, todos os não-*invocable* os membros são removidos do conjunto.
-*  Em seguida, os membros que estão ocultos por outros membros são removidos do conjunto. Para cada membro `S.M` no conjunto, onde `S` é o tipo no qual o membro `M` for declarado, as seguintes regras são aplicadas:
+*  Em seguida, os membros que estão ocultos por outros membros são removidos do conjunto. Para cada membro `S.M` no conjunto, onde `S` é o tipo no qual o membro `M` for declarado, as seguintes regras são aplicadas:
     * Se `M` é uma constante, campo, propriedade, evento ou membro de enumeração, em seguida, todos os membros declarados em um tipo base do `S` são removidas do conjunto.
     * Se `M` é uma declaração de tipo e, em seguida, todos os tipos que não são declarados em um tipo base de `S` são removidas do conjunto, e todas as declarações com o mesmo número de parâmetros de tipo como de tipo `M` declarado em um tipo base do `S` são removidos do conjunto.
     * Se `M` é um método, em seguida, todos os membros não-método declarado em um tipo base do `S` são removidas do conjunto.
@@ -556,7 +556,7 @@ Durante o processo de inferência de cada parâmetro de tipo `Xi` seja *fixo* a 
 
 Inferência de tipos ocorre em fases. Cada fase tentará inferir argumentos de tipo para obter mais variáveis de tipo com base nas descobertas da fase anterior. A primeira fase faz algumas inferências inicias dos limites, enquanto a segunda fase variáveis de tipo para tipos específicos de correções e infere o dos limites. A segunda fase pode ter que ser repetido um número de vezes.
 
-*Observação:* tipo inferência ocorre não apenas quando um método genérico é chamado. Inferência de tipo para conversão de grupos de método é descrita em [inferência de tipos para a conversão de grupos de métodos](expressions.md#type-inference-for-conversion-of-method-groups) e encontrar o melhor tipo comum de um conjunto de expressões é descrita em [localizando o melhor tipo comum de um conjunto expressões](expressions.md#finding-the-best-common-type-of-a-set-of-expressions).
+*Observação:* Tipo inferência ocorre não apenas quando um método genérico é chamado. Inferência de tipo para conversão de grupos de método é descrita em [inferência de tipos para a conversão de grupos de métodos](expressions.md#type-inference-for-conversion-of-method-groups) e encontrar o melhor tipo comum de um conjunto de expressões é descrita em [localizando o melhor tipo comum de um conjunto expressões](expressions.md#finding-the-best-common-type-of-a-set-of-expressions).
 
 #### <a name="the-first-phase"></a>A primeira fase
 
@@ -675,7 +675,7 @@ Uma *inferência de tipos de limite superior* *de* um tipo `U` *para* um tipo `V
 Uma *unfixed* variável de tipo `Xi` com um conjunto de limites é *fixa* da seguinte maneira:
 
 *  O conjunto de *tipos de candidatos* `Uj` começa como o conjunto de todos os tipos no conjunto de limites para `Xi`.
-*  Em seguida, examinaremos cada limite para `Xi` por sua vez: cada limite exato `U` de `Xi` todos os tipos `Uj` que não são idêntico ao `U` são removidas do conjunto de candidatas. Cada limite inferior `U` dos `Xi` todos os tipos `Uj` para o qual existe é *não* uma conversão implícita de `U` são removidas do conjunto de candidatas. Para cada limite superior `U` de `Xi` todos os tipos `Uj` daí que está *não* uma conversão implícita para `U` são removidas do conjunto de candidatos.
+*  Em seguida, examinaremos cada limite para `Xi` por sua vez: Para cada limite exata `U` de `Xi` todos os tipos `Uj` que não são idêntico ao `U` são removidas do conjunto de candidatas. Cada limite inferior `U` dos `Xi` todos os tipos `Uj` para o qual existe é *não* uma conversão implícita de `U` são removidas do conjunto de candidatas. Para cada limite superior `U` de `Xi` todos os tipos `Uj` daí que está *não* uma conversão implícita para `U` são removidas do conjunto de candidatos.
 *  Se entre os demais tipos de candidato `Uj` há um tipo exclusivo `V` de que há uma conversão implícita para todos os outros candidatos tipos, em seguida, `Xi` está fixado em `V`.
 *  Caso contrário, a inferência de tipo falhará.
 
@@ -740,7 +740,7 @@ Inferência de tipo para a invocação:
 ```csharp
 double seconds = F("1:15:30", s => TimeSpan.Parse(s), t => t.TotalSeconds);
 ```
-procede da seguinte maneira: primeiro, o argumento `"1:15:30"` está relacionado à `value` parâmetro, inferir `X` ser `string`. Então, o parâmetro da primeira função anônima `s`, recebe o tipo inferido `string`e a expressão `TimeSpan.Parse(s)` está relacionado ao tipo de retorno de `f1`, inferindo `Y` ser `System.TimeSpan`. Por fim, o parâmetro da segunda função anônima, `t`, recebe o tipo inferido `System.TimeSpan`e a expressão `t.TotalSeconds` está relacionado ao tipo de retorno de `f2`, inferindo `Z` ser `double`. Portanto, o resultado da invocação é do tipo `double`.
+procede da seguinte maneira: Primeiro, o argumento `"1:15:30"` está relacionado à `value` parâmetro, inferir `X` ser `string`. Então, o parâmetro da primeira função anônima `s`, recebe o tipo inferido `string`e a expressão `TimeSpan.Parse(s)` está relacionado ao tipo de retorno de `f1`, inferindo `Y` ser `System.TimeSpan`. Por fim, o parâmetro da segunda função anônima, `t`, recebe o tipo inferido `System.TimeSpan`e a expressão `t.TotalSeconds` está relacionado ao tipo de retorno de `f2`, inferindo `Z` ser `double`. Portanto, o resultado da invocação é do tipo `double`.
 
 #### <a name="type-inference-for-conversion-of-method-groups"></a>Inferência de tipo para conversão de grupos de método
 
@@ -820,7 +820,7 @@ Dada uma lista de argumentos `A` com um conjunto de expressões de argumento `{E
 
 Ao fazer isso, se `Mp` ou `Mq` é aplicável em sua forma expandida, em seguida, `Px` ou `Qx` refere-se a um parâmetro no formato expandido da lista de parâmetros.
 
-Caso o parâmetro de tipo sequências `{P1, P2, ..., Pn}` e `{Q1, Q2, ..., Qn}` são equivalentes (ou seja, cada `Pi` tem uma conversão de identidade para os respectivos `Qi`), as seguintes regras de desempate são aplicadas em ordem, para determinar o melhor membro de função.
+Caso o parâmetro de tipo sequências `{P1, P2, ..., Pn}` e `{Q1, Q2, ..., Qn}` são equivalentes (ou seja, cada `Pi` tem uma conversão de identidade para os respectivos `Qi`), as seguintes regras de desempate são aplicadas em ordem, para determinar o melhor membro de função.
 
 *  Se `Mp` é um método não genérico e `Mq` é um método genérico, em seguida, `Mp` é melhor do que `Mq`.
 *  Caso contrário, se `Mp` é aplicável em sua forma normal e `Mq` tem um `params` de matriz e é aplicável apenas em sua forma expandida, em seguida, `Mp` é melhor do que `Mq`.
@@ -913,8 +913,8 @@ Para operações de ligação mais dinamicamente o conjunto de possíveis candid
 
 Nesses casos, uma verificação limitada de tempo de compilação é executada para cada candidato ver se qualquer um deles, possivelmente, pode aplicar em tempo de execução. Essa verificação consiste as seguintes etapas:
 
-*  Inferência de tipo parcial: qualquer tipo de argumento que não depende diretamente ou indiretamente um argumento do tipo `dynamic` é inferido usando as regras da [inferência de tipo](expressions.md#type-inference). Os argumentos de tipo restantes são desconhecidos.
-*  Verificação de aplicabilidade parcial: aplicabilidade é verificada de acordo com a [membro da função aplicável](expressions.md#applicable-function-member), mas ignorando os parâmetros cujos tipos são desconhecidos.
+*  Inferência de tipo parcial: Qualquer tipo de argumento que não depende diretamente ou indiretamente um argumento do tipo `dynamic` é inferido usando as regras da [inferência de tipo](expressions.md#type-inference). Os argumentos de tipo restantes são desconhecidos.
+*  Verificação de aplicabilidade parcial: Aplicabilidade é verificada de acordo com a [membro da função aplicável](expressions.md#applicable-function-member), mas ignorando os parâmetros cujos tipos são desconhecidos.
 *  Se nenhum candidato passar nesse teste, ocorrerá um erro de tempo de compilação.
 
 ### <a name="function-member-invocation"></a>Invocação de membro de função
@@ -1075,26 +1075,26 @@ simple_name
 
 Um *simple_name* é do formulário `I` ou do formulário `I<A1,...,Ak>`, onde `I` é um identificador único e `<A1,...,Ak>` é um recurso opcional *type_argument_list*. Quando nenhum *type_argument_list* é especificado, considere `K` seja zero. O *simple_name* é avaliado e classificados da seguinte maneira:
 
-*  Se `K` é zero e o *simple_name* aparece dentro de uma *bloco* e, se a *bloco*do (ou um delimitador *bloco*do) local espaço de declaração de variável ([declarações](basic-concepts.md#declarations)) contém uma variável local, parâmetro ou constante com nome `I`, em seguida, o *simple_name* refere-se para a variável local, parâmetro ou constante e é classificado como uma variável ou um valor.
-*  Se `K` é zero e o *simple_name* é exibida dentro do corpo de uma declaração de método genérico e se essa declaração inclui um parâmetro de tipo com nome `I`, em seguida, a *simple_name*se refere a esse parâmetro de tipo.
-*  Caso contrário, para cada tipo de instância `T` ([o tipo de instância](classes.md#the-instance-type)), começando com o tipo de instância de declaração de tipo de delimitador imediatamente e continuando com o tipo de instância de cada classe delimitadora ou struct declaração (se houver):
-   *  Se `K` é zero e a declaração de `T` inclui um parâmetro de tipo com nome `I`, em seguida, o *simple_name* refere-se a esse parâmetro de tipo.
-   *  Caso contrário, se uma pesquisa de membro ([pesquisa de membro](expressions.md#member-lookup)) de `I` na `T` com `K` argumentos de tipo produz uma correspondência:
+*  Se `K` é zero e o *simple_name* aparece dentro de uma *bloco* e, se a *bloco*do (ou um delimitador *bloco*do) local espaço de declaração de variável ([declarações](basic-concepts.md#declarations)) contém uma variável local, parâmetro ou constante com nome `I`, em seguida, o *simple_name* refere-se para a variável local, parâmetro ou constante e é classificado como uma variável ou um valor.
+*  Se `K` é zero e o *simple_name* é exibida dentro do corpo de uma declaração de método genérico e se essa declaração inclui um parâmetro de tipo com nome `I`, em seguida, a *simple_name*se refere a esse parâmetro de tipo.
+*  Caso contrário, para cada tipo de instância `T` ([o tipo de instância](classes.md#the-instance-type)), começando com o tipo de instância de declaração de tipo de delimitador imediatamente e continuando com o tipo de instância de cada classe delimitadora ou struct declaração (se houver):
+   *  Se `K` é zero e a declaração de `T` inclui um parâmetro de tipo com nome `I`, em seguida, o *simple_name* refere-se a esse parâmetro de tipo.
+   *  Caso contrário, se uma pesquisa de membro ([pesquisa de membro](expressions.md#member-lookup)) de `I` na `T` com `K`  argumentos de tipo produz uma correspondência:
       * Se `T` é o tipo de instância do tipo de classe ou struct imediatamente delimitador e a pesquisa identifica um ou mais métodos, o resultado é um grupo de método com uma expressão de instância associada do `this`. Se uma lista de argumentos de tipo foi especificada, ele será usado na chamada de um método genérico ([invocações de método](expressions.md#method-invocations)).
       * Caso contrário, se `T` é o tipo de instância do tipo imediatamente delimitador de classe ou struct, se a pesquisa identifica um membro de instância, e se a referência ocorre dentro do corpo de um construtor de instância, um método de instância ou um acessador de instância, o resultado é o mesmo que um acesso de membro ([acesso de membro](expressions.md#member-access)) do formulário `this.I`. Isso só pode acontecer quando `K` é zero.
       * Caso contrário, o resultado é o mesmo que um acesso de membro ([acesso de membro](expressions.md#member-access)) do formulário `T.I` ou `T.I<A1,...,Ak>`. Nesse caso, ele é um erro de tempo de associação para o *simple_name* para se referir a um membro de instância.
 
-*  Caso contrário, para cada namespace `N`, começando com o namespace no qual o *simple_name* ocorre, continuando com cada delimitador namespace (se houver) e terminando com o namespace global, são as seguintes etapas avaliada até que uma entidade está localizada:
-   *  Se `K` é zero e `I` é o nome de um namespace em `N`, então:
-      * Se o local onde o *simple_name* ocorre estiver envolvido por uma declaração de namespace `N` e a declaração de namespace contém uma *extern_alias_directive* ou  *using_alias_directive* que associa o nome `I` com um namespace ou tipo, em seguida, a *simple_name* é ambíguo e ocorrer um erro de tempo de compilação.
+*  Caso contrário, para cada namespace `N`, começando com o namespace no qual o *simple_name* ocorre, continuando com cada delimitador namespace (se houver) e terminando com o namespace global, são as seguintes etapas avaliada até que uma entidade está localizada:
+   *  Se `K` é zero e `I` é o nome de um namespace em `N`, então:
+      * Se o local onde o *simple_name* ocorre estiver envolvido por uma declaração de namespace `N` e a declaração de namespace contém uma *extern_alias_directive* ou  *using_alias_directive* que associa o nome `I` com um namespace ou tipo, em seguida, a *simple_name* é ambíguo e ocorrer um erro de tempo de compilação.
       * Caso contrário, o *simple_name* refere-se ao namespace chamado `I` em `N`.
-   *  Caso contrário, se `N` contém um tipo acessível com o nome `I` e `K` , em seguida, os parâmetros de tipo:
-      * Se `K` é zero e o local onde o *simple_name* ocorre é incluído por uma declaração de namespace `N` e a declaração de namespace contém um *extern_alias_directive*ou *using_alias_directive* que associa o nome `I` com um namespace ou tipo, em seguida, a *simple_name* é ambíguo e ocorrer um erro de tempo de compilação.
+   *  Caso contrário, se `N` contém um tipo acessível com o nome `I` e `K`  , em seguida, os parâmetros de tipo:
+      * Se `K` é zero e o local onde o *simple_name* ocorre é incluído por uma declaração de namespace `N` e a declaração de namespace contém um *extern_alias_directive*ou *using_alias_directive* que associa o nome `I` com um namespace ou tipo, em seguida, a *simple_name* é ambíguo e ocorrer um erro de tempo de compilação.
       * Caso contrário, o *namespace_or_type_name* refere-se para o tipo construído com os argumentos de tipo em questão.
-   *  Caso contrário, se o local em que o *simple_name* ocorre é incluído por uma declaração de namespace para `N`:
-      * Se `K` é zero e a declaração de namespace contém uma *extern_alias_directive* ou *using_alias_directive* que associa o nome `I` com um namespace importado ou tipo, em seguida, a *simple_name* refere-se a esse namespace ou tipo.
-      * Caso contrário, se as declarações de namespaces e o tipo importado pela *using_namespace_directive*s e *using_static_directive*s da declaração do namespace conter exatamente um tipo acessível ou tendo o nome de membro estático sem extensão `I` e `K` parâmetros de tipo, o *simple_name* refere-se a esse tipo ou membro construído com os argumentos de tipo em questão.
-      * Caso contrário, se os tipos e namespaces importados pelo *using_namespace_directive*s da declaração do namespace contêm mais de um tipo acessível ou ter um nome de membro estático do método de extensão não `I` e `K` parâmetros de tipo, o *simple_name* é ambíguo e ocorre um erro.
+   *  Caso contrário, se o local em que o *simple_name* ocorre é incluído por uma declaração de namespace para `N`:
+      * Se `K` é zero e a declaração de namespace contém uma *extern_alias_directive* ou *using_alias_directive* que associa o nome `I` com um namespace importado ou tipo, em seguida, a *simple_name* refere-se a esse namespace ou tipo.
+      * Caso contrário, se as declarações de namespaces e o tipo importado pela *using_namespace_directive*s e *using_static_directive*s da declaração do namespace conter exatamente um tipo acessível ou tendo o nome de membro estático sem extensão `I` e `K`  parâmetros de tipo, o *simple_name* refere-se a esse tipo ou membro construído com os argumentos de tipo em questão.
+      * Caso contrário, se os tipos e namespaces importados pelo *using_namespace_directive*s da declaração do namespace contêm mais de um tipo acessível ou ter um nome de membro estático do método de extensão não `I` e `K`  parâmetros de tipo, o *simple_name* é ambíguo e ocorre um erro.
 
    Observe que toda essa etapa é exatamente paralela para a etapa correspondente no processamento de uma *namespace_or_type_name* ([nomes de Namespace e tipo](basic-concepts.md#namespace-and-type-names)).
 
@@ -1138,37 +1138,37 @@ Um *member_access* com um *primary_expression* do tipo `dynamic` associado dinam
 
 O *member_access* é avaliado e classificados da seguinte maneira:
 
-*  Se `K` é zero e `E` é um namespace e `E` contém um namespace aninhado com nome `I`, o resultado será desse namespace.
-*  Caso contrário, se `E` é um namespace e `E` contém um tipo acessível com nome `I` e `K` parâmetros de tipo, em seguida, o resultado será aquele tipo construído com os argumentos de tipo em questão.
-*  Se `E` é um *predefined_type* ou uma *primary_expression* classificado como um tipo, se `E` não é um parâmetro de tipo e se uma pesquisa de membro ([depesquisademembro](expressions.md#member-lookup)) dos `I` na `E` com `K` parâmetros de tipo produz uma correspondência, em seguida, `E.I` é avaliado e classificados da seguinte maneira:
+*  Se `K` é zero e `E` é um namespace e `E` contém um namespace aninhado com nome `I`, o resultado será desse namespace.
+*  Caso contrário, se `E` é um namespace e `E` contém um tipo acessível com nome `I` e `K`  parâmetros de tipo, em seguida, o resultado será aquele tipo construído com os argumentos de tipo em questão.
+*  Se `E` é um *predefined_type* ou uma *primary_expression* classificado como um tipo, se `E` não é um parâmetro de tipo e se uma pesquisa de membro ([depesquisademembro](expressions.md#member-lookup)) dos `I` na `E` com `K`  parâmetros de tipo produz uma correspondência, em seguida, `E.I` é avaliado e classificados da seguinte maneira:
    *  Se `I` identifica um tipo, em seguida, o resultado será aquele tipo construído com os argumentos de tipo em questão.
    *  Se `I` identifica um ou mais métodos, o resultado será um grupo de métodos sem expressão de instância associada. Se uma lista de argumentos de tipo foi especificada, ele será usado na chamada de um método genérico ([invocações de método](expressions.md#method-invocations)).
    *  Se `I` identifica um `static` propriedade e, em seguida, o resultado é um acesso de propriedade sem expressão de instância associada.
    *  Se `I` identifica um `static` campo:
-      * Se o campo estiver `readonly` e a referência ocorre fora do construtor estático da classe ou struct em que o campo é declarado e, em seguida, o resultado é um valor, ou seja, o valor do campo estático `I` em `E`.
-      * Caso contrário, o resultado é uma variável, ou seja, o campo estático `I` em `E`.
+      * Se o campo estiver `readonly` e a referência ocorre fora do construtor estático da classe ou struct em que o campo é declarado e, em seguida, o resultado é um valor, ou seja, o valor do campo estático `I` em `E`.
+      * Caso contrário, o resultado é uma variável, ou seja, o campo estático `I` em `E`.
    *  Se `I` identifica um `static` eventos:
       * Se a referência ocorre dentro da classe ou struct em que o evento é declarado e o evento foi declarado sem *event_accessor_declarations* ([eventos](classes.md#events)), em seguida, `E.I` é processado exatamente como se `I` foram um campo estático.
       * Caso contrário, o resultado é um acesso de evento sem expressão de instância associada.
    *  Se `I` identifica uma constante, o resultado será um valor, ou seja, o valor dessa constante.
     * Se `I` identifica um membro de enumeração, o resultado será um valor, ou seja, o valor desse membro de enumeração.
     * Caso contrário, `E.I` é uma referência de membro inválido e ocorre um erro de tempo de compilação.
-*  Se `E` é um acesso de propriedade, acesso de indexador, variável ou valor, o tipo do qual é `T`e uma pesquisa de membro ([pesquisa de membro](expressions.md#member-lookup)) do `I` na `T` com `K` argumentos de tipo produz uma correspondência, em seguida, `E.I` é avaliado e classificados da seguinte maneira:
+*  Se `E` é um acesso de propriedade, acesso de indexador, variável ou valor, o tipo do qual é `T`e uma pesquisa de membro ([pesquisa de membro](expressions.md#member-lookup)) do `I` na `T` com `K`  argumentos de tipo produz uma correspondência, em seguida, `E.I` é avaliado e classificados da seguinte maneira:
    *  Primeiro, se `E` é uma propriedade ou acesso do indexador, então o valor da propriedade ou indexador acesso é obtido ([valores de expressões](expressions.md#values-of-expressions)) e `E` é reclassificado como um valor.
    *  Se `I` identifica um ou mais métodos, o resultado será um grupo de métodos com uma expressão de instância associada do `E`. Se uma lista de argumentos de tipo foi especificada, ele será usado na chamada de um método genérico ([invocações de método](expressions.md#method-invocations)).
    *  Se `I` identifica uma propriedade de instância
       * Se `E` está `this`, `I` identifica uma propriedade implementada automaticamente ([implementada automaticamente propriedades](classes.md#automatically-implemented-properties)) sem um setter e a referência ocorre dentro de um construtor de instância para um tipo de classe ou struct `T`, em seguida, o resultado é uma variável, ou seja, o campo de suporte oculto para a propriedade automática fornecida pelo `I` na instância do `T` fornecido pela `this`.
-      * Caso contrário, o resultado é um acesso de propriedade com uma expressão de instância associada do `E`.
+      * Caso contrário, o resultado é um acesso de propriedade com uma expressão de instância associada do `E`.
    *  Se `T` é um *class_type* e `I` identifica um campo de instância disso *class_type*:
       * Se o valor de `E` está `null`, em seguida, um `System.NullReferenceException` é gerada.
-      * Caso contrário, se o campo estiver `readonly` e a referência ocorre fora de um construtor de instância da classe na qual o campo é declarado e, em seguida, o resultado é um valor, ou seja, o valor do campo `I` no objeto referenciado pelo `E`.
-      * Caso contrário, o resultado é uma variável, ou seja, o campo `I` no objeto referenciado pelo `E`.
+      * Caso contrário, se o campo estiver `readonly` e a referência ocorre fora de um construtor de instância da classe na qual o campo é declarado e, em seguida, o resultado é um valor, ou seja, o valor do campo `I` no objeto referenciado pelo `E`.
+      * Caso contrário, o resultado é uma variável, ou seja, o campo `I` no objeto referenciado pelo `E`.
    *  Se `T` é um *struct_type* e `I` identifica um campo de instância disso *struct_type*:
-      * Se `E` é um valor, ou se o campo estiver `readonly` e a referência ocorre fora de um construtor de instância do struct em que o campo é declarado e, em seguida, o resultado é um valor, ou seja, o valor do campo `I` na instância do struct fornecida por `E`.
-      * Caso contrário, o resultado é uma variável, ou seja, o campo `I` na instância do struct fornecida pelo `E`.
+      * Se `E` é um valor, ou se o campo estiver `readonly` e a referência ocorre fora de um construtor de instância do struct em que o campo é declarado e, em seguida, o resultado é um valor, ou seja, o valor do campo `I` na instância do struct fornecida por  `E`.
+      * Caso contrário, o resultado é uma variável, ou seja, o campo `I` na instância do struct fornecida pelo `E`.
    *  Se `I` identifica um evento da instância:
       * Se a referência ocorre dentro da classe ou struct em que o evento é declarado e o evento foi declarado sem *event_accessor_declarations* ([eventos](classes.md#events)), e a referência não ocorre como o lado esquerdo de uma `+=` ou `-=` operador, em seguida, `E.I` é processado exatamente como se `I` foi um campo de instância.
-      * Caso contrário, o resultado é um evento de acesso com uma expressão de instância associada do `E`.
+      * Caso contrário, o resultado é um evento de acesso com uma expressão de instância associada do `E`.
 *  Caso contrário, é feita uma tentativa para processar `E.I` como uma invocação de método de extensão ([invocações de método de extensão](expressions.md#extension-method-invocations)). Se isso falhar, `E.I` é uma referência de membro inválido e ocorre um erro em tempo de vinculação.
 
 #### <a name="identical-simple-names-and-type-names"></a>Nomes idênticos de simples e nomes de tipo
@@ -1204,7 +1204,7 @@ As produções para *simple_name* ([nomes simples](expressions.md#simple-names))
 ```
 F(G<A,B>(7));
 ```
-pode ser interpretado como uma chamada para `F` com dois argumentos, `G < A` e `B > (7)`. Como alternativa, ele poderia ser interpretado como uma chamada para `F` com um argumento, que é uma chamada para um método genérico `G` com dois argumentos de tipo e um argumento regular.
+pode ser interpretado como uma chamada para `F` com dois argumentos, `G < A` e `B > (7)`. Como alternativa, ele poderia ser interpretado como uma chamada para `F` com um argumento, que é uma chamada para um método genérico `G` com dois argumentos de tipo e um argumento regular.
 
 Se uma sequência de tokens pode ser analisada (no contexto) como um *simple_name* ([nomes simples](expressions.md#simple-names)), *member_access* ([acesso de membro](expressions.md#member-access)), ou *pointer_member_access* ([acesso de membro do ponteiro](unsafe-code.md#pointer-member-access)) terminando com um *type_argument_list* ([argumentos de tipo](types.md#type-arguments)), o imediatamente após o fechamento do token `>` token é examinado. Se ele for um dos
 ```csharp
@@ -1271,16 +1271,16 @@ O processamento de tempo de associação de uma invocação de método do formul
    *  Se `F` é genérico e `M` inclui uma lista de argumentos de tipo `F` é um candidato quando:
       * `F` tem o mesmo número de parâmetros de tipo de método como foram fornecidos na lista de argumentos de tipo, e
       * Depois que os argumentos de tipo são substituídos por parâmetros de tipo correspondente do método, todos os tipos construídos na lista de parâmetros de F atender às suas restrições ([atendendo às restrições](types.md#satisfying-constraints)) e a lista de parâmetros de `F` é aplicável em relação às `A` ([membro da função aplicável](expressions.md#applicable-function-member)).
-*  O conjunto de métodos de candidato é reduzido para conter apenas métodos de tipos mais derivados: para cada método de `C.F` no conjunto, onde `C` é o tipo no qual o método `F` for declarado, todos os métodos declarados em um tipo base do `C`são removidos do conjunto. Além disso, se `C` é um tipo de classe diferente de `object`, todos os métodos declarados em um tipo de interface são removidos do conjunto. (Essa última regra só tem efeito quando o grupo de método foi o resultado de uma pesquisa de membro em um parâmetro de tipo que tem uma classe base efetivada que não seja o objeto e uma interface de efetivada vazio definido.)
+*  O conjunto de métodos de candidato é reduzido para conter apenas métodos de tipos mais derivados: Para cada método de `C.F` no conjunto, onde `C` é o tipo no qual o método `F` for declarado, todos os métodos declarados em um tipo base de `C` são removidas do conjunto de. Além disso, se `C` é um tipo de classe diferente de `object`, todos os métodos declarados em um tipo de interface são removidos do conjunto. (Essa última regra só tem efeito quando o grupo de método foi o resultado de uma pesquisa de membro em um parâmetro de tipo que tem uma classe base efetivada que não seja o objeto e uma interface de efetivada vazio definido.)
 *  Se o conjunto de métodos de candidato resultante está vazio, processamento adicional ao longo das etapas a seguir são abandonados e, em vez disso, é feita uma tentativa para processar a invocação de uma invocação de método de extensão ([invocações de método de extensão](expressions.md#extension-method-invocations)). Se isso falhar, então nenhum método aplicável existe e ocorre um erro em tempo de vinculação.
 *  O melhor método do conjunto de métodos de candidato é identificado usando as regras de resolução de sobrecarga de [resolução de sobrecarga](expressions.md#overload-resolution). Se um único método melhor não pode ser identificado, a invocação do método é ambígua e ocorre um erro em tempo de vinculação. Ao executar a resolução de sobrecarga, os parâmetros de um método genérico são considerados depois de substituir os argumentos de tipo (fornecida ou inferido) para os parâmetros de tipo correspondente do método.
 *  Validação final do método melhor escolhido é executada:
-   * O método é validado no contexto do grupo de método: se o melhor método é um método estático, o grupo de método deve ter resultado de uma *simple_name* ou um *member_access* por meio de um tipo. Se o melhor método é um método de instância, o grupo de método deve ter resultado de uma *simple_name*, um *member_access* por meio de uma variável ou um valor, ou uma *base_access*. Se nenhum desses requisitos for true, ocorrerá um erro de tempo de associação.
+   * O método é validado no contexto do grupo de método: Se o melhor método é um método estático, o grupo de método deve ter resultado de uma *simple_name* ou um *member_access* por meio de um tipo. Se o melhor método é um método de instância, o grupo de método deve ter resultado de uma *simple_name*, um *member_access* por meio de uma variável ou um valor, ou uma *base_access*. Se nenhum desses requisitos for true, ocorrerá um erro de tempo de associação.
    * Se o melhor método é um método genérico, os argumentos de tipo (fornecida ou inferido) são verificados em relação às restrições ([atendendo às restrições de](types.md#satisfying-constraints)) declarado no método genérico. Se qualquer argumento de tipo não satisfaz a ões correspondente no parâmetro de tipo, ocorrerá um erro de tempo de associação.
 
 Depois que um método foi selecionado e validado no tempo de associação, as etapas acima, a invocação de tempo de execução real é processada de acordo com as regras da invocação de membro de função descrito na [verificação de resolução de sobrecarga de dinâmica de tempo de compilação ](expressions.md#compile-time-checking-of-dynamic-overload-resolution).
 
-O efeito intuitivo das regras de resolução descrito acima é da seguinte maneira: para localizar o método específico, invocado por uma invocação de método, comece com o tipo indicado pela invocação do método e continuar a cadeia de herança até que pelo menos um aplicável, declaração de método acessíveis, a substituição não for encontrada. Em seguida, realizar a inferência de tipo e resolução no conjunto de métodos aplicáveis, acessíveis e não-override declaradas nesse tipo de sobrecarga e invocar o método selecionado, portanto. Se nenhum método foi encontrado, tente em vez disso processar a invocação de uma invocação de método de extensão.
+O efeito intuitivo das regras de resolução descrito acima é da seguinte maneira: Para localizar o método específico, invocado por uma invocação de método, comece com o tipo indicado pela invocação do método e continuar a cadeia de herança até que a declaração de pelo menos um método aplicável, acessível e não de substituição for encontrada. Em seguida, realizar a inferência de tipo e resolução no conjunto de métodos aplicáveis, acessíveis e não-override declaradas nesse tipo de sobrecarga e invocar o método selecionado, portanto. Se nenhum método foi encontrado, tente em vez disso processar a invocação de uma invocação de método de extensão.
 
 #### <a name="extension-method-invocations"></a>Invocações de método de extensão
 
@@ -2089,7 +2089,7 @@ comma
     ;
 ```
 
-A primeira forma de *typeof_expression* consiste em um `typeof` seguido por um parênteses de palavra-chave *tipo*. O resultado de uma expressão desse formulário é o `System.Type` objeto para o tipo indicado. Há apenas um `System.Type` objeto para qualquer tipo determinado. Isso significa que, para um tipo `T`, `typeof(T) == typeof(T)` é sempre verdadeiro. O *tipo* não pode ser `dynamic`.
+A primeira forma de *typeof_expression* consiste em um `typeof` seguido por um parênteses de palavra-chave *tipo*. O resultado de uma expressão desse formulário é o `System.Type` objeto para o tipo indicado. Há apenas um `System.Type` objeto para qualquer tipo determinado. Isso significa que, para um tipo `T`, `typeof(T) == typeof(T)` é sempre verdadeiro. O *tipo* não pode ser `dynamic`.
 
 A segunda forma de *typeof_expression* consiste em um `typeof` seguido por um parênteses de palavra-chave *unbound_type_name*. Uma *unbound_type_name* é muito semelhante a um *type_name* ([nomes de Namespace e tipo](basic-concepts.md#namespace-and-type-names)), exceto que um *unbound_type_name* contém *generic_dimension_specifier*s em que um *type_name* contém *type_argument_list*s. Quando o operando de um *typeof_expression* é uma sequência de tokens que satisfaça as gramáticas de ambos *unbound_type_name* e *type_name*, ou seja, quando ele não contém nem uma *generic_dimension_specifier* nem um *type_argument_list*, a sequência de tokens é considerada um *type_name*. O significado de um *unbound_type_name* é determinado da seguinte maneira:
 
@@ -2511,7 +2511,7 @@ Para uma operação do formulário `!x`, resolução de sobrecarga de operador u
 bool operator !(bool x);
 ```
 
-Esse operador calcula a negação lógica do operando: se o operando `true`, o resultado é `false`. Se o operando `false`, o resultado é `true`.
+Esse operador calcula a negação lógica do operando: Se o operando `true`, o resultado é `false`. Se o operando `false`, o resultado é `true`.
 
 ### <a name="bitwise-complement-operator"></a>Operador de complemento bit a bit
 
@@ -2583,7 +2583,7 @@ Um *cast_expression* do formulário `(T)E`, onde `T` é um *tipo* e `E` é uma *
 
 A gramática para um *cast_expression* leva a determinados ambiguidades sintáticas. Por exemplo, a expressão `(x)-y` pode ser interpretado como um *cast_expression* (uma conversão de `-y` digitar `x`) ou como um *additive_expression* combinado com um *parenthesized_expression* (que calcula o valor `x - y)`.
 
-Para resolver *cast_expression* ambiguidades, a regra a seguir existir: uma sequência de um ou mais *token*s ([espaço em branco](lexical-structure.md#white-space)) entre parênteses é considerado o início de um *cast_expression* apenas se pelo menos um dos seguintes forem verdadeiro:
+Para resolver *cast_expression* ambiguidades, a regra a seguir existir: Uma sequência de um ou mais *token*s ([espaço em branco](lexical-structure.md#white-space)) colocado entre parênteses é considerado o início de um *cast_expression* apenas se pelo menos um dos seguintes forem verdadeiro:
 
 *  A sequência de tokens é a gramática correta para uma *tipo*, mas não para um *expressão*.
 *  A sequência de tokens é a gramática correta para uma *tipo*, e o token imediatamente após os parênteses de fechamento é o token "`~`", o token "`!`", o token "`(`", um  *identificador* ([sequências de escape de caractere Unicode](lexical-structure.md#unicode-character-escape-sequences)), uma *literal* ([literais](lexical-structure.md#literals)), ou qualquer *palavra-chave*([Palavras-chave](lexical-structure.md#keywords)), exceto `as` e `is`.
@@ -2913,7 +2913,7 @@ Os operadores de adição predefinidas são listados abaixo. Para tipos numéric
    D operator +(D x, D y);
    ```
 
-   O binário `+` operador executa a combinação de delegados quando ambos os operandos são de algum tipo de delegado `D`. (Se os operandos tiverem tipos diferentes de delegado, ocorrerá um erro em tempo de associação.) Se for o primeiro operando `null`, o resultado da operação é o valor do segundo operando (mesmo que seja também `null`). Caso contrário, se o segundo operando for `null`, o resultado da operação será o valor do primeiro operando. Caso contrário, o resultado da operação é uma nova instância delegada que, quando invocado, invoca o primeiro operando e, em seguida, invoca o segundo operando. Para obter exemplos de combinação de delegados, consulte [operador de subtração](expressions.md#subtraction-operator) e [invocação de delegado](delegates.md#delegate-invocation). Uma vez que `System.Delegate` não é um tipo de delegado `operator` `+` não está definido para ele.
+   O binário `+` operador executa a combinação de delegados quando ambos os operandos são de algum tipo de delegado `D`. (Se os operandos tiverem tipos diferentes de delegado, ocorrerá um erro em tempo de associação.) Se for o primeiro operando `null`, o resultado da operação é o valor do segundo operando (mesmo que seja também `null`). Caso contrário, se o segundo operando for `null`, o resultado da operação será o valor do primeiro operando. Caso contrário, o resultado da operação é uma nova instância delegada que, quando invocado, invoca o primeiro operando e, em seguida, invoca o segundo operando. Para obter exemplos de combinação de delegados, consulte [operador de subtração](expressions.md#subtraction-operator) e [invocação de delegado](delegates.md#delegate-invocation). Uma vez que `System.Delegate` não é um tipo de delegado `operator`  `+` não está definido para ele.
 
 ### <a name="subtraction-operator"></a>Operador de subtração
 
@@ -3212,9 +3212,9 @@ bool operator ==(bool x, bool y);
 bool operator !=(bool x, bool y);
 ```
 
-O resultado de `==` está `true` se ambos `x` e `y` são `true` ou se ambos os `x` e `y` são `false`. Caso contrário, o resultado é `false`.
+O resultado de `==` está `true` se ambos `x` e `y` são `true` ou se ambos os `x` e `y` são `false`. Caso contrário, o resultado será `false`.
 
-O resultado de `!=` está `false` se ambos `x` e `y` são `true` ou se ambos os `x` e `y` são `false`. Caso contrário, o resultado é `true`. Quando os operandos forem do tipo `bool`, o `!=` operador produz o mesmo resultado que o `^` operador.
+O resultado de `!=` está `false` se ambos `x` e `y` são `true` ou se ambos os `x` e `y` são `false`. Caso contrário, o resultado será `true`. Quando os operandos forem do tipo `bool`, o `!=` operador produz o mesmo resultado que o `^` operador.
 
 ### <a name="enumeration-comparison-operators"></a>Operadores de comparação de enumeração
 
@@ -3486,11 +3486,11 @@ bool operator |(bool x, bool y);
 bool operator ^(bool x, bool y);
 ```
 
-O resultado de `x & y` está `true` se ambos `x` e `y` são `true`. Caso contrário, o resultado é `false`.
+O resultado de `x & y` será `true` se ambos `x` e `y` forem `true`. Caso contrário, o resultado será `false`.
 
-O resultado de `x | y` está `true` se qualquer um dos `x` ou `y` é `true`. Caso contrário, o resultado é `false`.
+O resultado de `x | y` está `true` se qualquer um dos `x` ou `y` é `true`. Caso contrário, o resultado será `false`.
 
-O resultado de `x ^ y` está `true` se `x` é `true` e `y` é `false`, ou `x` é `false` e `y` é `true`. Caso contrário, o resultado é `false`. Quando os operandos forem do tipo `bool`, o `^` operador calcula o mesmo resultado que o `!=` operador.
+O resultado de `x ^ y` está `true` se `x` é `true` e `y` é `false`, ou `x` é `false` e `y` é `true`. Caso contrário, o resultado será `false`. Quando os operandos forem do tipo `bool`, o `^` operador calcula o mesmo resultado que o `!=` operador.
 
 ### <a name="nullable-boolean-logical-operators"></a>Operadores lógicos boolianos que permitem valor nulos
 
@@ -3629,7 +3629,7 @@ O processamento de tempo de execução de uma expressão condicional do formulá
 
 ## <a name="anonymous-function-expressions"></a>Expressões de função anônima
 
-Uma ***função anônima*** é uma expressão que representa uma definição de método "na linha". Uma função anônima não tem um valor ou tipo por si só, mas pode ser convertido em um tipo de árvore de expressão ou delegado compatível. A avaliação de uma conversão de função anônima depende do tipo de destino da conversão: se for um tipo de delegado, a conversão é avaliada como um valor de delegado fizer referência ao método que define a função anônima. Se for um tipo de árvore de expressão, a conversão é avaliada como uma árvore de expressão que representa a estrutura do método como uma estrutura de objeto.
+Uma ***função anônima*** é uma expressão que representa uma definição de método "na linha". Uma função anônima não tem um valor ou tipo por si só, mas pode ser convertido em um tipo de árvore de expressão ou delegado compatível. A avaliação de uma conversão de função anônima depende do tipo de destino da conversão: Se for um tipo de delegado, a conversão é avaliada como um valor de delegado fizer referência ao método que define a função anônima. Se for um tipo de árvore de expressão, a conversão é avaliada como uma árvore de expressão que representa a estrutura do método como uma estrutura de objeto.
 
 Por razões históricas existem dois tipos sintáticos de funções anônimas, ou seja, *lambda_expression*s e *anonymous_method_expression*s. Para fins de quase todos os *lambda_expression*s são mais concisas e expressivo que *anonymous_method_expression*s, que permanecem no idioma para compatibilidade com versões anteriores.
 

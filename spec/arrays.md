@@ -4,7 +4,7 @@ Uma matriz é uma estrutura de dados que contém um número de variáveis que s�
 
 Uma matriz tem uma classificação que determina o número de índices associados com cada elemento da matriz. A classificação de uma matriz também é chamada como as dimensões da matriz. Uma matriz com uma classificação de um é chamada um ***matriz unidimensional***. Uma matriz com uma classificação maior do que uma é chamada de um ***matriz multidimensional***. Matrizes multidimensionais de tamanhos específicos são geralmente denominados matrizes bidimensionais, matrizes tridimensionais e assim por diante.
 
-Cada dimensão de uma matriz tem um comprimento associado que é um número inteiro maior ou igual a zero. Os tamanhos da dimensão não fazem parte do tipo de matriz, mas em vez disso, são definidos quando uma instância do tipo de matriz é criada em tempo de execução. O comprimento de uma dimensão determina o intervalo válido de índices para a dimensão: para uma dimensão de comprimento `N`, índices podem variar desde `0` para `N - 1` inclusivo. O número total de elementos em uma matriz é o produto dos comprimentos de cada dimensão da matriz. Se um ou mais das dimensões de uma matriz tem um comprimento igual a zero, a matriz deve estar vazio.
+Cada dimensão de uma matriz tem um comprimento associado que é um número inteiro maior ou igual a zero. Os tamanhos da dimensão não fazem parte do tipo de matriz, mas em vez disso, são definidos quando uma instância do tipo de matriz é criada em tempo de execução. O comprimento de uma dimensão determina o intervalo válido de índices para a dimensão: Para uma dimensão de comprimento `N`, índices podem variar desde `0` para `N - 1` inclusivo. O número total de elementos em uma matriz é o produto dos comprimentos de cada dimensão da matriz. Se um ou mais das dimensões de uma matriz tem um comprimento igual a zero, a matriz deve estar vazio.
 
 O tipo do elemento de uma matriz pode ser qualquer tipo, incluindo um tipo de matriz.
 
@@ -32,7 +32,7 @@ dim_separator
 
 Um *non_array_type* é qualquer *tipo* que é não por uma *array_type*.
 
-A classificação de um tipo de matriz é determinada pela mais à esquerda *rank_specifier* na *array_type*: uma *rank_specifier* indica que a matriz é uma matriz com a classificação um mais o número de "`,`" tokens em de *rank_specifier*.
+A classificação de um tipo de matriz é determinada pela mais à esquerda *rank_specifier* na *array_type*: Um *rank_specifier* indica que a matriz é uma matriz com uma classificação de um mais o número de "`,`" tokens no *rank_specifier*.
 
 O tipo de elemento de um tipo de matriz é o tipo que é o resultado da exclusão de mais à esquerda *rank_specifier*:
 

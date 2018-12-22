@@ -14,13 +14,13 @@ No exemplo
 ```csharp
 class A
 {
-public static int x;
-int y;
+    public static int x;
+    int y;
 
-void F(int[] v, int a, ref int b, out int c) {
-int i = 1;
-c = a + b++;
-}
+    void F(int[] v, int a, ref int b, out int c) {
+        int i = 1;
+        c = a + b++;
+    }
 }
 ```
 `x` é uma variável estática, `y` é uma variável de instância `v[0]` é um elemento de matriz `a` é um parâmetro de valor `b` é um parâmetro de referência `c` é um parâmetro de saída, e `i` é uma variável local.
@@ -272,11 +272,11 @@ for ( for_initializer ; for_condition ; for_iterator ) embedded_statement
 é feito como se a instrução estivesse escrita:
 ```csharp
 {
-for_initializer ;
-while ( for_condition ) {
-embedded_statement ;
-for_iterator ;
-}
+    for_initializer ;
+    while ( for_condition ) {
+        embedded_statement ;
+        for_iterator ;
+    }
 }
 ```
 
@@ -358,10 +358,10 @@ finally *finally_block*
 é feito como se fosse a instrução de um `try` - `finally` instrução colocando um `try` - `catch` instrução:
 ```csharp
 try {
-try try_block
-catch(...) catch_block_1
-...
-catch(...) catch_block_n
+    try try_block
+    catch(...) catch_block_1
+    ...
+    catch(...) catch_block_n
 }
 finally finally_block
 ```
@@ -370,31 +370,31 @@ O exemplo a seguir demonstra como os blocos diferentes de um `try` instrução (
 ```csharp
 class A
 {
-static void F() {
-int i, j;
-try {
-goto LABEL;
-// neither i nor j definitely assigned
-i = 1;
-// i definitely assigned
-}
+    static void F() {
+        int i, j;
+        try {
+            goto LABEL;
+            // neither i nor j definitely assigned
+            i = 1;
+            // i definitely assigned
+        }
 
-catch {
-// neither i nor j definitely assigned
-i = 3;
-// i definitely assigned
-}
+        catch {
+            // neither i nor j definitely assigned
+            i = 3;
+            // i definitely assigned
+        }
 
-finally {
-// neither i nor j definitely assigned
-j = 5;
-// j definitely assigned
-}
-// i and j definitely assigned
-LABEL:;
-// j definitely assigned
+        finally {
+            // neither i nor j definitely assigned
+            j = 5;
+            // j definitely assigned
+            }
+        // i and j definitely assigned
+        LABEL:;
+        // j definitely assigned
 
-}
+    }
 }
 ```
 

@@ -189,7 +189,7 @@ public interface IStringList
     string this[int index] { get; set; }
 }
 ```
-declara uma interface que contém um dos tipos possíveis de membros: um método, uma propriedade, um evento e um indexador.
+declara uma interface que contém um dos tipos possíveis de membros: Um método, uma propriedade, um evento e um indexador.
 
 Uma *interface_declaration* cria um novo espaço de declaração ([declarações](basic-concepts.md#declarations)) e o *interface_member_declaration*s imediatamente contido pelo *interface_declaration* introduzir novos membros nesse espaço de declaração. As seguintes regras se aplicam a *interface_member_declaration*s:
 
@@ -295,7 +295,7 @@ O tipo de um indexador de interface deve ser segura de saída se houver um acess
 
 Os membros de interface são acessados por meio do acesso de membro ([acesso de membro](expressions.md#member-access)) e acesso do indexador ([acesso ao indexador](expressions.md#indexer-access)) expressões do formulário `I.M` e `I[A]`, onde `I` é um tipo de interface `M` é um método, propriedade ou evento desse tipo de interface, e `A` é uma lista de argumentos do indexador.
 
-Para interfaces que são estritamente herança única (a cada interface na cadeia de herança tem exatamente zero ou uma interface base direta), os efeitos da pesquisa de membro ([pesquisa de membro](expressions.md#member-lookup)), invocação de método ([ Invocações de método](expressions.md#method-invocations)) e o acesso do indexador ([acesso ao indexador](expressions.md#indexer-access)) as regras são exatamente as mesmas para classes e structs: mais derivado ocultar membros menos derivados membros com o mesmo nome ou assinatura. No entanto, para as interfaces de herança múltipla, as ambiguidades podem ocorrer quando dois ou mais interfaces base não relacionadas declaram membros com o mesmo nome ou assinatura. Esta seção mostra vários exemplos de tais situações. Em todos os casos, as conversões explícitas podem ser usados para resolver as ambiguidades.
+Para interfaces que são estritamente herança única (a cada interface na cadeia de herança tem exatamente zero ou uma interface base direta), os efeitos da pesquisa de membro ([pesquisa de membro](expressions.md#member-lookup)), invocação de método ([ As invocações de método](expressions.md#method-invocations)) e o acesso do indexador ([acesso do indexador](expressions.md#indexer-access)) as regras são exatamente as mesmas para classes e estruturas: Mais derivado ocultar membros menos derivados membros com o mesmo nome ou assinatura. No entanto, para as interfaces de herança múltipla, as ambiguidades podem ocorrer quando dois ou mais interfaces base não relacionadas declaram membros com o mesmo nome ou assinatura. Esta seção mostra vários exemplos de tais situações. Em todos os casos, as conversões explícitas podem ser usados para resolver as ambiguidades.
 
 No exemplo
 ```csharp
@@ -380,7 +380,7 @@ class A
 ```
 o `IBase.F` membro é ocultado pelo `ILeft.F` membro. A invocação `d.F(1)` , portanto, seleciona `ILeft.F`, embora `IBase.F` parece não estar oculto no caminho de acesso que o orienta ao longo das `IRight`.
 
-A regra intuitiva de ocultação de nas interfaces de herança múltipla é simplesmente isso: se um membro é ocultado em qualquer caminho de acesso, ele está oculto em todos os caminhos de acesso. Porque o caminho de acesso de `IDerived` à `ILeft` para `IBase` oculta `IBase.F`, o membro é ocultado também no caminho de acesso de `IDerived` para `IRight` para `IBase`.
+A regra intuitiva para ocultação de nas interfaces de herança múltipla é simplesmente isso: Se um membro é ocultado em qualquer caminho de acesso, ele ficará oculta em todos os caminhos de acesso. Porque o caminho de acesso de `IDerived` à `ILeft` para `IBase` oculta `IBase.F`, o membro é ocultado também no caminho de acesso de `IDerived` para `IRight` para `IBase`.
 
 ## <a name="fully-qualified-interface-member-names"></a>Nomes de membro de interface totalmente qualificado
 
