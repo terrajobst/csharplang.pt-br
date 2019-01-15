@@ -37,12 +37,12 @@ public class Point
 }
 ```
 
-O texto dentro de comentários de documentação deve estar bem formado de acordo com as regras do XML (http://www.w3.org/TR/REC-xml). Se o XML está mal formado, um aviso será gerado e o arquivo de documentação conterá um comentário dizendo que foi encontrado um erro.
+O texto dentro de comentários de documentação deve estar bem formado de acordo com as regras do XML (https://www.w3.org/TR/REC-xml). Se o XML está mal formado, um aviso será gerado e o arquivo de documentação conterá um comentário dizendo que foi encontrado um erro.
 
 Embora os desenvolvedores são livres para criar seu próprio conjunto de marcas, um conjunto recomendado é definido em [marcações recomendadas](documentation-comments.md#recommended-tags). Algumas das marcas recomendadas têm significado especial:
 
 *  O `<param>` marca é usada para descrever parâmetros. Se tal uma marca é usada, o gerador de documentação deve verificar se o parâmetro especificado existe e que todos os parâmetros estão descritos nos comentários da documentação. Se essa verificação falhar, o gerador de documentação emite um aviso.
-*  O atributo `cref` pode ser anexado a qualquer marca para fornecer uma referência a um elemento de código. O gerador de documentação deve verificar se este elemento de código existe. Se a verificação falhar, o gerador de documentação emite um aviso. Ao procurar por um nome descritas em uma `cref` atributo, o gerador de documentação deve respeitar a visibilidade de namespace de acordo com a `using` instruções que aparecem no código-fonte. Para elementos de código que são genéricos, a sintaxe genérica normal (ie "`List<T>`") não pode ser usado porque ele produz um XML inválido. As chaves podem ser usadas em vez de colchetes (ie "`List{T}`"), ou a sintaxe de escape XML pode ser usada (ie "`List&lt;T&gt;`").
+*  O atributo `cref` pode ser anexado a qualquer marca para fornecer uma referência a um elemento de código. O gerador de documentação deve verificar se este elemento de código existe. Se a verificação falhar, o gerador de documentação emite um aviso. Ao procurar por um nome descritas em uma `cref` atributo, o gerador de documentação deve respeitar a visibilidade de namespace de acordo com a `using` instruções que aparecem no código-fonte. Para elementos de código que são genéricos, a sintaxe genérica normal (ou seja, "`List<T>`") não pode ser usado porque ele produz um XML inválido. As chaves podem ser usadas em vez de colchetes (ou seja, "`List{T}`"), ou a sintaxe de escape XML pode ser usada (ou seja, "`List&lt;T&gt;`").
 *  O `<summary>` marca se destina a ser usado por um visualizador de documentação para exibir informações adicionais sobre um tipo ou membro.
 *  O `<include>` tag inclui informações de um arquivo XML externo.
 
@@ -53,7 +53,7 @@ Observe atentamente que o arquivo de documentação não fornece informações c
 O gerador de documentação deve aceitar e processar qualquer marca que seja válida de acordo com as regras do XML. As seguintes marcas fornecem funcionalidades comumente usadas na documentação do usuário. (É claro, outras marcas são possíveis.)
 
 
-| __Marca__          | __Section__                                            | __Finalidade__                                            |
+| __Tag__          | __Section__                                            | __Finalidade__                                            |
 |------------------|--------------------------------------------------------|--------------------------------------------------------|
 | `<c>`            | [`<c>`](documentation-comments.md#c)                   | Definir o texto em uma fonte de código                           | 
 | `<code>`         | [`<code>`](documentation-comments.md#code)             | Defina uma ou mais linhas de saída de programa ou código de origem |
