@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 75fcd5b00ea5cac218a9f7809c53b179df97825c
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229493"
+---
 # <a name="exceptions"></a>Exceções
 
 Exceções em c# fornecem uma maneira estruturada, uniforme e fortemente tipada de lidar com o nível de sistema e o nível de aplicativo condições de erro. O mecanismo de exceção no c# é muito semelhante do C++, com algumas diferenças importantes:

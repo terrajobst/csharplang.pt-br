@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c3b716e6eb331be2ee33fffeb42c1e2406cd3a5c
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229497"
+---
 # <a name="enums"></a>Enums
 
 Uma ***tipo de enumeração*** é um tipo de valor distinto ([tipos de valor](types.md#value-types)) que declara um conjunto de constantes nomeadas.

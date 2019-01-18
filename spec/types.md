@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a28397b1ce97dbead6d5014e2b20e108a1018502
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229488"
+---
 # <a name="types"></a>Tipos
 
 Os tipos de linguagem c# são divididos em duas categorias principais: ***tipos de valor*** e ***tipos de referência***. Tipos de valor e tipos de referência podem ser ***tipos genéricos***, que leva um ou mais ***parâmetros de tipo***. Parâmetros de tipo podem designar os dois tipos de valor e tipos de referência.

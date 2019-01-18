@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: ab41a3c99f79c4cc70f7d4720f7e53b91a410859
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "49640893"
+---
 # <a name="introduction"></a>Introdução
 
 O C# (pronuncia-se "C Sharp") é uma linguagem de programação simples, moderna, orientada a objeto e fortemente tipada. C# tem suas raízes na família de idiomas do C e será imediatamente familiar aos programadores de C, C++ e Java. C# é padronizado pelo ECMA International como o ***ECMA-334*** padrão e pela ISO/IEC como o ***ISO/IEC 23270*** padrão. Compilador c# da Microsoft para o .NET Framework é uma implementação em conformidade de ambos os padrões.
@@ -164,14 +172,14 @@ A tabela a seguir resume os tipos numéricos do #.
 
 | __Categoria__      | __Bits__ | __Tipo__  | __Intervalo de precisão__ |
 |-------------------|----------|-----------|---------------------|
-| Integral assinado   | 8        | `sbyte`   | -128... 127 |
-|                   | 16       | `short`   | -32, 768... 32, 767 |
-|                   | 32       | `int`     | -2,147,483, 648... 2, 147, 483, 647 |
-|                   | 64       | `long`    | -9,223,372,036,854,775, 808... 9, 223, 372, 036, 854, 775, 807 |
-| Integral sem sinal | 8        | `byte`    | 0... 255 |
-|                   | 16       | `ushort`  | 0... 65.535 |
-|                   | 32       | `uint`    | 0... 4.294.967.295 |
-|                   | 64       | `ulong`   | 0... 18.446.744.073.709.551.615 |
+| Integral assinado   | 8        | `sbyte`   | -128...127 |
+|                   | 16       | `short`   | -32,768...32,767 |
+|                   | 32       | `int`     | -2,147,483,648...2,147,483,647 |
+|                   | 64       | `long`    | -9,223,372,036,854,775,808...9,223,372,036,854,775,807 |
+| Integral sem sinal | 8        | `byte`    | 0...255 |
+|                   | 16       | `ushort`  | 0...65,535 |
+|                   | 32       | `uint`    | 0...4,294,967,295 |
+|                   | 64       | `ulong`   | 0...18,446,744,073,709,551,615 |
 | Ponto flutuante    | 32       | `float`   | 1,5 × 10 ^ − 45 a 3,4 × 10 ^ 38, precisão de 7 dígitos |
 |                   | 64       | `double`  | 5,0 × 10 ^ −324 a 1,7 × 10 ^ 308, precisão de 15 dígitos |
 | Decimal           | 128      | `decimal` | 1.0 × 10 ^ − 28 a 7,9 × 10 ^ 28, precisão de 28 dígitos |
@@ -347,7 +355,7 @@ static void Main() {
 }
 ```
 
-__`if` Instrução__
+__`if` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -361,7 +369,7 @@ static void Main(string[] args) {
 ```
 
 
-__`switch` Instrução__
+__`switch` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -380,7 +388,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`while` Instrução__
+__`while` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -393,7 +401,7 @@ static void Main(string[] args) {
 ```
 
 
-__`do` Instrução__
+__`do` statement__
 
 ```csharp
 static void Main() {
@@ -405,7 +413,7 @@ static void Main() {
 }
 ```
 
-__`for` Instrução__
+__`for` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -415,7 +423,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`foreach` Instrução__
+__`foreach` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -425,7 +433,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`break` Instrução__
+__`break` statement__
 
 ```csharp
 static void Main() {
@@ -437,7 +445,7 @@ static void Main() {
 }
 ```
 
-__`continue` Instrução__
+__`continue` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -448,7 +456,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`goto` Instrução__
+__`goto` statement__
 
 ```csharp
 static void Main(string[] args) {
@@ -461,7 +469,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`return` Instrução__
+__`return` statement__
 
 ```csharp
 static int Add(int a, int b) {
@@ -474,7 +482,7 @@ static void Main() {
 }
 ```
 
-__`yield` Instrução__
+__`yield` statement__
 
 ```csharp
 static IEnumerable<int> Range(int from, int to) {
@@ -531,7 +539,7 @@ static void Main() {
 }
 ```
 
-__`lock` Instrução__
+__`lock` statement__
 
 ```csharp
 class Account
@@ -548,7 +556,7 @@ class Account
 }
 ```
 
-__`using` Instrução__
+__`using` statement__
 
 ```csharp
 static void Main() {

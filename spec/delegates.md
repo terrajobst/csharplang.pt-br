@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 08c14d9ef2afe30580f456995066c141653ede92
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229491"
+---
 # <a name="delegates"></a>Delegados
 
 Os representantes permitem cenários que os outros idiomas, como C++, Pascal e Modula – tenha resolvido com ponteiros de função. Ao contrário dos ponteiros de função do C++, entretanto, delegados são totalmente orientada a objeto e, ao contrário dos ponteiros de C++ para funções de membro, os delegados encapsulam uma instância do objeto e um método.

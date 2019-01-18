@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a8ad8a8b3eda1d00fa745bd92e4371eacc36b79f
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229478"
+---
 # <a name="attributes"></a>Atributos
 
 Grande parte da linguagem c# permite que o programador especificar informações declarativas sobre as entidades definidas no programa. Por exemplo, a acessibilidade de um método em uma classe for especificada, decorando-o com o *method_modifier*s `public`, `protected`, `internal`, e `private`.

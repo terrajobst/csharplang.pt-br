@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: af7af574814dc04ee3ece0396b7ae5f86b3ec8eb
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229489"
+---
 # <a name="classes"></a>Classes
 
 Uma classe é uma estrutura de dados que pode conter dados membros (campos e constantes), membros da função (métodos, propriedades, eventos, indexadores, operadores, construtores de instância, destruidores e construtores estáticos) e tipos aninhados. Tipos de classe dá suporte à herança, um mecanismo pelo qual uma classe derivada pode estender e especializar uma classe base.
@@ -1827,7 +1835,7 @@ Um *fixed_parameter* com um *default_argument* é conhecido como um ***parâmetr
 
 Um `ref` ou `out` parâmetro não pode ter um *default_argument*. O *expressão* em um *default_argument* deve ser um dos seguintes:
 
-*  um *constant_expression*
+*  a *constant_expression*
 *  uma expressão do formulário `new S()` onde `S` é um tipo de valor
 *  uma expressão do formulário `default(S)` onde `S` é um tipo de valor
 

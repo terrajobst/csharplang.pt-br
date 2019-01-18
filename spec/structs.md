@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 72d17175dfb8ef284dce6cf7e5837420fa06f16a
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229477"
+---
 # <a name="structs"></a>Structs
 
 Structs são semelhantes às classes que representam estruturas de dados que podem conter membros de dados e os membros da função. No entanto, diferentemente das classes, structs são tipos de valor e não precisam de alocação de heap. Uma variável de um tipo de struct diretamente contém os dados do struct, enquanto que uma variável de um tipo de classe contém uma referência aos dados, o último conhecido como um objeto.

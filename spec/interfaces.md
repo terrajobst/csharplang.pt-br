@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 0a09585f4f885647230354c66a2449abb7ef1f44
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229479"
+---
 # <a name="interfaces"></a>Interfaces
 
 Uma interface define um contrato. Uma classe ou struct que implementa uma interface deve cumprir o contrato. Uma interface pode herdar de várias interfaces base e uma classe ou struct pode implementar várias interfaces.

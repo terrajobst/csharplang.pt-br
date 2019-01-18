@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 90001cf3d48f216787fc65e59166ec57c5d0ca34
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229481"
+---
 # <a name="unsafe-code"></a>Código não seguro
 
 O núcleo de linguagem c#, conforme definido nos capítulos anteriores, difere da C e C++ em sua omissão de ponteiros como um tipo de dados. Em vez disso, o c# fornece referências e a capacidade de criar objetos que são gerenciados por um coletor de lixo. Esse design, juntamente com outros recursos, torna c# uma linguagem mais segura que C ou C++. Na linguagem principal c# simplesmente não é possível ter uma variável não inicializada, um ponteiro "pendentes" ou uma expressão que indexa uma matriz, além de seus limites. Categorias inteiras de bugs que rotineiramente assolam C e programas do C++, portanto, são eliminados.

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: b7bb7dd575d9e2e6d5dd85bdd3e535411e29fcf4
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229480"
+---
 # <a name="variables"></a>Variáveis
 
 As variáveis representam os locais de armazenamento. Cada variável tem um tipo que determina quais valores podem ser armazenados na variável. C# é uma linguagem fortemente tipada e o compilador c# garante que os valores armazenados em variáveis são sempre do tipo apropriado. O valor de uma variável pode ser alterado por meio de atribuição ou por meio do uso do `++` e `--` operadores.
@@ -304,7 +312,7 @@ return expr ;
 
 *  O estado de atribuição definitiva da *v* no início da *expr* é o mesmo que o estado de atribuição definitiva da *v* no início do *stmt*.
 *  Se *v* é um parâmetro de saída, em seguida, ele deve ser definitivamente atribuído:
-    * Depois de *expr*
+    * after *expr*
     * ou no final do `finally` block de um `try` - `finally` ou `try` - `catch` - `finally` que circunscreve o `return` instrução.
 
 Para uma instrução INSERT de instrução do formulário:

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 9c3863c9a139f5b8309fca6e0c099d0fae7677c3
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229534"
+---
 # <a name="namespaces"></a>Namespaces
 
 Programas em c# são organizados com o uso de namespaces. Namespaces são usados como um sistema de organização "interno" para um programa e como um sistema de organização "externa" — uma maneira de apresentar os elementos do programa que são expostos a outros programas.
@@ -539,7 +547,7 @@ Os modificadores de acesso permitido e o acesso padrão para uma declaração de
 *  Tipos declarados em classes podem ter `public`, `protected internal`, `protected`, `internal`, ou `private` acesso. O padrão é `private` acesso.
 *  Tipos declarados em estruturas podem ter `public`, `internal`, ou `private` acesso. O padrão é `private` acesso.
 
-## <a name="namespace-alias-qualifiers"></a>Qualificadores alias de Namespace
+## <a name="namespace-alias-qualifiers"></a>Namespace alias qualifiers
 
 O ***qualificador alias de namespace*** `::` torna possível garantir que as pesquisas de nome de tipo não são afetadas pela introdução de novos tipos e membros. O qualificador alias de namespace sempre aparece entre dois identificadores, conhecidos como os identificadores do lado esquerdos e direito. Ao contrário de normal `.` qualificador, o identificador à esquerda do `::` qualificador é pesquisado up apenas como um externo ou usando o alias.
 

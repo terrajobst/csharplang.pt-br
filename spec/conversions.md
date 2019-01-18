@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 61eeae6173eaa19f9cf6d6e985f3dc107d4c3ac9
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "50245520"
+---
 # <a name="conversions"></a>Conversões
 
 Um ***conversão*** permite que uma expressão a ser tratada como sendo de um tipo específico. Uma conversão pode causar uma expressão de um tipo específico para ser tratada como tendo um tipo diferente, ou pode fazer com que uma expressão sem um tipo para obter um tipo. As conversões podem ser ***implícita*** ou ***explícita***, e isso determina se uma conversão explícita é necessária. Por exemplo, a conversão do tipo `int` digitar `long` é implícito, portanto, expressões do tipo `int` implicitamente pode ser tratado como tipo `long`. A conversão oposta, do tipo `long` digitar `int`, é explícito e, portanto, uma conversão explícita é necessária.
