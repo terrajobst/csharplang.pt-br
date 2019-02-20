@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 9c3863c9a139f5b8309fca6e0c099d0fae7677c3
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: MT
-ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229534"
----
 # <a name="namespaces"></a>Namespaces
 
 Programas em c# são organizados com o uso de namespaces. Namespaces são usados como um sistema de organização "interno" para um programa e como um sistema de organização "externa" — uma maneira de apresentar os elementos do programa que são expostos a outros programas.
@@ -434,7 +426,7 @@ namespace N2
     }
 }
 ```
-`N1` contém um membro de tipo `A`, e `C` contém um método estático `A`e porque `N2` importa ambos, referenciando `A` como uma *simple_name* é ambígua e um tempo de compilação erro. 
+`N1` contém um membro de tipo `A`, e `C` contém um campo estático `A`e porque `N2` importa ambos, referenciando `A` como uma *simple_name* é ambígua e um tempo de compilação erro. 
 
 Como uma *using_alias_directive*, um *using_namespace_directive* não contribui com os novos membros para o espaço de declaração subjacente da unidade de compilação ou namespace, mas em vez disso, só afeta o compilação de unidade ou namespace corpo na qual ele aparece.
 

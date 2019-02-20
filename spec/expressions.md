@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 75454072a5137b3044f78bb896317fd88a29e336
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: MT
-ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "49640906"
----
 # <a name="expressions"></a>Expressões
 
 Uma expressão é uma sequência de operadores e operandos. Este capítulo define a sintaxe, a ordem de avaliação dos operandos e operadores e o significado das expressões.
@@ -92,7 +84,7 @@ As seções a seguir descrevem cada constructo no idioma for exatamente quando v
 
 ### <a name="types-of-constituent-expressions"></a>Tipos de expressões constituintes
 
-Quando uma operação é vinculada estaticamente, o tipo de uma expressão constituinte (por exemplo, um receptor e argumento, um índice ou um operando) é sempre considerado como o tipo de tempo de compilação dessa expressão.
+Quando uma operação é vinculada estaticamente, o tipo de uma expressão constituinte (por exemplo, um destinatário, um argumento, um índice ou um operando) é sempre considerado como o tipo de tempo de compilação dessa expressão.
 
 Quando uma operação dinamicamente é vinculada, o tipo de uma expressão constituinte é determinado de maneiras diferentes dependendo do tipo de tempo de compilação da expressão constituinte:
 
@@ -388,7 +380,7 @@ A tabela a seguir resume o processamento que ocorre em construções que envolve
 |                   | `T.E -= value` | O `remove` acessador do evento `E` na classe ou struct `T` é invocado. Ocorrerá um erro de tempo de associação se `E` não é estático. | 
 |                   | `e.E += value` | O `add` acessador do evento `E` na classe, struct ou interface fornecido pelo tipo de `e` é invocado com a expressão de instância `e`. Ocorrerá um erro de tempo de associação se `E` é estático. | 
 |                   | `e.E -= value` | O `remove` acessador do evento `E` na classe, struct ou interface fornecido pelo tipo de `e` é invocado com a expressão de instância `e`. Ocorrerá um erro de tempo de associação se `E` é estático. | 
-| Acesso do indexador    | `e[x,y]`       | Resolução de sobrecarga é aplicada para selecionar o indexador melhor na classe, struct ou interface fornecido pelo tipo de e. O `get` acessador do indexador é invocado com a expressão de instância `e` e a lista de argumentos `(x,y)`. Um erro em tempo de vinculação ocorrerá se o indexador é somente gravação. | 
+| Acesso de indexador    | `e[x,y]`       | Resolução de sobrecarga é aplicada para selecionar o indexador melhor na classe, struct ou interface fornecido pelo tipo de e. O `get` acessador do indexador é invocado com a expressão de instância `e` e a lista de argumentos `(x,y)`. Um erro em tempo de vinculação ocorrerá se o indexador é somente gravação. | 
 |                   | `e[x,y] = value` | Resolução de sobrecarga é aplicada para selecionar o indexador melhor na classe, struct ou interface fornecido pelo tipo de `e`. O `set` acessador do indexador é invocado com a expressão de instância `e` e a lista de argumentos `(x,y,value)`. Um erro em tempo de vinculação ocorrerá se o indexador é somente leitura. | 
 | Invocação de operador | `-x`         | Resolução de sobrecarga é aplicada para selecionar o operador unário melhor na classe ou struct fornecido pelo tipo de `x`. O operador selecionado é invocado com a lista de argumentos `(x)`. | 
 |                     | `x + y`      | Resolução de sobrecarga é aplicada para selecionar o operador binário melhor nas classes ou structs fornecido pelos tipos de `x` e `y`. O operador selecionado é invocado com a lista de argumentos `(x,y)`. | 
@@ -1448,7 +1440,7 @@ Nesse caso, o compilador classifica os *element_access* como um valor do tipo `d
 
 Se o *primary_no_array_creation_expression* de uma *element_access* é um valor de um *array_type*, o *element_access* é um acesso de matriz ([acesso de matriz](expressions.md#array-access)). Caso contrário, o *primary_no_array_creation_expression* deve ser uma variável ou um valor de uma classe, struct ou tipo de interface que tem um ou mais membros de indexador, nesse caso, o *element_access* é um acesso do indexador ([acesso do indexador](expressions.md#indexer-access)).
 
-#### <a name="array-access"></a>Acesso à matriz
+#### <a name="array-access"></a>Acesso de matriz
 
 Para obter um acesso de matriz, o *primary_no_array_creation_expression* da *element_access* deve ser um valor de um *array_type*. Além disso, o *argument_list* de uma matriz acesso não é permitido para conter argumentos nomeados. O número de expressões na *argument_list* deve ser o mesmo que a classificação do *array_type*, e cada expressão deve ser do tipo `int`, `uint`, `long`, `ulong`, ou deve ser implicitamente conversível para um ou mais desses tipos.
 
@@ -1462,7 +1454,7 @@ O processamento de tempo de execução de um acesso de matriz no formato `P[A]`,
 *  O valor de cada expressão na *argument_list* é verificado em relação os limites reais de cada dimensão da instância de matriz referenciada por `P`. Se um ou mais valores estão fora do intervalo, um `System.IndexOutOfRangeException` é lançada e nenhuma outra etapa é executada.
 *  O local do elemento da matriz fornecido pelas expressões de índice é computado, e esse local se tornará o resultado do acesso de matriz.
 
-#### <a name="indexer-access"></a>Acesso do indexador
+#### <a name="indexer-access"></a>Acesso de indexador
 
 Para acessar um indexador, o *primary_no_array_creation_expression* da *element_access* deve ser uma variável ou um valor de uma classe, struct ou tipo de interface, e esse tipo deve implementar uma ou mais indexadores são aplicáveis em relação à *argument_list* da *element_access*.
 
