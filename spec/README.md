@@ -11,7 +11,7 @@ ms.locfileid: "47229476"
 
 __Versão 6__
 
-Esse é um rascunho não oficial, postado aqui para sua conveniência. Quando podemos enviar uma proposta de especificações de c# 6.0 para ECMA (que atualmente está finalizando o c# 5.0 Standard), ele será compartilhado aqui.
+Esse é um rascunho não oficial, postado aqui para sua conveniência. Quando podemos enviar uma proposta de especificações de C# 6.0 para ECMA (que atualmente está finalizando o C# 5.0 Standard), ele será compartilhado aqui.
 
 <!--
 (This document is also available for download: [csharp.pdf](CSharp%20Language%20Specification.pdf?raw=true) and [csharp.docx](CSharp%20Language%20Specification.docx?raw=true))
