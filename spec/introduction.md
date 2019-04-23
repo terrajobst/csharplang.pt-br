@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: db10046af5d635b430951679a448e23680b18b87
-ms.sourcegitcommit: a19fac74c01a6c3da67d38b2f79527145d4edcbc
+ms.sourcegitcommit: 4cc6d73a765ac9827ab00c48ad9f09204baf888f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426806"
 ---
 # <a name="introduction"></a>Introdução
@@ -141,17 +141,17 @@ A tabela a seguir fornece uma visão geral do C#do sistema de tipos.
 
 | __Categoria__    |                 | __Descrição__ |
 |-----------------|-----------------|-----------------|
-| Tipos de valor     | Tipos simples    | Integral com sinal: `sbyte`, `short`, `int`, `long` |
-|                 |                 | Integral sem sinal: `byte`, `ushort`, `uint`, `ulong` |
+| Tipos de valor     | Tipos simples    | Integral com sinal: `sbyte`, `short`, `int`,`long` |
+|                 |                 | Integral sem sinal: `byte`, `ushort`, `uint`,`ulong` |
 |                 |                 | Caracteres Unicode: `char` |
 |                 |                 | Ponto flutuante IEEE: `float`, `double` |
-|                 |                 | Alta precisão decimal: `decimal` |
+|                 |                 | Decimal de alta precisão:`decimal` |
 |                 |                 | Booliano: `bool` |
 |                 | Tipos enum      | Tipos definidos pelo usuário do formulário `enum E {...}` |
 |                 | Tipos struct    | Tipos definidos pelo usuário do formulário `struct S {...}` |
 |                 | Tipos que permitem valor nulo  | Extensões de todos os outros tipos de valor com um valor `null` |
 | Tipos de referência | Tipos de classe     | Classe base definitiva de todos os outros tipos: `object` |
-|                 |                 | Cadeias de caracteres Unicode: `string` |
+|                 |                 | Cadeia de caracteres Unicode: `string` |
 |                 |                 | Tipos definidos pelo usuário do formulário `class C {...}` |
 |                 | Tipos de interface | Tipos definidos pelo usuário do formulário `interface I {...}` |
 |                 | Tipos de matriz     | Unidimensional e multidimensional, por exemplo, `int[]` e `int[,]` |
@@ -255,10 +255,10 @@ A tabela a seguir resume C#do operadores, listando as categorias de operador em 
 |                                  | `new T(...){...}` | Criação de objeto com inicializador |
 |                                  | `new {...}`       | Inicializador de objeto anônimo |
 |                                  | `new T[...]`      | Criação de matriz |
-|                                  | `typeof(T)`       | Obter `System.Type` de objeto para `T` |
+|                                  | `typeof(T)`       | Obter objeto `System.Type` para `T` |
 |                                  | `checked(x)`      | Avalia expressão no contexto selecionado |
 |                                  | `unchecked(x)`    | Avalia expressão no contexto desmarcado |
-|                                  | `default(T)`      | Obter o valor padrão de tipo `T` |
+|                                  | `default(T)`      | Obter valor padrão do tipo `T` |
 |                                  | `delegate {...}`  | Função anônima (método anônimo) |
 | Unário                            | `+x`              | Identidade |
 |                                  | `-x`              | Negação |
@@ -266,7 +266,7 @@ A tabela a seguir resume C#do operadores, listando as categorias de operador em 
 |                                  | `~x`              | Negação bit a bit |
 |                                  | `++x`             | Pré-incremento |
 |                                  | `--x`             | Pré-decremento |
-|                                  | `(T)x`            | Converter explicitamente `x` digitar `T` |
+|                                  | `(T)x`            | Converter explicitamente `x` no tipo `T` |
 |                                  | `await x`         | Aguardar assincronamente `x` para concluir |
 | Multiplicativo                   | `x * y`           | Multiplicação |
 |                                  | `x / y`           | Divisão |
@@ -280,7 +280,7 @@ A tabela a seguir resume C#do operadores, listando as categorias de operador em 
 |                                  | `x <= y`          | Menor que ou igual a |
 |                                  | `x >= y`          | Maior que ou igual a |
 |                                  | `x is T`          | Retorna `true` se `x` for um `T`, caso contrário, `false` |
-|                                  | `x as T`          | Retornar `x` tipada como `T`, ou `null` se `x` não é um `T` |
+|                                  | `x as T`          | Retorna `x` digitado como `T` ou `null`, se `x` não for um `T` |
 | Igualdade                         | `x == y`          | Igual      |
 |                                  | `x != y`          | Não é igual a |
 | AND lógico                      | `x & y`           | AND bit a bit inteiro, AND lógico booliano |
@@ -289,9 +289,9 @@ A tabela a seguir resume C#do operadores, listando as categorias de operador em 
 | AND condicional                  | `x && y`          | Avalia `y` somente se `x` é `true` |
 | OR condicional                   | <code>x &#124;&#124; y</code> | Avalia `y` somente se `x` é `false` |
 | Coalescência nula                  | `x ?? y`          | É avaliada como `y` se `x` é `null`, para `x` caso contrário, |
-| Condicional                      | `x ? y : z`       | Avalia `y` se `x` é `true`, `z` se `x` é `false` |
+| Condicional                      | `x ? y : z`       | Avalia `y` se `x` for `true`, `z` se `x` for `false` |
 | Atribuição ou função anônima | `x = y`           | Atribuição |
-|                                  | `x op= y`         | Atribuição composta; operadores com suporte `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` <code>&#124;=</code> |
+|                                  | `x op= y`         | Atribuição composta; operadores com suporte são `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` <code>&#124;=</code> |
 |                                  | `(T x) => y`      | Função anônima (expressão lambda) |
 
 ## <a name="statements"></a>Instruções
