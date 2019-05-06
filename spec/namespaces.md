@@ -1,6 +1,14 @@
+---
+ms.openlocfilehash: 33b3044c4c0a4095f4bf49e6cf23c721f538e911
+ms.sourcegitcommit: 4e3f2e4ea5a50b186b08d1e93d3ffcdb3754596e
+ms.translationtype: HT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56411293"
+---
 # <a name="namespaces"></a>Namespaces
 
-Programas em c# são organizados com o uso de namespaces. Namespaces são usados como um sistema de organização "interno" para um programa e como um sistema de organização "externa" — uma maneira de apresentar os elementos do programa que são expostos a outros programas.
+Programas em C# são organizados com o uso de namespaces. Namespaces são usados como um sistema de organização "interno" para um programa e como um sistema de organização "externa" — uma maneira de apresentar os elementos do programa que são expostos a outros programas.
 
 Diretivas de uso ([diretivas Using](namespaces.md#using-directives)) são fornecidos para facilitar o uso de namespaces.
 
@@ -14,7 +22,7 @@ compilation_unit
     ;
 ```
 
-Um programa c# consiste em uma ou mais unidades de compilação, cada um contido em um arquivo de origem separado. Quando um programa c# é compilado, todas as unidades de compilação são processadas em conjunto. Assim, unidades de compilação podem depender entre si, possivelmente de forma circular.
+Um programa C# consiste em uma ou mais unidades de compilação, cada um contido em um arquivo de origem separado. Quando um programa C# é compilado, todas as unidades de compilação são processadas em conjunto. Assim, unidades de compilação podem depender entre si, possivelmente de forma circular.
 
 O *using_directive*s de um efeito de unidade de compilação a *global_attributes* e *namespace_member_declaration*s dessa unidade de compilação, mas não têm nenhum efeito outras unidades de compilação.
 

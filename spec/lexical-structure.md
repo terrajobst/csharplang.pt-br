@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 7f7abb120d0b3a6abf12beb9daa0d79a975ccce2
+ms.sourcegitcommit: 4e3f2e4ea5a50b186b08d1e93d3ffcdb3754596e
+ms.translationtype: HT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56411306"
+---
 # <a name="lexical-structure"></a>Estrutura lexical
 
 ## <a name="programs"></a>Programas
@@ -12,7 +20,7 @@ Conceitualmente, um programa é compilado em três etapas:
 
 ## <a name="grammars"></a>Gramáticas
 
-Essa especificação apresenta a sintaxe da linguagem c# linguagem de programação usando duas gramáticas. O ***gramática lexical*** ([gramática Lexical](lexical-structure.md#lexical-grammar)) define como os caracteres Unicode são combinadas para terminadores de linha de formulário, o espaço em branco, comentários, tokens e diretivas de pré-processamento. O ***gramática sintática*** ([gramática sintática](lexical-structure.md#syntactic-grammar)) define como os tokens resultantes da gramática lexical são combinados para programas de formulário em C#.
+Essa especificação apresenta a sintaxe da linguagem C# linguagem de programação usando duas gramáticas. O ***gramática lexical*** ([gramática Lexical](lexical-structure.md#lexical-grammar)) define como os caracteres Unicode são combinadas para terminadores de linha de formulário, o espaço em branco, comentários, tokens e diretivas de pré-processamento. O ***gramática sintática*** ([gramática sintática](lexical-structure.md#syntactic-grammar)) define como os tokens resultantes da gramática lexical são combinados para programas de formulário em C#.
 
 ### <a name="grammar-notation"></a>Notação de gramática
 
@@ -20,19 +28,19 @@ As gramáticas lexicais e sintáticas são apresentadas na forma de Backus-Naur 
 
 ### <a name="lexical-grammar"></a>Gramática lexical
 
-A gramática lexical da linguagem c# é apresentada na [análise léxica](lexical-structure.md#lexical-analysis), [Tokens](lexical-structure.md#tokens), e [diretivas de pré-processamento](lexical-structure.md#pre-processing-directives). Os símbolos terminais da gramática lexical são os caracteres do conjunto de caracteres Unicode e a gramática lexical Especifica como os caracteres são combinadas para tokens de formulário ([Tokens](lexical-structure.md#tokens)), espaço em branco ([espaço em branco](lexical-structure.md#white-space)), comentários ([comentários](lexical-structure.md#comments)) e em diretivas de pré-processamento ([diretivas de pré-processamento](lexical-structure.md#pre-processing-directives)).
+A gramática lexical da linguagem C# é apresentada na [análise léxica](lexical-structure.md#lexical-analysis), [Tokens](lexical-structure.md#tokens), e [diretivas de pré-processamento](lexical-structure.md#pre-processing-directives). Os símbolos terminais da gramática lexical são os caracteres do conjunto de caracteres Unicode e a gramática lexical Especifica como os caracteres são combinadas para tokens de formulário ([Tokens](lexical-structure.md#tokens)), espaço em branco ([espaço em branco](lexical-structure.md#white-space)), comentários ([comentários](lexical-structure.md#comments)) e em diretivas de pré-processamento ([diretivas de pré-processamento](lexical-structure.md#pre-processing-directives)).
 
-Cada arquivo de origem em um programa c# deve estar de acordo com o *entrada* produção da gramática lexical ([análise léxica](lexical-structure.md#lexical-analysis)).
+Cada arquivo de origem em um programa C# deve estar de acordo com o *entrada* produção da gramática lexical ([análise léxica](lexical-structure.md#lexical-analysis)).
 
 ### <a name="syntactic-grammar"></a>Gramática sintática
 
-A gramática sintática do c# é apresentada em capítulos e apêndices seguir este capítulo. Os símbolos de terminal da gramática sintático são os tokens definidos pela gramática lexical e sintática gramática Especifica como os tokens são combinados para programas em c# formulário.
+A gramática sintática do C# é apresentada em capítulos e apêndices seguir este capítulo. Os símbolos de terminal da gramática sintático são os tokens definidos pela gramática lexical e sintática gramática Especifica como os tokens são combinados para programas em C# formulário.
 
 Cada arquivo de origem em um C# programa deve estar em conformidade com a *compilation_unit* produção da gramática sintática ([unidades de compilação](namespaces.md#compilation-units)).
 
 ## <a name="lexical-analysis"></a>Análise léxica
 
-O *entrada* produção define a estrutura lexical de um arquivo de origem c#. Cada arquivo de origem em um programa c# deve estar de acordo com essa produção gramática lexical.
+O *entrada* produção define a estrutura lexical de um arquivo de origem C#. Cada arquivo de origem em um programa C# deve estar de acordo com essa produção gramática lexical.
 
 ```antlr
 input
@@ -55,9 +63,9 @@ input_element
     ;
 ```
 
-Cinco elementos básicos compõem a estrutura lexical de um C# arquivo de origem: Terminadores de linha ([terminadores de linha](lexical-structure.md#line-terminators)), espaço em branco ([espaço em branco](lexical-structure.md#white-space)), comentários ([comentários](lexical-structure.md#comments)), tokens ([Tokens](lexical-structure.md#tokens)), e diretivas de pré-processamento ([diretivas de pré-processamento](lexical-structure.md#pre-processing-directives)). Esses elementos básicos, somente os tokens são significativos na gramática sintática de um programa em c# ([gramática sintática](lexical-structure.md#syntactic-grammar)).
+Cinco elementos básicos compõem a estrutura lexical de um C# arquivo de origem: Terminadores de linha ([terminadores de linha](lexical-structure.md#line-terminators)), espaço em branco ([espaço em branco](lexical-structure.md#white-space)), comentários ([comentários](lexical-structure.md#comments)), tokens ([Tokens](lexical-structure.md#tokens)), e diretivas de pré-processamento ([diretivas de pré-processamento](lexical-structure.md#pre-processing-directives)). Esses elementos básicos, somente os tokens são significativos na gramática sintática de um programa em C# ([gramática sintática](lexical-structure.md#syntactic-grammar)).
 
-O processamento léxico de um arquivo de origem c# consiste em reduzir o arquivo em uma sequência de tokens que se torna a entrada para a análise sintática. Terminadores de linha, espaço em branco e comentários podem ser usado para separar os tokens e diretivas de pré-processamento podem causar a seções do arquivo de origem a serem ignoradas, mas caso contrário, esses elementos léxicos não têm impacto sobre a estrutura sintática de um programa c#.
+O processamento léxico de um arquivo de origem C# consiste em reduzir o arquivo em uma sequência de tokens que se torna a entrada para a análise sintática. Terminadores de linha, espaço em branco e comentários podem ser usado para separar os tokens e diretivas de pré-processamento podem causar a seções do arquivo de origem a serem ignoradas, mas caso contrário, esses elementos léxicos não têm impacto sobre a estrutura sintática de um programa C#.
 
 No caso de literais de cadeia de caracteres interpolada ([interpoladas literais de cadeia de caracteres](lexical-structure.md#interpolated-string-literals)) um único token inicialmente é produzido pela análise lexical, mas é dividido em vários elementos de entrada que repetidamente estão sujeitos a análise léxica até que todos os literais de cadeia de caracteres interpolada foram resolvidas. Os tokens resultantes, em seguida, servem como entrada para a análise sintática.
 
@@ -65,7 +73,7 @@ Quando várias produções gramática lexical corresponderem a uma sequência de
 
 ### <a name="line-terminators"></a>Terminadores de linha
 
-Terminadores de linha dividem os caracteres de um arquivo de código-fonte c# em linhas.
+Terminadores de linha dividem os caracteres de um arquivo de código-fonte C# em linhas.
 
 ```antlr
 new_line
@@ -78,7 +86,7 @@ new_line
     ;
 ```
 
-Para ferramentas de edição que adicionem marcadores de fim-de-arquivo de código de compatibilidade com o código-fonte, e para habilitar uma fonte de arquivo para ser exibido como uma sequência de corretamente encerrada linhas, as transformações a seguir são aplicadas em ordem, para cada arquivo de origem em um programa c#:
+Para ferramentas de edição que adicionem marcadores de fim-de-arquivo de código de compatibilidade com o código-fonte, e para habilitar uma fonte de arquivo para ser exibido como uma sequência de corretamente encerrada linhas, as transformações a seguir são aplicadas em ordem, para cada arquivo de origem em um programa C#:
 
 *  Se o último caractere do arquivo de origem for um caractere de controle-Z (`U+001A`), esse caractere é excluído.
 *  Um caractere de retorno de carro (`U+000D`) é adicionado ao final do arquivo de origem se esse arquivo de origem estiver vazio e se o último caractere do arquivo de origem não é um retorno de carro (`U+000D`), uma alimentação de linha (`U+000A`), um separador de linha (`U+2028`), ou um separador de parágrafo (`U+2029`).
@@ -200,7 +208,7 @@ unicode_escape_sequence
     ;
 ```
 
-Uma sequência de escape Unicode representa o caractere Unicode formado pelos seguintes número hexadecimais de "`\u`"ou"`\U`" caracteres. Como o c# usa a codificação de 16 bits dos pontos de código Unicode em caracteres e valores de cadeia de caracteres, um caractere Unicode no intervalo de u+10000 a U + 10FFFF não é permitido em um literal de caractere e é representado usando um par de substitutos de Unicode em uma cadeia de caracteres literal. Não há suporte para caracteres Unicode com pontos de código acima 0x10FFFF.
+Uma sequência de escape Unicode representa o caractere Unicode formado pelos seguintes número hexadecimais de "`\u`"ou"`\U`" caracteres. Como o C# usa a codificação de 16 bits dos pontos de código Unicode em caracteres e valores de cadeia de caracteres, um caractere Unicode no intervalo de u+10000 a U + 10FFFF não é permitido em um literal de caractere e é representado usando um par de substitutos de Unicode em uma cadeia de caracteres literal. Não há suporte para caracteres Unicode com pontos de código acima 0x10FFFF.
 
 Não são realizadas várias traduções. Por exemplo, a cadeia de caracteres literal "`\u005Cu005C`"é equivalente a"`\u005C`"em vez de"`\`". O valor Unicode `\u005C` é o caractere "`\`".
 
@@ -818,7 +826,7 @@ A barra vertical na *right_shift* e *right_shift_assignment* produções são us
 
 ## <a name="pre-processing-directives"></a>Diretivas de pré-processamento
 
-As diretivas de pré-processamento fornecem a capacidade de ignorar condicionalmente seções dos arquivos de origem, com erro de relatório e as condições de aviso e para delinear regiões distintas do código-fonte. O termo "Pré-processando diretivas" é usado apenas para manter a consistência com as linguagens de programação C e C++. No c#, não há nenhuma etapa de pré-processamento separada; Pré-processando diretivas são processadas como parte da fase de análise léxica.
+As diretivas de pré-processamento fornecem a capacidade de ignorar condicionalmente seções dos arquivos de origem, com erro de relatório e as condições de aviso e para delinear regiões distintas do código-fonte. O termo "Pré-processando diretivas" é usado apenas para manter a consistência com as linguagens de programação C e C++. No C#, não há nenhuma etapa de pré-processamento separada; Pré-processando diretivas são processadas como parte da fase de análise léxica.
 
 ```antlr
 pp_directive
@@ -844,7 +852,7 @@ Uma diretiva de pré-processamento sempre ocupa uma linha separada do código-fo
 
 Uma linha de código-fonte que contém um `#define`, `#undef`, `#if`, `#elif`, `#else`, `#endif`, `#line`, ou `#endregion` diretiva pode terminar com um comentário de linha única. Delimitado por comentários (o `/* */` estilo de comentários) não são permitidos em linhas de código-fonte que contém as diretivas de pré-processamento.
 
-Pré-processando diretivas não são tokens e não fazem parte da gramática da linguagem c# sintática. No entanto, as diretivas de pré-processamento podem ser usadas para incluir ou excluir as sequências de tokens e podem dessa forma afetar o significado de um programa c#. Por exemplo, quando o programa compilado:
+Pré-processando diretivas não são tokens e não fazem parte da gramática da linguagem C# sintática. No entanto, as diretivas de pré-processamento podem ser usadas para incluir ou excluir as sequências de tokens e podem dessa forma afetar o significado de um programa C#. Por exemplo, quando o programa compilado:
 ```csharp
 #define A
 #undef B
@@ -889,7 +897,7 @@ Um símbolo de compilação condicional tem dois estados possíveis: ***definido
 
 Quando referenciado em uma expressão de pré-processamento, um símbolo de compilação condicional definido tem o valor booliano `true`, e um símbolo de compilação condicional indefinido tem o valor booliano `false`. Não há nenhum requisito de que os símbolos de compilação condicional ser explicitamente declarada antes que eles são referenciados em expressões de pré-processamento. Em vez disso, os símbolos não declarados são simplesmente indefinidos e, portanto, têm o valor `false`.
 
-O espaço de nome para símbolos de compilação condicional é distinto e separado de todas as outras entidades nomeadas em um programa c#. Símbolos de compilação condicional só podem ser referenciados em `#define` e `#undef` diretivas e em expressões de pré-processamento.
+O espaço de nome para símbolos de compilação condicional é distinto e separado de todas as outras entidades nomeadas em um programa C#. Símbolos de compilação condicional só podem ser referenciados em `#define` e `#undef` diretivas e em expressões de pré-processamento.
 
 ### <a name="pre-processing-expressions"></a>Pré-processamento de expressões
 
@@ -1191,7 +1199,7 @@ corresponde exatamente ao processamento de léxico de uma diretiva de compilaç�
 
 Diretivas de linha podem ser usadas para alterar os números de linha e nomes de arquivo de origem que são relatados pelo compilador na saída, como erros e avisos, e que são usados por atributos de informações do chamador ([atributos de informações do chamador](attributes.md#caller-info-attributes)).
 
-Diretivas de linha são mais comumente usadas nas ferramentas de metaprogramação que geram o código-fonte c# de algum outro texto de entrada.
+Diretivas de linha são mais comumente usadas nas ferramentas de metaprogramação que geram o código-fonte C# de algum outro texto de entrada.
 
 ```antlr
 pp_line
@@ -1236,7 +1244,7 @@ pragma_body
     ;
 ```
 
-O c# fornece `#pragma` diretivas para controlar avisos do compilador. Futuras versões da linguagem podem incluir adicionais `#pragma` diretivas. Para garantir a interoperabilidade com outros compiladores do c#, o compilador Microsoft c# não emite erros de compilação para o desconhecido `#pragma` diretivas; tal não de diretivas porém gerar avisos.
+O C# fornece `#pragma` diretivas para controlar avisos do compilador. Futuras versões da linguagem podem incluir adicionais `#pragma` diretivas. Para garantir a interoperabilidade com outros compiladores do C#, o compilador Microsoft C# não emite erros de compilação para o desconhecido `#pragma` diretivas; tal não de diretivas porém gerar avisos.
 
 #### <a name="pragma-warning"></a>Aviso de pragma
 
@@ -1264,7 +1272,7 @@ Um `#pragma warning disable` diretiva desabilita todos os ou o conjunto determin
 
 Um `#pragma warning restore` diretiva restaurará todos os ou o conjunto determinado de avisos para o estado que estava em vigor no início da unidade de compilação. Observe que, se um aviso específico foi desabilitado externamente, um `#pragma warning restore` (se é para todos os ou o aviso específico) não habilitará esse aviso novamente.
 
-O exemplo a seguir mostra o uso de `#pragma warning` desabilitar temporariamente o aviso relatado quando obsoleto membros são referenciados, usando o número de aviso do compilador do Microsoft c#.
+O exemplo a seguir mostra o uso de `#pragma warning` desabilitar temporariamente o aviso relatado quando obsoleto membros são referenciados, usando o número de aviso do compilador do Microsoft C#.
 ```csharp
 using System;
 

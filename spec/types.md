@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: a28397b1ce97dbead6d5014e2b20e108a1018502
 ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 01/18/2019
 ms.locfileid: "47229488"
 ---
 # <a name="types"></a>Tipos
 
-Os tipos de linguagem c# são divididos em duas categorias principais: ***tipos de valor*** e ***tipos de referência***. Tipos de valor e tipos de referência podem ser ***tipos genéricos***, que leva um ou mais ***parâmetros de tipo***. Parâmetros de tipo podem designar os dois tipos de valor e tipos de referência.
+Os tipos de linguagem C# são divididos em duas categorias principais: ***tipos de valor*** e ***tipos de referência***. Tipos de valor e tipos de referência podem ser ***tipos genéricos***, que leva um ou mais ***parâmetros de tipo***. Parâmetros de tipo podem designar os dois tipos de valor e tipos de referência.
 
 ```antlr
 type
@@ -27,7 +27,7 @@ O sistema de tipos do # é unificado, de modo que um valor de qualquer tipo pode
 
 ## <a name="value-types"></a>Tipos de valor
 
-Um tipo de valor é um tipo de estrutura ou um tipo de enumeração. O c# fornece um conjunto de tipos de struct predefinidos chamados de ***tipos simples***. Os tipos simples são identificados por meio de palavras reservadas.
+Um tipo de valor é um tipo de estrutura ou um tipo de enumeração. O C# fornece um conjunto de tipos de struct predefinidos chamados de ***tipos simples***. Os tipos simples são identificados por meio de palavras reservadas.
 
 ```antlr
 value_type
@@ -127,7 +127,7 @@ Um tipo de struct é um tipo de valor que pode declarar constantes, campos, mét
 
 ### <a name="simple-types"></a>Tipos simples
 
-O c# fornece um conjunto de tipos de struct predefinidos chamados de ***tipos simples***. Os tipos simples são identificados por meio de palavras reservadas, mas essas palavras reservadas são simplesmente aliases para tipos de struct predefinidos no `System` namespace, conforme descrito na tabela a seguir.
+O C# fornece um conjunto de tipos de struct predefinidos chamados de ***tipos simples***. Os tipos simples são identificados por meio de palavras reservadas, mas essas palavras reservadas são simplesmente aliases para tipos de struct predefinidos no `System` namespace, conforme descrito na tabela a seguir.
 
 
 | __Palavra reservada__ | __Tipo com alias__ |
@@ -215,7 +215,7 @@ Os operadores de ponto flutuantes, incluindo os operadores de atribuição, nunc
 *  Se uma operação de ponto flutuante for inválida, o resultado da operação se torna NaN.
 *  Se um ou ambos os operandos de uma operação de ponto flutuante é NaN, o resultado da operação se torna NaN.
 
-Operações de ponto flutuantes podem ser executadas com precisão maior do que o tipo de resultado da operação. Por exemplo, algumas arquiteturas de hardware oferecem suporte a um tipo de ponto flutuante "extended" ou "long double" com o maior intervalo e a precisão do que o `double` digite e execute implicitamente todas as operações de ponto flutuantes usando esse tipo de precisão mais alta. Somente a custo excessivo no desempenho podem essas arquiteturas de hardware ser feitas para executar operações de ponto flutuantes com menos precisão, e em vez de exigir uma implementação perder o desempenho e precisão, c# permite que um tipo de precisão mais alta seja usado para todas as operações de ponto flutuantes. Além de fornecer resultados mais precisos, isso raramente tem efeitos mensuráveis. No entanto, em expressões do formulário `x * y / z`, em que a multiplicação produz um resultado que está fora os `double` intervalo, mas a divisão subsequente leva o resultados temporários de volta para o `double` de intervalo, o fato de que a expressão é avaliadas em um intervalo maior formato pode causar um resultado finito para ser produzidos em vez de um infinito.
+Operações de ponto flutuantes podem ser executadas com precisão maior do que o tipo de resultado da operação. Por exemplo, algumas arquiteturas de hardware oferecem suporte a um tipo de ponto flutuante "extended" ou "long double" com o maior intervalo e a precisão do que o `double` digite e execute implicitamente todas as operações de ponto flutuantes usando esse tipo de precisão mais alta. Somente a custo excessivo no desempenho podem essas arquiteturas de hardware ser feitas para executar operações de ponto flutuantes com menos precisão, e em vez de exigir uma implementação perder o desempenho e precisão, C# permite que um tipo de precisão mais alta seja usado para todas as operações de ponto flutuantes. Além de fornecer resultados mais precisos, isso raramente tem efeitos mensuráveis. No entanto, em expressões do formulário `x * y / z`, em que a multiplicação produz um resultado que está fora os `double` intervalo, mas a divisão subsequente leva o resultados temporários de volta para o `double` de intervalo, o fato de que a expressão é avaliadas em um intervalo maior formato pode causar um resultado finito para ser produzidos em vez de um infinito.
 
 ### <a name="the-decimal-type"></a>O tipo decimal
 
@@ -237,7 +237,7 @@ O `bool` tipo representa quantidades lógicas booleanas. Os valores possíveis d
 
 Não há nenhuma conversão padrão entre `bool` e outros tipos. Em particular, o `bool` o tipo é distinto e separado de tipos integrais e um `bool` valor não pode ser usado no lugar de um valor integral e vice-versa.
 
-Em linguagens C e C++, um valor zero de ponto flutuante ou integral ou um ponteiro nulo pode ser convertido para o valor booliano `false`, e um valor de ponto flutuante ou integral diferente de zero ou um ponteiro nulo não pode ser convertido para o valor booliano `true`. No c#, essas conversões são realizadas por comparar explicitamente um valor integral ou de ponto flutuante como zero ou comparando explicitamente uma referência de objeto `null`.
+Em linguagens C e C++, um valor zero de ponto flutuante ou integral ou um ponteiro nulo pode ser convertido para o valor booliano `false`, e um valor de ponto flutuante ou integral diferente de zero ou um ponteiro nulo não pode ser convertido para o valor booliano `true`. No C#, essas conversões são realizadas por comparar explicitamente um valor integral ou de ponto flutuante como zero ou comparando explicitamente uma referência de objeto `null`.
 
 ### <a name="enumeration-types"></a>Tipos de enumeração
 
@@ -319,13 +319,13 @@ Um tipo de classe define uma estrutura de dados que contém dados membros (campo
 
 Tipos de classe são descritos em [Classes](classes.md).
 
-Determinados tipos de classe predefinida têm significado especial na linguagem c#, conforme descrito na tabela a seguir.
+Determinados tipos de classe predefinida têm significado especial na linguagem C#, conforme descrito na tabela a seguir.
 
 
 | __Tipo de classe__     | __Descrição__                                         |
 |--------------------|---------------------------------------------------------|
 | `System.Object`    | A classe base definitiva de todos os outros tipos. Ver [o tipo de objeto](types.md#the-object-type). | 
-| `System.String`    | O tipo de cadeia de caracteres da linguagem c#. Ver [o tipo de cadeia de caracteres](types.md#the-string-type).         |
+| `System.String`    | O tipo de cadeia de caracteres da linguagem C#. Ver [o tipo de cadeia de caracteres](types.md#the-string-type).         |
 | `System.ValueType` | A classe base de todos os tipos de valor. Ver [ValueType o tipo](types.md#the-systemvaluetype-type).          |
 | `System.Enum`      | A classe base de todos os tipos de enum. Ver [Enums](enums.md).              |
 | `System.Array`     | A classe base de todos os tipos de matriz. Consulte [Matrizes](arrays.md).             |
@@ -334,7 +334,7 @@ Determinados tipos de classe predefinida têm significado especial na linguagem 
 
 ### <a name="the-object-type"></a>O tipo de objeto
 
-O `object` tipo de classe é a classe base definitiva de todos os outros tipos. Todos os tipos no c#, direta ou indiretamente derivem da `object` tipo de classe.
+O `object` tipo de classe é a classe base definitiva de todos os outros tipos. Todos os tipos no C#, direta ou indiretamente derivem da `object` tipo de classe.
 
 A palavra-chave `object` é simplesmente um alias para a classe predefinido `System.Object`.
 

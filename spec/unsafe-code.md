@@ -1,24 +1,24 @@
 ---
 ms.openlocfilehash: 90001cf3d48f216787fc65e59166ec57c5d0ca34
 ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 01/18/2019
 ms.locfileid: "47229481"
 ---
 # <a name="unsafe-code"></a>Código não seguro
 
-O núcleo de linguagem c#, conforme definido nos capítulos anteriores, difere da C e C++ em sua omissão de ponteiros como um tipo de dados. Em vez disso, o c# fornece referências e a capacidade de criar objetos que são gerenciados por um coletor de lixo. Esse design, juntamente com outros recursos, torna c# uma linguagem mais segura que C ou C++. Na linguagem principal c# simplesmente não é possível ter uma variável não inicializada, um ponteiro "pendentes" ou uma expressão que indexa uma matriz, além de seus limites. Categorias inteiras de bugs que rotineiramente assolam C e programas do C++, portanto, são eliminados.
+O núcleo de linguagem C#, conforme definido nos capítulos anteriores, difere da C e C++ em sua omissão de ponteiros como um tipo de dados. Em vez disso, o C# fornece referências e a capacidade de criar objetos que são gerenciados por um coletor de lixo. Esse design, juntamente com outros recursos, torna C# uma linguagem mais segura que C ou C++. Na linguagem principal C# simplesmente não é possível ter uma variável não inicializada, um ponteiro "pendentes" ou uma expressão que indexa uma matriz, além de seus limites. Categorias inteiras de bugs que rotineiramente assolam C e programas do C++, portanto, são eliminados.
 
-Enquanto praticamente cada constructo de tipo de ponteiro em C ou C++ tem um equivalente de tipo de referência em c#, no entanto, há situações em que o acesso aos tipos de ponteiro se torna uma necessidade. Por exemplo, fazer interface com o sistema operacional subjacente, acessar um dispositivo de memória mapeada ou implementação de um algoritmo de tempo crítico pode não ser possível ou prático sem acesso a ponteiros. Para resolver essa necessidade, c# fornece a capacidade de gravar ***código não seguro***.
+Enquanto praticamente cada constructo de tipo de ponteiro em C ou C++ tem um equivalente de tipo de referência em C#, no entanto, há situações em que o acesso aos tipos de ponteiro se torna uma necessidade. Por exemplo, fazer interface com o sistema operacional subjacente, acessar um dispositivo de memória mapeada ou implementação de um algoritmo de tempo crítico pode não ser possível ou prático sem acesso a ponteiros. Para resolver essa necessidade, C# fornece a capacidade de gravar ***código não seguro***.
 
-Em código não seguro, é possível declarar e operar em ponteiros para realizar conversões entre os ponteiros e tipos integrais, para obter o endereço de variáveis e assim por diante. De certa forma, escrever o código não seguro é semelhante a escrever código C dentro de um programa c#.
+Em código não seguro, é possível declarar e operar em ponteiros para realizar conversões entre os ponteiros e tipos integrais, para obter o endereço de variáveis e assim por diante. De certa forma, escrever o código não seguro é semelhante a escrever código C dentro de um programa C#.
 
 Na verdade, o código não seguro é um recurso de "seguro" da perspectiva de desenvolvedores e usuários. O código não seguro deve ser claramente marcado com o modificador `unsafe`, portanto, os desenvolvedores, possivelmente, não é possível usar os recursos não seguros acidentalmente e o mecanismo de execução trabalha para garantir que o código não seguro não pode ser executado em um ambiente não confiável.
 
 ## <a name="unsafe-contexts"></a>Contextos não seguros
 
-Os recursos que não é seguros do c# estão disponíveis apenas em contextos que não é seguros. Um contexto não seguro é introduzido com a inclusão de um `unsafe` modificador na declaração de um tipo ou membro, ou empregando uma *unsafe_statement*:
+Os recursos que não é seguros do C# estão disponíveis apenas em contextos que não é seguros. Um contexto não seguro é introduzido com a inclusão de um `unsafe` modificador na declaração de um tipo ou membro, ou empregando uma *unsafe_statement*:
 
 *  Uma declaração de uma classe, struct, interface ou delegado pode incluir um `unsafe` modificador, na qual o caso de toda a extensão textual dessa declaração de tipo (incluindo o corpo da classe, struct ou interface) é considerado um contexto não seguro.
 *  Uma declaração de um campo, método, propriedade, evento, indexador, operador, construtor de instância, destruidor ou construtor estático pode incluir um `unsafe` modificador, nesse caso toda a extensão textual da declaração de membro que é considerado um inseguro contexto.
@@ -205,7 +205,7 @@ Alguns exemplos de tipos de ponteiro são fornecidos na tabela a seguir:
 
 Para uma determinada implementação, todos os tipos de ponteiro devem ter o mesmo tamanho e representação.
 
-Ao contrário do C e C++, quando vários ponteiros são declarados na mesma declaração, em c# a `*` é gravada junto com o tipo subjacente apenas, não como um pontuador do prefixo no nome de cada ponteiro. Por exemplo
+Ao contrário do C e C++, quando vários ponteiros são declarados na mesma declaração, em C# a `*` é gravada junto com o tipo subjacente apenas, não como um pontuador do prefixo no nome de cada ponteiro. Por exemplo
 
 ```csharp
 int* pi, pj;    // NOT as int *pi, *pj;
@@ -1042,7 +1042,7 @@ uma `stackalloc` inicializador é usado no `IntToString` método alocar um buffe
 
 ## <a name="dynamic-memory-allocation"></a>Alocação de memória dinâmica
 
-Exceto para o `stackalloc` operador, c# não fornece construções nenhum predefinidas para gerenciamento de memória de não-lixo coletada. Esses serviços normalmente são fornecidos, oferecendo suporte a bibliotecas de classes ou importados diretamente do sistema operacional subjacente. Por exemplo, o `Memory` classe abaixo ilustra como as funções de heap de um sistema operacional subjacente podem ser acessadas do c#:
+Exceto para o `stackalloc` operador, C# não fornece construções nenhum predefinidas para gerenciamento de memória de não-lixo coletada. Esses serviços normalmente são fornecidos, oferecendo suporte a bibliotecas de classes ou importados diretamente do sistema operacional subjacente. Por exemplo, o `Memory` classe abaixo ilustra como as funções de heap de um sistema operacional subjacente podem ser acessadas do C#:
 
 ```csharp
 using System;
