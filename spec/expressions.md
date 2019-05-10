@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 67019511d49a786a5d6edf6fea442f745fc40f3f
-ms.sourcegitcommit: 0a80f26b8e455c4f09843a10e11e29c24d2d922e
-ms.translationtype: HT
+ms.openlocfilehash: 066c300d4c2baa8749e132730ecd48275e2957f7
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57347268"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64489007"
 ---
 # <a name="expressions"></a>Expressões
 
@@ -42,13 +42,13 @@ A maioria das construções que envolvem uma expressão, por fim, exige que a ex
 
 O processo de determinar o significado de uma operação com base no tipo ou valor de expressões constituintes (argumentos, operandos, receptores) é geralmente denominado ***associação***. Por exemplo o significado de uma chamada de método é determinado com base no tipo dos argumentos e o receptor. O significado de um operador é determinado com base no tipo de seus operandos.
 
-Em C# o significado de uma operação normalmente é determinada em tempo de compilação, com base no tipo de tempo de compilação das suas expressões constituintes. Da mesma forma, se uma expressão contiver um erro, o erro é detectado e reportado pelo compilador. Essa abordagem é conhecida como ***vinculação estática***.
+Em c# o significado de uma operação normalmente é determinada em tempo de compilação, com base no tipo de tempo de compilação das suas expressões constituintes. Da mesma forma, se uma expressão contiver um erro, o erro é detectado e reportado pelo compilador. Essa abordagem é conhecida como ***vinculação estática***.
 
 No entanto, se uma expressão é uma expressão dinâmica (ou seja, tem o tipo `dynamic`) indica que qualquer ligação que participa do deve ser baseada em seu tipo de tempo de execução (ou seja, o tipo real do objeto, ele indicará em tempo de execução) em vez do tipo tem no tempo de compilação. A associação dessa operação, portanto, é adiada até o momento em que a operação deve ser executado durante a execução do programa. Isso é conhecido como ***vinculação dinâmica***.
 
 Quando uma operação é vinculada dinamicamente, pouca ou nenhuma verificação é executada pelo compilador. Em vez disso, se a associação de tempo de execução falhar, os erros são relatados como exceções em tempo de execução.
 
-As seguintes operações em C# estão sujeitos a associação:
+As seguintes operações em c# estão sujeitos a associação:
 
 *  Acesso de membro: `e.M`
 *  Invocação de método: `e.M(e1, ..., eN)`
@@ -60,7 +60,7 @@ As seguintes operações em C# estão sujeitos a associação:
 *  Operadores de atribuição: `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=`
 *  Conversões implícitas e explícitas
 
-Quando não há expressões dinâmicas estão envolvidas, C# assume como padrão a vinculação estática, o que significa que os tipos de tempo de compilação de expressões constituintes são usados no processo de seleção. No entanto, quando uma das expressões constituintes nas operações listadas acima é uma expressão dinâmica, a operação em vez disso, vinculada dinamicamente.
+Quando não há expressões dinâmicas estão envolvidas, c# assume como padrão a vinculação estática, o que significa que os tipos de tempo de compilação de expressões constituintes são usados no processo de seleção. No entanto, quando uma das expressões constituintes nas operações listadas acima é uma expressão dinâmica, a operação em vez disso, vinculada dinamicamente.
 
 ### <a name="binding-time"></a>Tempo de associação
 
@@ -82,11 +82,11 @@ A terceira chamada associada dinamicamente: a sobrecarga de `Console.WriteLine` 
 
 ### <a name="dynamic-binding"></a>Associação dinâmica
 
-A finalidade de associação dinâmica é permitir que programas em C# interagir com ***objetos dinâmicos***, ou seja, sistema de tipos de objetos que não seguem as regras normais do C#. Objetos dinâmicos podem ser objetos de outras linguagens de programação com sistemas de tipos diferentes, ou podem ser objetos por meio de programação são configuradas para implementar suas próprias semânticas de associação para operações diferentes.
+A finalidade de associação dinâmica é permitir que programas em c# interagir com ***objetos dinâmicos***, ou seja, sistema de tipos de objetos que não seguem as regras normais do c#. Objetos dinâmicos podem ser objetos de outras linguagens de programação com sistemas de tipos diferentes, ou podem ser objetos por meio de programação são configuradas para implementar suas próprias semânticas de associação para operações diferentes.
 
-O mecanismo pelo qual um objeto dinâmico implementa seu próprio semântica é definido pela implementação. Uma determinada interface – novamente definido pela implementação – é implementada por objetos dinâmicos para sinalizar para o C# tempo de execução que eles têm semântica especial. Assim, sempre que as operações em um objeto dinâmico são vinculadas dinamicamente, suas próprias semânticas de associação, em vez da linguagem C#, conforme especificado neste documento, assumir.
+O mecanismo pelo qual um objeto dinâmico implementa seu próprio semântica é definido pela implementação. Uma determinada interface – novamente definido pela implementação – é implementada por objetos dinâmicos para sinalizar para o c# tempo de execução que eles têm semântica especial. Assim, sempre que as operações em um objeto dinâmico são vinculadas dinamicamente, suas próprias semânticas de associação, em vez da linguagem c#, conforme especificado neste documento, assumir.
 
-Enquanto a finalidade de associação dinâmica é permitir a interoperação com objetos dinâmicos, C# permite a associação dinâmica em todos os objetos, independentemente de estarem dinâmicos ou não. Isso permite uma integração mais suave de objetos dinâmicos, como os resultados das operações neles talvez por si próprios ser objetos dinâmicos, mas são ainda de um tipo desconhecido para o programador em tempo de compilação. Também a vinculação dinâmica pode ajudar a eliminar o código de baseados em reflexão propenso a erro mesmo quando não há objetos envolvidos são objetos dinâmicos.
+Enquanto a finalidade de associação dinâmica é permitir a interoperação com objetos dinâmicos, c# permite a associação dinâmica em todos os objetos, independentemente de estarem dinâmicos ou não. Isso permite uma integração mais suave de objetos dinâmicos, como os resultados das operações neles talvez por si próprios ser objetos dinâmicos, mas são ainda de um tipo desconhecido para o programador em tempo de compilação. Também a vinculação dinâmica pode ajudar a eliminar o código de baseados em reflexão propenso a erro mesmo quando não há objetos envolvidos são objetos dinâmicos.
 
 As seções a seguir descrevem cada constructo no idioma for exatamente quando vinculação dinâmica é aplicada, o que compilar a verificação de tempo – se qualquer um-- é aplicada e qual classificação de resultados e a expressão de tempo de compilação é.
 
@@ -780,7 +780,7 @@ Mais precisamente, a inferência começa com um *unfixed* variável de tipo `X`.
 
 ### <a name="overload-resolution"></a>Resolução de sobrecarga
 
-Resolução de sobrecarga é um mecanismo de tempo de associação para selecionar o membro da função melhor invocar dada uma lista de argumentos e um conjunto de membros da função de candidato. Resolução de sobrecarga seleciona o membro da função para invocar nos seguintes contextos distintos em C#:
+Resolução de sobrecarga é um mecanismo de tempo de associação para selecionar o membro da função melhor invocar dada uma lista de argumentos e um conjunto de membros da função de candidato. Resolução de sobrecarga seleciona o membro da função para invocar nos seguintes contextos distintos em c#:
 
 *  Invocação de um método chamado em um *invocation_expression* ([invocações de método](expressions.md#method-invocations)).
 *  Invocação de um construtor de instância nomeada em um *object_creation_expression* ([expressões de criação do objeto](expressions.md#object-creation-expressions)).
@@ -1517,7 +1517,7 @@ Em tempo de vinculação *base_access* expressões do formulário `base.I` e `ba
 
 Quando um *base_access* faz referência a um membro de função virtual (um método, propriedade ou indexador), a determinação de qual função de membro a ser invocado em tempo de execução ([verificação de resolução de sobrecarga de dinâmica de tempo de compilação ](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) é alterado. O membro da função que é invocado é determinado pelo Localizando a implementação mais derivada ([métodos virtuais](classes.md#virtual-methods)) do membro da função em relação às `B` (em vez de em relação ao tipo de tempo de execução de `this`, como seria normal em um acesso de base não). Portanto, dentro de um `override` de um `virtual` membro da função, um *base_access* pode ser usado para chamar a implementação herdada do membro da função. Se o membro da função referenciado por uma *base_access* é abstrato, ocorrerá um erro em tempo de associação.
 
-### <a name="postfix-increment-and-decrement-operators"></a>Incremento de sufixo e operadores de decremento
+### <a name="postfix-increment-and-decrement-operators"></a>Operadores de incremento e decremento pós-fixados
 
 ```antlr
 post_increment_expression
@@ -2159,7 +2159,7 @@ Observe que `int` e `System.Int32` são do mesmo tipo.
 
 Observe também que o resultado de `typeof(X<>)` não requer que o argumento de tipo, mas o resultado de `typeof(X<T>)` faz.
 
-### <a name="the-checked-and-unchecked-operators"></a>Os operadores checked e unchecked
+### <a name="the-checked-and-unchecked-operators"></a>Os operadores verificados e não verificados
 
 O `checked` e `unchecked` operadores são usados para controlar a ***contexto de verificação de estouro*** para conversões e operações aritméticas de tipo integral.
 
@@ -2478,7 +2478,7 @@ decimal operator +(decimal x);
 
 Para cada um desses operadores, o resultado é simplesmente o valor do operando.
 
-### <a name="unary-minus-operator"></a>Operador de subtração unário
+### <a name="unary-minus-operator"></a>Operador unário de subtração
 
 Para uma operação do formulário `-x`, resolução de sobrecarga de operador unário ([resolução de sobrecarga de operador unário](expressions.md#unary-operator-overload-resolution)) é aplicado para selecionar uma implementação do operador específico. O operando será convertido ao tipo de parâmetro do operador selecionado e o tipo do resultado é o tipo de retorno do operador. Os operadores de negação predefinidos são:
 
@@ -2512,7 +2512,7 @@ Para uma operação do formulário `-x`, resolução de sobrecarga de operador u
 
    O resultado é calculado subtraindo `x` de zero. Negação decimal é equivalente a usar o operador do tipo de menos unário `System.Decimal`.
 
-### <a name="logical-negation-operator"></a>Operador de negação lógica
+### <a name="logical-negation-operator"></a>Operador de negação lógico
 
 Para uma operação do formulário `!x`, resolução de sobrecarga de operador unário ([resolução de sobrecarga de operador unário](expressions.md#unary-operator-overload-resolution)) é aplicado para selecionar uma implementação do operador específico. O operando será convertido ao tipo de parâmetro do operador selecionado e o tipo do resultado é o tipo de retorno do operador. Existe apenas um operador de negação lógica predefinidos:
 ```csharp
@@ -2541,7 +2541,7 @@ E operator ~(E x);
 
 O resultado da avaliação `~x`, onde `x` é uma expressão de um tipo de enumeração `E` com um tipo subjacente `U`, é exatamente o mesmo que avaliar `(E)(~(U)x)`, exceto que a conversão em `E` é sempre é executada como se estiver em um `unchecked` contexto ([os operadores marcados e desmarcados](expressions.md#the-checked-and-unchecked-operators)).
 
-### <a name="prefix-increment-and-decrement-operators"></a>Incremento de prefixo e operadores de decremento
+### <a name="prefix-increment-and-decrement-operators"></a>Operadores de incremento e decremento pré-fixados
 
 ```antlr
 pre_increment_expression
@@ -2780,7 +2780,7 @@ Os operadores de divisão predefinidos estão listados abaixo. O quociente de co
    Divisão decimal é equivalente a usar o operador de divisão do tipo `System.Decimal`.
 
 
-### <a name="remainder-operator"></a>Operador restante
+### <a name="remainder-operator"></a>Operador de resto
 
 Para uma operação do formulário `x % y`, resolução de sobrecarga de operador binário ([resolução de sobrecarga de operador binário](expressions.md#binary-operator-overload-resolution)) é aplicado para selecionar uma implementação do operador específico. Os operandos são convertidos nos tipos de parâmetro do operador selecionado e o tipo do resultado é o tipo de retorno do operador.
 
@@ -4082,13 +4082,13 @@ Para usar essas palavras como identificadores em uma expressão de consulta, ela
 
 ### <a name="query-expression-translation"></a>Conversão de expressão de consulta
 
-A linguagem C# não especifica a semântica de execução de expressões de consulta. Em vez disso, as expressões de consulta são traduzidas para invocações de métodos que seguem a *padrão de expressão de consulta* ([o padrão de expressão de consulta](expressions.md#the-query-expression-pattern)). Especificamente, as expressões de consulta são convertidas em chamadas de métodos chamados `Where`, `Select`, `SelectMany`, `Join`, `GroupJoin`, `OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `GroupBy`, e `Cast`. Esses métodos devem ter assinaturas específicas e tipos de resultado, conforme descrito em [o padrão de expressão de consulta](expressions.md#the-query-expression-pattern). Esses métodos podem ser métodos de instância do objeto que está sendo consultada ou métodos de extensão que são externos ao objeto, e elas implementam a execução real da consulta.
+A linguagem c# não especifica a semântica de execução de expressões de consulta. Em vez disso, as expressões de consulta são traduzidas para invocações de métodos que seguem a *padrão de expressão de consulta* ([o padrão de expressão de consulta](expressions.md#the-query-expression-pattern)). Especificamente, as expressões de consulta são convertidas em chamadas de métodos chamados `Where`, `Select`, `SelectMany`, `Join`, `GroupJoin`, `OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `GroupBy`, e `Cast`. Esses métodos devem ter assinaturas específicas e tipos de resultado, conforme descrito em [o padrão de expressão de consulta](expressions.md#the-query-expression-pattern). Esses métodos podem ser métodos de instância do objeto que está sendo consultada ou métodos de extensão que são externos ao objeto, e elas implementam a execução real da consulta.
 
-A tradução de expressões de consulta para invocações de método é um mapeamento sintático que ocorre antes de qualquer tipo de associação ou resolução de sobrecarga foi executada. A tradução é garantida para ser sintaticamente correto, mas não é garantido para produzir o código C# semanticamente correto. Após a conversão de expressões de consulta, invocações de método resultantes são processadas como invocações de método normal, e isso por sua vez pode revelar erros, por exemplo, se os métodos não existem, se os argumentos têm tipos errados ou se os métodos são genéricos e Falha de inferência de tipo.
+A tradução de expressões de consulta para invocações de método é um mapeamento sintático que ocorre antes de qualquer tipo de associação ou resolução de sobrecarga foi executada. A tradução é garantida para ser sintaticamente correto, mas não é garantido para produzir o código c# semanticamente correto. Após a conversão de expressões de consulta, invocações de método resultantes são processadas como invocações de método normal, e isso por sua vez pode revelar erros, por exemplo, se os métodos não existem, se os argumentos têm tipos errados ou se os métodos são genéricos e Falha de inferência de tipo.
 
 Uma expressão de consulta é processada aplicando as seguintes traduções repetidamente até que nenhum reduções ainda maiores são possíveis. As traduções estão listadas na ordem do aplicativo: cada seção pressupõe que as traduções nas seções anteriores foram executadas exaustivamente e depois que esgotar, uma seção será não mais tarde revista no processamento da mesma expressão de consulta.
 
-Atribuição a variáveis de intervalo não é permitida em expressões de consulta. No entanto, uma implementação C# é permitida para nem sempre impõe esta restrição, uma vez que isso pode às vezes, não ser possível com o esquema de tradução sintática apresentado aqui.
+Atribuição a variáveis de intervalo não é permitida em expressões de consulta. No entanto, uma implementação c# é permitida para nem sempre impõe esta restrição, uma vez que isso pode às vezes, não ser possível com o esquema de tradução sintática apresentado aqui.
 
 Determinadas conversões inserir variáveis de intervalo com identificadores transparentes indicados por `*`. As propriedades especiais de transparentes identificadores são discutidas mais detalhadamente em [transparentes identificadores](expressions.md#transparent-identifiers).
 
@@ -4480,7 +4480,7 @@ Quando uma conversão de consulta injeta um identificador transparente, ainda ma
 *  Quando ocorre um identificador transparente como um parâmetro em uma função anônima, os membros do tipo anônimo associado são automaticamente no escopo no corpo da função anônima.
 *  Quando um membro com um identificador transparente está no escopo, os membros desse membro estão no escopo também.
 *  Quando ocorre um identificador transparente como um Declarador de membro de um inicializador de objeto anônimo, ele introduz um membro com um identificador transparente.
-*  As etapas de conversão descritas acima, sempre são introduzidos identificadores transparentes junto com os tipos anônimos, com a intenção de capturar várias variáveis de intervalo como membros de um único objeto. Uma implementação da linguagem C# tem permissão para usar um mecanismo diferente de tipos anônimos para agrupar diversas variáveis de intervalo. Os exemplos de conversão a seguir pressupõem que tipos anônimos são usados e mostram como transparentes identificadores podem ser convertidos imediatamente.
+*  As etapas de conversão descritas acima, sempre são introduzidos identificadores transparentes junto com os tipos anônimos, com a intenção de capturar várias variáveis de intervalo como membros de um único objeto. Uma implementação da linguagem c# tem permissão para usar um mecanismo diferente de tipos anônimos para agrupar diversas variáveis de intervalo. Os exemplos de conversão a seguir pressupõem que tipos anônimos são usados e mostram como transparentes identificadores podem ser convertidos imediatamente.
 
 O exemplo
 ```csharp

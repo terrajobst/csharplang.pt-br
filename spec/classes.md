@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: af7af574814dc04ee3ece0396b7ae5f86b3ec8eb
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229489"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488909"
 ---
 # <a name="classes"></a>Classes
 
@@ -601,7 +601,7 @@ partial class A
 }
 ```
 
-A ordenação dos membros dentro de um tipo é raramente significativo ao código C#, mas pode ser significativo ao fazer interface com outras linguagens e ambientes. Nesses casos, a ordenação dos membros dentro de um tipo declarado em várias partes é indefinido.
+A ordenação dos membros dentro de um tipo é raramente significativo ao código c#, mas pode ser significativo ao fazer interface com outras linguagens e ambientes. Nesses casos, a ordenação dos membros dentro de um tipo declarado em várias partes é indefinido.
 
 ### <a name="partial-methods"></a>Métodos parciais
 
@@ -1164,15 +1164,15 @@ class Outer<T>
 
 ### <a name="reserved-member-names"></a>Nomes de membro reservado
 
-Para facilitar a C# tempo de execução implementação subjacente, para cada declaração de membro de origem é uma propriedade, evento ou indexador, a implementação deverá reservar duas assinaturas de método com base no tipo de declaração do membro, seu nome e seu tipo. Ele é um erro de tempo de compilação para um programa declarar um membro cuja assinatura coincide com uma destas opções reservadas assinaturas, mesmo se a implementação de tempo de execução subjacente não faz uso dessas reservas.
+Para facilitar a c# tempo de execução implementação subjacente, para cada declaração de membro de origem é uma propriedade, evento ou indexador, a implementação deverá reservar duas assinaturas de método com base no tipo de declaração do membro, seu nome e seu tipo. Ele é um erro de tempo de compilação para um programa declarar um membro cuja assinatura coincide com uma destas opções reservadas assinaturas, mesmo se a implementação de tempo de execução subjacente não faz uso dessas reservas.
 
 Os nomes reservados não introduzem declarações, portanto, eles não participam de pesquisa de membro. No entanto, uma declaração associada ao método reservado assinaturas participem da herança ([herança](classes.md#inheritance)) e pode ser ocultada com o `new` modificador ([o novo modificador](classes.md#the-new-modifier)).
 
 A reserva desses nomes atende a três propósitos:
 
-*  Para permitir que a implementação subjacente usar um identificador comum como um nome de método para obter ou definir o acesso para o recurso de linguagem C#.
-*  Para permitir que outras linguagens interoperar usando um identificador comum como um nome de método para obter ou definir o acesso para o recurso de linguagem C#.
-*  Para ajudar a garantir que o código-fonte aceitos por um compilador de conformidade é aceito por outro, fazendo as especificidades do membro reservado nomes consistentes em todas as implementações do C#.
+*  Para permitir que a implementação subjacente usar um identificador comum como um nome de método para obter ou definir o acesso para o recurso de linguagem c#.
+*  Para permitir que outras linguagens interoperar usando um identificador comum como um nome de método para obter ou definir o acesso para o recurso de linguagem c#.
+*  Para ajudar a garantir que o código-fonte aceitos por um compilador de conformidade é aceito por outro, fazendo as especificidades do membro reservado nomes consistentes em todas as implementações do c#.
 
 A declaração de um destruidor ([destruidores](classes.md#destructors)) também faz com que uma assinatura a ser reservado ([nomes de membro reservados para os destruidores](classes.md#member-names-reserved-for-destructors)).
 
@@ -1389,7 +1389,7 @@ class A
 
 ### <a name="static-and-instance-fields"></a>Campos estáticos e de instância
 
-Quando uma declaração de campo inclui um `static` modificador, os campos apresentados pela declaração estão ***campos estáticos***. Quando nenhum `static` modificador estiver presente, os campos apresentados pela declaração estão ***campos de instância***. Campos estáticos e campos de instância são dois dos vários tipos de variáveis ([variáveis](variables.md)) comportados pelo C# e às vezes eles são denominados ***variáveis estáticas*** e ***variáveis de instância*** , respectivamente.
+Quando uma declaração de campo inclui um `static` modificador, os campos apresentados pela declaração estão ***campos estáticos***. Quando nenhum `static` modificador estiver presente, os campos apresentados pela declaração estão ***campos de instância***. Campos estáticos e campos de instância são dois dos vários tipos de variáveis ([variáveis](variables.md)) comportados pelo c# e às vezes eles são denominados ***variáveis estáticas*** e ***variáveis de instância*** , respectivamente.
 
 Um campo estático não é parte de uma instância específica; em vez disso, ele é compartilhado entre todas as instâncias de um tipo fechado ([aberto e fechado tipos](types.md#open-and-closed-types)). Não importa quantas instâncias de um tipo de classe fechados são criadas, há sempre apenas uma cópia de um campo estático para o domínio de aplicativo associado.
 
@@ -2434,7 +2434,7 @@ classe `A` declara um método virtual, a classe `B` substitui esse método com u
 
 ### <a name="external-methods"></a>Métodos externos
 
-Quando uma declaração de método inclui um `extern` modificador, que o método deve ser um ***método externo***. Métodos externos são implementados externamente, normalmente usando um idioma diferente do C#. Como uma declaração de método externo não fornece nenhuma implementação real, o *method_body* de um método externo consiste apenas em um ponto e vírgula. Um método externo não pode ser genérico.
+Quando uma declaração de método inclui um `extern` modificador, que o método deve ser um ***método externo***. Métodos externos são implementados externamente, normalmente usando um idioma diferente do c#. Como uma declaração de método externo não fornece nenhuma implementação real, o *method_body* de um método externo consiste apenas em um ponto e vírgula. Um método externo não pode ser genérico.
 
 O `extern` modificador é normalmente usado em conjunto com um `DllImport` atributo ([interoperação com componentes COM e Win32](attributes.md#interoperation-with-com-and-win32-components)), permitindo que os métodos externos a ser implementada por DLLs (bibliotecas de vínculo dinâmico). O ambiente de execução pode dar suporte a outros mecanismos, no qual as implementações de métodos externos podem ser fornecidas.
 
@@ -4200,7 +4200,7 @@ A's destructor
 ```
 uma vez que os destruidores em uma cadeia de herança são chamados na ordem, do mais derivado para menos derivado.
 
-Os destruidores são implementados, substituindo o método virtual `Finalize` em `System.Object`. Programas em C# não tem permissão para substituir este método ou ligue para (ou substituições dele) diretamente. Por exemplo, o programa
+Os destruidores são implementados, substituindo o método virtual `Finalize` em `System.Object`. Programas em c# não tem permissão para substituir este método ou ligue para (ou substituições dele) diretamente. Por exemplo, o programa
 ```csharp
 class A 
 {
@@ -4336,7 +4336,7 @@ Um objeto enumerável fornece uma implementação do `GetEnumerator` métodos do
 
 ### <a name="implementation-example"></a>Exemplo de implementação
 
-Esta seção descreve uma possível implementação de iteradores em termos de construções C# padrão. A implementação descrita aqui baseia-se os mesmos princípios usados pelo compilador Microsoft C#, mas ele não é uma implementação de conformidade ou o único possível.
+Esta seção descreve uma possível implementação de iteradores em termos de construções c# padrão. A implementação descrita aqui baseia-se os mesmos princípios usados pelo compilador Microsoft c#, mas ele não é uma implementação de conformidade ou o único possível.
 
 O seguinte `Stack<T>` classe implementa seu `GetEnumerator` método usando um iterador. O iterador enumera os elementos da pilha na parte superior para a parte inferior.
 

@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 61eeae6173eaa19f9cf6d6e985f3dc107d4c3ac9
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "50245520"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488952"
 ---
 # <a name="conversions"></a>Conversões
 
@@ -418,7 +418,7 @@ C# permite que as conversões implícitas e explícitas predefinidas ser aprimor
 
 ### <a name="permitted-user-defined-conversions"></a>Permitidas conversões definidas pelo usuário
 
-O C# permite que somente certas conversões definidas pelo usuário deve ser declarado. Em particular, não é possível redefinir uma conversão implícita ou explícita já existente.
+O c# permite que somente certas conversões definidas pelo usuário deve ser declarado. Em particular, não é possível redefinir uma conversão implícita ou explícita já existente.
 
 Para um tipo de origem especificado `S` e o tipo de destino `T`, se `S` ou `T` são tipos que permitem valor nulos, deixe `S0` e `T0` consulte seus tipos base, caso contrário `S0` e `T0` são igual a `S` e `T` , respectivamente. Uma classe ou struct é permitida para declarar uma conversão de um tipo de fonte `S` para um tipo de destino `T` somente se todos os itens a seguir forem verdadeiras:
 
@@ -589,9 +589,9 @@ Conversão de uma função anônima para um tipo de árvore de expressão produz
 
 ### <a name="implementation-example"></a>Exemplo de implementação
 
-Esta seção descreve uma possível implementação de conversões de função anônima em termos de outras construções de linguagem C#. A implementação descrita aqui baseia-se os mesmos princípios usados pelo compilador Microsoft C#, mas ele não é uma implementação obrigatória e não é o único possível. Resumidamente, ela menciona conversões em árvores de expressão, conforme sua semântica exata está fora do escopo desta especificação.
+Esta seção descreve uma possível implementação de conversões de função anônima em termos de outras construções de linguagem c#. A implementação descrita aqui baseia-se os mesmos princípios usados pelo compilador Microsoft c#, mas ele não é uma implementação obrigatória e não é o único possível. Resumidamente, ela menciona conversões em árvores de expressão, conforme sua semântica exata está fora do escopo desta especificação.
 
-O restante desta seção fornece vários exemplos de código que contém funções anônimas com características diferentes. Para cada exemplo, uma tradução correspondente ao código que usa somente outros constructos de C# é fornecida. Nos exemplos, o identificador `D` será considerado por representam o seguinte tipo de delegado:
+O restante desta seção fornece vários exemplos de código que contém funções anônimas com características diferentes. Para cada exemplo, uma tradução correspondente ao código que usa somente outros constructos de c# é fornecida. Nos exemplos, o identificador `D` será considerado por representam o seguinte tipo de delegado:
 ```csharp
 public delegate void D();
 ```

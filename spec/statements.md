@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 8f9551b9e7f70379836c23a60f0d37dc02f8e18e
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229528"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488809"
 ---
 # <a name="statements"></a>Instruções
 
@@ -768,7 +768,7 @@ foreach (var value in values)
 
 f();
 ```
-Se `v` foi declarado fora do while loop, seriam compartilhado entre todas as iterações e seu valor após o para loop seria o valor final, `13`, que é o que a invocação do `f` seria impressa. Em vez disso, porque cada iteração tem sua própria variável `v`, aquela capturados pelo `f` na primeira iteração continuará conter o valor `7`, que é o que será impresso. (Observação: as versões anteriores do C# é declarado `v` externa do while loop.)
+Se `v` foi declarado fora do while loop, seriam compartilhado entre todas as iterações e seu valor após o para loop seria o valor final, `13`, que é o que a invocação do `f` seria impressa. Em vez disso, porque cada iteração tem sua própria variável `v`, aquela capturados pelo `f` na primeira iteração continuará conter o valor `7`, que é o que será impresso. (Observação: as versões anteriores do c# é declarado `v` externa do while loop.)
 
 O corpo da, por fim, o bloco é construído acordo com as seguintes etapas:
 
@@ -1100,7 +1100,7 @@ A menos que um `catch` cláusula inclui um nome de variável de exceção, é im
 
 Um `catch` cláusula que não especifica um *exception_specifier* é chamado um geral `catch` cláusula.
 
-Algumas linguagens de programação podem dar suporte a exceções que não são representáveis como um objeto derivado de `System.Exception`, embora essas exceções nunca pudessem ser geradas pelo código em C#. Geral `catch` cláusula pode ser usada para capturar essas exceções. Assim, um general `catch` cláusula é semanticamente diferente dos que especifica o tipo `System.Exception`, em que o primeiro pode capturar exceções de outros idiomas de também.
+Algumas linguagens de programação podem dar suporte a exceções que não são representáveis como um objeto derivado de `System.Exception`, embora essas exceções nunca pudessem ser geradas pelo código em c#. Geral `catch` cláusula pode ser usada para capturar essas exceções. Assim, um general `catch` cláusula é semanticamente diferente dos que especifica o tipo `System.Exception`, em que o primeiro pode capturar exceções de outros idiomas de também.
 
 Para localizar um manipulador para uma exceção, `catch` cláusulas são examinadas em ordem léxica. Se um `catch` cláusula Especifica um tipo, mas nenhum filtro de exceção, ele é um erro de tempo de compilação para uma posterior `catch` cláusula na mesma `try` instrução para especificar um tipo que é igual ou é derivado de, digite. Se um `catch` cláusula especifica nenhum tipo e nenhum filtro, ele deve ser o último `catch` cláusula para que `try` instrução.
 

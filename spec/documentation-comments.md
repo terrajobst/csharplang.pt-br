@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: c9f8417dc68153f02ceb72bb1d51f3615f3c4961
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54272040"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488911"
 ---
 # <a name="documentation-comments"></a>Comentários de documentação
 
-O C# fornece um mecanismo para os programadores a documentar seu código usando uma sintaxe de comentário especial que contém o texto XML. Em arquivos de código-fonte, ter uma determinada forma de comentários podem ser usados para direcionar uma ferramenta para produzir o XML desses comentários e os elementos de código do código-fonte, eles precedem. Comentários usando essa sintaxe são chamados ***comentários de documentação***. Eles devem preceder imediatamente um tipo definido pelo usuário (por exemplo, uma classe, delegado ou interface) ou um membro (por exemplo, um campo, evento, propriedade ou método). A ferramenta de geração de XML é chamada de ***gerador de documentação***. (Esse gerador poderia ser, mas não precisa ser, o compilador do C#.) A saída produzida pelo gerador de documentação é chamada de ***arquivo de documentação***. Um arquivo de documentação é usado como entrada para um ***Visualizador de documentação***; uma ferramenta desenvolvida para produzir algum tipo de exibição visual de informações de tipo e a documentação associada.
+O c# fornece um mecanismo para os programadores a documentar seu código usando uma sintaxe de comentário especial que contém o texto XML. Em arquivos de código-fonte, ter uma determinada forma de comentários podem ser usados para direcionar uma ferramenta para produzir o XML desses comentários e os elementos de código do código-fonte, eles precedem. Comentários usando essa sintaxe são chamados ***comentários de documentação***. Eles devem preceder imediatamente um tipo definido pelo usuário (por exemplo, uma classe, delegado ou interface) ou um membro (por exemplo, um campo, evento, propriedade ou método). A ferramenta de geração de XML é chamada de ***gerador de documentação***. (Esse gerador poderia ser, mas não precisa ser, o compilador do c#.) A saída produzida pelo gerador de documentação é chamada de ***arquivo de documentação***. Um arquivo de documentação é usado como entrada para um ***Visualizador de documentação***; uma ferramenta desenvolvida para produzir algum tipo de exibição visual de informações de tipo e a documentação associada.
 
 Essa especificação sugere um conjunto de marcas a ser usado em comentários de documentação, mas o uso dessas marcas não é necessário e outras marcas podem ser usadas se desejado, como tempo as regras de XML bem formado são seguidas.
 
@@ -615,7 +615,7 @@ O gerador de documentação segue as seguintes regras ao gerar as cadeias de car
 
 ### <a name="id-string-examples"></a>Exemplos de cadeia de caracteres de ID
 
-Os exemplos seguintes mostram um fragmento de código C#, juntamente com a ID de cadeia de caracteres produzido a partir de cada elemento de origem pode ocupar um comentário de documentação:
+Os exemplos seguintes mostram um fragmento de código c#, juntamente com a ID de cadeia de caracteres produzido a partir de cada elemento de origem pode ocupar um comentário de documentação:
 
 *  Tipos são representados usando seu nome totalmente qualificado, aumentada com informações genéricas:
 
@@ -860,7 +860,7 @@ Os exemplos seguintes mostram um fragmento de código C#, juntamente com a ID de
 
 ## <a name="an-example"></a>Um exemplo
 
-### <a name="c-source-code"></a>Código-fonte C#
+### <a name="c-source-code"></a>Código-fonte c#
 
 O exemplo a seguir mostra o código-fonte de um `Point` classe:
 

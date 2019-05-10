@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 08c14d9ef2afe30580f456995066c141653ede92
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229491"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488979"
 ---
 # <a name="delegates"></a>Delegados
 
@@ -51,7 +51,7 @@ O tipo de retorno de um tipo delegado deve ser `void`, ou segura de saída ([saf
 
 Todos os tipos de parâmetro formal de um tipo de delegado devem ser de entrada-safe. Além disso, qualquer `out` ou `ref` tipos de parâmetro também devem ser segura de saída. Observe que mesmo `out` parâmetros devem ser de entrada-safe, devido a uma limitação da plataforma subjacente da execução.
 
-Tipos de delegados em C# são o nome equivalente, não é estruturalmente equivalente. Especificamente, os dois tipos diferentes de delegado que têm o mesmo parâmetro de lista e tipo são considerados tipos diferentes de delegado de retorno. No entanto, as instâncias dos dois tipos de delegado diferentes, porém estruturalmente equivalente podem comparados como iguais ([delegar operadores de igualdade](expressions.md#delegate-equality-operators)).
+Tipos de delegados em c# são o nome equivalente, não é estruturalmente equivalente. Especificamente, os dois tipos diferentes de delegado que têm o mesmo parâmetro de lista e tipo são considerados tipos diferentes de delegado de retorno. No entanto, as instâncias dos dois tipos de delegado diferentes, porém estruturalmente equivalente podem comparados como iguais ([delegar operadores de igualdade](expressions.md#delegate-equality-operators)).
 
 Por exemplo:
 

@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 33b3044c4c0a4095f4bf49e6cf23c721f538e911
-ms.sourcegitcommit: 4e3f2e4ea5a50b186b08d1e93d3ffcdb3754596e
-ms.translationtype: HT
+ms.openlocfilehash: 3232163ed91d9d8bb6b0babf94c4282bfd60976c
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56411293"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488929"
 ---
 # <a name="namespaces"></a>Namespaces
 
-Programas em C# são organizados com o uso de namespaces. Namespaces são usados como um sistema de organização "interno" para um programa e como um sistema de organização "externa" — uma maneira de apresentar os elementos do programa que são expostos a outros programas.
+Programas em c# são organizados com o uso de namespaces. Namespaces são usados como um sistema de organização "interno" para um programa e como um sistema de organização "externa" — uma maneira de apresentar os elementos do programa que são expostos a outros programas.
 
 Diretivas de uso ([diretivas Using](namespaces.md#using-directives)) são fornecidos para facilitar o uso de namespaces.
 
@@ -22,7 +22,7 @@ compilation_unit
     ;
 ```
 
-Um programa C# consiste em uma ou mais unidades de compilação, cada um contido em um arquivo de origem separado. Quando um programa C# é compilado, todas as unidades de compilação são processadas em conjunto. Assim, unidades de compilação podem depender entre si, possivelmente de forma circular.
+Um programa c# consiste em uma ou mais unidades de compilação, cada um contido em um arquivo de origem separado. Quando um programa c# é compilado, todas as unidades de compilação são processadas em conjunto. Assim, unidades de compilação podem depender entre si, possivelmente de forma circular.
 
 O *using_directive*s de um efeito de unidade de compilação a *global_attributes* e *namespace_member_declaration*s dessa unidade de compilação, mas não têm nenhum efeito outras unidades de compilação.
 

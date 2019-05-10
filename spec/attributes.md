@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: a8ad8a8b3eda1d00fa745bd92e4371eacc36b79f
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229478"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488820"
 ---
 # <a name="attributes"></a>Atributos
 
-Grande parte da linguagem C# permite que o programador especificar informações declarativas sobre as entidades definidas no programa. Por exemplo, a acessibilidade de um método em uma classe for especificada, decorando-o com o *method_modifier*s `public`, `protected`, `internal`, e `private`.
+Grande parte da linguagem c# permite que o programador especificar informações declarativas sobre as entidades definidas no programa. Por exemplo, a acessibilidade de um método em uma classe for especificada, decorando-o com o *method_modifier*s `public`, `protected`, `internal`, e `private`.
 
 C# habilita os programadores a novos tipos de informações declarativas, chamado de estoque ***atributos***. Os programadores podem anexar atributos para várias entidades de programa e recuperar informações de atributo em um ambiente de tempo de execução. Por exemplo, uma estrutura pode definir um `HelpAttribute` atributo que pode ser colocado em determinados elementos do programa (como classes e métodos) para fornecer um mapeamento a partir desses elementos de programa para a documentação.
 
@@ -833,7 +833,7 @@ Observação: Esta seção é aplicável somente para a implementação do Micro
 
 ### <a name="interoperation-with-com-and-win32-components"></a>Interoperação com componentes COM e Win32
 
-O tempo de execução do .NET fornece um grande número de atributos que permitem que programas em C# interoperar com componentes escritos usando COM e DLLs do Win32. Por exemplo, o `DllImport` atributo pode ser usado em um `static extern` método para indicar que a implementação do método deve ser encontrado em uma DLL Win32. Esses atributos são encontrados no `System.Runtime.InteropServices` namespace e a documentação detalhada para esses atributos for encontrado na documentação de tempo de execução do .NET.
+O tempo de execução do .NET fornece um grande número de atributos que permitem que programas em c# interoperar com componentes escritos usando COM e DLLs do Win32. Por exemplo, o `DllImport` atributo pode ser usado em um `static extern` método para indicar que a implementação do método deve ser encontrado em uma DLL Win32. Esses atributos são encontrados no `System.Runtime.InteropServices` namespace e a documentação detalhada para esses atributos for encontrado na documentação de tempo de execução do .NET.
 
 ### <a name="interoperation-with-other-net-languages"></a>Interoperação com outras linguagens .NET
 

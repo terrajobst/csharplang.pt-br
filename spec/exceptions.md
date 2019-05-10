@@ -1,25 +1,25 @@
 ---
 ms.openlocfilehash: 75fcd5b00ea5cac218a9f7809c53b179df97825c
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229493"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488948"
 ---
 # <a name="exceptions"></a>Exceções
 
-Exceções em C# fornecem uma maneira estruturada, uniforme e fortemente tipada de lidar com o nível de sistema e o nível de aplicativo condições de erro. O mecanismo de exceção no C# é muito semelhante do C++, com algumas diferenças importantes:
+Exceções em c# fornecem uma maneira estruturada, uniforme e fortemente tipada de lidar com o nível de sistema e o nível de aplicativo condições de erro. O mecanismo de exceção no c# é muito semelhante do C++, com algumas diferenças importantes:
 
-*  No C#, todas as exceções devem ser representadas por uma instância de um tipo de classe derivado de `System.Exception`. No C++, qualquer valor de qualquer tipo pode ser usado para representar uma exceção.
-*  No C#, um bloco finally ([a instrução try](statements.md#the-try-statement)) pode ser usado para gravar o código de finalização que é executada em execução normal e condições excepcionais. Esse código é difícil escrever em C++ sem duplicação de código.
-*  No C#, as exceções de nível de sistema, como estouro, divisão por zero e null desreferencia também definir classes de exceção em são juntamente com as condições de erro de nível de aplicativo.
+*  No c#, todas as exceções devem ser representadas por uma instância de um tipo de classe derivado de `System.Exception`. No C++, qualquer valor de qualquer tipo pode ser usado para representar uma exceção.
+*  No c#, um bloco finally ([a instrução try](statements.md#the-try-statement)) pode ser usado para gravar o código de finalização que é executada em execução normal e condições excepcionais. Esse código é difícil escrever em C++ sem duplicação de código.
+*  No c#, as exceções de nível de sistema, como estouro, divisão por zero e null desreferencia também definir classes de exceção em são juntamente com as condições de erro de nível de aplicativo.
 
 ## <a name="causes-of-exceptions"></a>Causas de exceções
 
 Exceção pode ser gerada de duas maneiras diferentes.
 
 *  Um `throw` instrução ([a instrução throw](statements.md#the-throw-statement)) gera uma exceção imediatamente e incondicionalmente. Controle nunca atinge a instrução imediatamente após o `throw`.
-*  Determinadas condições excepcionais que ocorrem durante o processamento de instruções em C# e expressão causam uma exceção em determinadas circunstâncias, quando a operação não pode ser concluída normalmente. Por exemplo, uma operação de divisão de inteiro ([operador de divisão](expressions.md#division-operator)) gera um `System.DivideByZeroException` se o denominador for zero. Ver [Classes de exceção comuns](exceptions.md#common-exception-classes) para obter uma lista das várias exceções que podem ocorrer dessa maneira.
+*  Determinadas condições excepcionais que ocorrem durante o processamento de instruções em c# e expressão causam uma exceção em determinadas circunstâncias, quando a operação não pode ser concluída normalmente. Por exemplo, uma operação de divisão de inteiro ([operador de divisão](expressions.md#division-operator)) gera um `System.DivideByZeroException` se o denominador for zero. Ver [Classes de exceção comuns](exceptions.md#common-exception-classes) para obter uma lista das várias exceções que podem ocorrer dessa maneira.
 
 ## <a name="the-systemexception-class"></a>A classe System. Exception
 
@@ -47,7 +47,7 @@ As exceções que ocorrem durante a execução do destruidor estão merece aten�
 
 ## <a name="common-exception-classes"></a>Classes de exceção comuns
 
-As seguintes exceções são geradas por determinadas operações de C#.
+As seguintes exceções são geradas por determinadas operações de c#.
 
 |                                      |                |
 |--------------------------------------|----------------|
