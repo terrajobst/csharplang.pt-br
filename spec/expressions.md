@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 066c300d4c2baa8749e132730ecd48275e2957f7
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 130898a8b5a7b8eb986b314cb4cf78038e840b02
+ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64489007"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66193930"
 ---
 # <a name="expressions"></a>Expressões
 
@@ -2489,7 +2489,7 @@ Para uma operação do formulário `-x`, resolução de sobrecarga de operador u
    long operator -(long x);
    ```
 
-   O resultado é calculado subtraindo `x` de zero. Se o valor da `x` é o menor valor representável do tipo de operando (-2 ^ 31 para `int` ou -2 ^ 63 para `long`), em seguida, a negação matemática do `x` não for representável no tipo de operando. Se isso ocorrer dentro de um `checked` contexto, uma `System.OverflowException` gerada; se ele ocorrer dentro de um `unchecked` contexto, o resultado é o valor do operando, e o estouro não será relatado.
+   O resultado é calculado subtraindo `x` de zero. Se o valor de `x` é o menor valor representável do tipo de operando (-2 ^ 31 para `int` ou -2 ^ 63 para `long`), em seguida, a negação matemática do `x` não for representável no tipo de operando. Se isso ocorrer dentro de um `checked` contexto, uma `System.OverflowException` gerada; se ele ocorrer dentro de um `unchecked` contexto, o resultado é o valor do operando, e o estouro não será relatado.
 
    Se o operando do operador de negação é do tipo `uint`, ele será convertido ao tipo `long`, e o tipo do resultado é `long`. Uma exceção é a regra que permite que o `int` valor de -2147483648 (-2 ^ 31) a ser gravado como um literal de inteiro decimal ([literais inteiros](lexical-structure.md#integer-literals)).
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: af7af574814dc04ee3ece0396b7ae5f86b3ec8eb
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 917e2f1e196013f85eefbda21fb3d717cc681084
+ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488909"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66193901"
 ---
 # <a name="classes"></a>Classes
 
@@ -1500,7 +1500,7 @@ Para campos de não-volátil, técnicas de otimização que reorganizar as instr
 Essas restrições garantem que todos os threads observem as gravações voláteis executadas por qualquer outro thread na ordem em que elas foram realizadas. Uma implementação em conformidade não é necessário para fornecer uma ordenação total único de gravações voláteis como visto no todos os threads de execução. O tipo de um campo volátil deve ser um destes procedimentos:
 
 *  Um *reference_type*.
-*  O tipo `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `char`, `float`, `bool`, `System.IntPtr`, ou` System.UIntPtr`.
+*  O tipo `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `char`, `float`, `bool`, `System.IntPtr`, ou `System.UIntPtr`.
 *  Uma *enum_type* tem um tipo de base de enumeração de `byte`, `sbyte`, `short`, `ushort`, `int`, ou `uint`.
 
 O exemplo
