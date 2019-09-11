@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 4e1534fc5523223042df468c4443a6722910543b
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: HT
+ms.openlocfilehash: e56caa7b2fabb4b5ade242ec43f4592689e8ba3d
+ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47229476"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876829"
 ---
 <a name="c-language-specification"></a>Especificação da Linguagem C#
 ===========================
 
 __Versão 6__
 
-Esse é um rascunho não oficial, postado aqui para sua conveniência. Quando podemos enviar uma proposta de especificações de C# 6.0 para ECMA (que atualmente está finalizando o C# 5.0 Standard), ele será compartilhado aqui.
+Este é um rascunho não oficial, Postado aqui para sua conveniência. Quando enviarmos uma C# proposta de especificação de 6,0 para o ECMA, ela será compartilhada aqui.
 
 <!--
 (This document is also available for download: [csharp.pdf](CSharp%20Language%20Specification.pdf?raw=true) and [csharp.docx](CSharp%20Language%20Specification.docx?raw=true))
