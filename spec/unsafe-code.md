@@ -1,30 +1,30 @@
 ---
-ms.openlocfilehash: 90001cf3d48f216787fc65e59166ec57c5d0ca34
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 4faef9a12bdff54fa59a55a0206fa72bda4ea585
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488796"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704056"
 ---
 # <a name="unsafe-code"></a>Código não seguro
 
-O núcleo de linguagem c#, conforme definido nos capítulos anteriores, difere da C e C++ em sua omissão de ponteiros como um tipo de dados. Em vez disso, o c# fornece referências e a capacidade de criar objetos que são gerenciados por um coletor de lixo. Esse design, juntamente com outros recursos, torna c# uma linguagem mais segura que C ou C++. Na linguagem principal c# simplesmente não é possível ter uma variável não inicializada, um ponteiro "pendentes" ou uma expressão que indexa uma matriz, além de seus limites. Categorias inteiras de bugs que rotineiramente assolam C e programas do C++, portanto, são eliminados.
+A linguagem C# principal, conforme definido nos capítulos anteriores, difere notavelmente de C e C++ em sua omissão de ponteiros como um tipo de dados. Em vez C# disso, o fornece referências e a capacidade de criar objetos gerenciados por um coletor de lixo. Esse design, juntamente com outros recursos, torna C# uma linguagem muito mais segura do que C ou C++. No idioma principal C# , simplesmente não é possível ter uma variável não inicializada, um ponteiro "pendente" ou uma expressão que indexe uma matriz além de seus limites. Categorias inteiras de bugs que, rotineiramente, C++ C e programas são eliminados.
 
-Enquanto praticamente cada constructo de tipo de ponteiro em C ou C++ tem um equivalente de tipo de referência em c#, no entanto, há situações em que o acesso aos tipos de ponteiro se torna uma necessidade. Por exemplo, fazer interface com o sistema operacional subjacente, acessar um dispositivo de memória mapeada ou implementação de um algoritmo de tempo crítico pode não ser possível ou prático sem acesso a ponteiros. Para resolver essa necessidade, c# fornece a capacidade de gravar ***código não seguro***.
+Embora praticamente todos os tipos de ponteiro constructem em C ou C++ tenham um C#tipo de referência equivalente em, no entanto, há situações em que o acesso a tipos de ponteiro se torna uma necessidade. Por exemplo, a interface com o sistema operacional subjacente, o acesso a um dispositivo mapeado por memória ou a implementação de um algoritmo de tempo crítico pode não ser possível ou prática sem acesso a ponteiros. Para atender a essa necessidade C# , o fornece a capacidade de escrever ***código não seguro***.
 
-Em código não seguro, é possível declarar e operar em ponteiros para realizar conversões entre os ponteiros e tipos integrais, para obter o endereço de variáveis e assim por diante. De certa forma, escrever o código não seguro é semelhante a escrever código C dentro de um programa c#.
+Em código não seguro, é possível declarar e operar em ponteiros, executar conversões entre ponteiros e tipos integrais, para obter o endereço de variáveis e assim por diante. De certa forma, escrever código inseguro é muito parecido com escrever código C dentro C# de um programa.
 
-Na verdade, o código não seguro é um recurso de "seguro" da perspectiva de desenvolvedores e usuários. O código não seguro deve ser claramente marcado com o modificador `unsafe`, portanto, os desenvolvedores, possivelmente, não é possível usar os recursos não seguros acidentalmente e o mecanismo de execução trabalha para garantir que o código não seguro não pode ser executado em um ambiente não confiável.
+O código não seguro é, de fato, um recurso "seguro" da perspectiva de desenvolvedores e usuários. O código não seguro deve ser claramente marcado com o modificador `unsafe`, de modo que os desenvolvedores não podem possivelmente usar recursos não seguros acidentalmente, e o mecanismo de execução funciona para garantir que o código não seguro não possa ser executado em um ambiente não confiável.
 
 ## <a name="unsafe-contexts"></a>Contextos não seguros
 
-Os recursos que não é seguros do c# estão disponíveis apenas em contextos que não é seguros. Um contexto não seguro é introduzido com a inclusão de um `unsafe` modificador na declaração de um tipo ou membro, ou empregando uma *unsafe_statement*:
+Os recursos não seguros do C# estão disponíveis somente em contextos não seguros. Um contexto não seguro é introduzido incluindo um modificador `unsafe` na declaração de um tipo ou membro ou empregando um *unsafe_statement*:
 
-*  Uma declaração de uma classe, struct, interface ou delegado pode incluir um `unsafe` modificador, na qual o caso de toda a extensão textual dessa declaração de tipo (incluindo o corpo da classe, struct ou interface) é considerado um contexto não seguro.
-*  Uma declaração de um campo, método, propriedade, evento, indexador, operador, construtor de instância, destruidor ou construtor estático pode incluir um `unsafe` modificador, nesse caso toda a extensão textual da declaração de membro que é considerado um inseguro contexto.
-*  Uma *unsafe_statement* permite o uso de um contexto não seguro dentro de uma *bloco*. Toda a extensão textual do associado *bloco* é considerado um contexto não seguro.
+*  Uma declaração de Class, struct, interface ou delegate pode incluir um modificador `unsafe` e, nesse caso, toda a extensão textual dessa declaração de tipo (incluindo o corpo da classe, struct ou interface) é considerada um contexto não seguro.
+*  Uma declaração de um campo, método, propriedade, evento, indexador, operador, Construtor de instância, destruidor ou construtor estático pode incluir um modificador `unsafe`, caso em que a extensão textual inteira dessa declaração de membro é considerada um contexto não seguro.
+*  Um *unsafe_statement* permite o uso de um contexto sem segurança dentro de um *bloco*. Toda a extensão textual do *bloco* associado é considerada um contexto não seguro.
 
-As produções gramática associados são mostradas abaixo.
+As produções gramaticais associadas são mostradas abaixo.
 
 ```antlr
 class_modifier_unsafe
@@ -106,7 +106,7 @@ public unsafe struct Node
 }
 ```
 
-o `unsafe` modificador especificado na declaração de struct faz com que toda a extensão textual da declaração de struct para se tornar um contexto não seguro. Portanto, é possível declarar o `Left` e `Right` campos para um tipo de ponteiro. O exemplo anterior também poderia ser escrito
+o modificador `unsafe` especificado na declaração struct faz com que toda a extensão textual da declaração struct se torne um contexto não seguro. Portanto, é possível declarar os campos `Left` e `Right` como sendo de um tipo de ponteiro. O exemplo acima também poderia ser escrito
 
 ```csharp
 public struct Node
@@ -117,9 +117,9 @@ public struct Node
 }
 ```
 
-Aqui, o `unsafe` modificadores nas declarações de campo fazem com que essas declarações a serem considerados contextos não seguros.
+Aqui, os modificadores `unsafe` nas declarações de campo fazem com que essas declarações sejam consideradas contextos não seguros.
 
-Diferente de estabelecer um contexto inseguro, permitindo assim o uso de tipos de ponteiro, o `unsafe` modificador não tem nenhum efeito em um tipo ou membro. No exemplo
+Além de estabelecer um contexto não seguro, permitindo, portanto, o uso de tipos de ponteiro, o modificador `unsafe` não tem nenhum efeito sobre um tipo ou um membro. No exemplo
 
 ```csharp
 public class A
@@ -139,9 +139,9 @@ public class B: A
 }
 ```
 
-o `unsafe` modificador em de `F` método na `A` simplesmente faz com que a extensão textual do `F` para se tornar um contexto não seguro no qual os recursos que não é seguros da linguagem podem ser usados. Na substituição do `F` na `B`, não é necessário especificar novamente as `unsafe` modificador –, a menos que, é claro, o `F` método na `B` em si precisa ter acesso aos recursos que não é seguros.
+o modificador `unsafe` no método `F` em `A` simplesmente faz com que a extensão textual de `F` se torne um contexto não seguro no qual os recursos não seguros do idioma podem ser usados. Na substituição de `F` em `B`, não é necessário especificar novamente o modificador `unsafe`--a menos que, é claro, o método `F` no `B` em si precisa acessar recursos não seguros.
 
-A situação é ligeiramente diferente quando um tipo de ponteiro é parte da assinatura do método
+A situação é um pouco diferente quando um tipo de ponteiro faz parte da assinatura do método
 
 ```csharp
 public unsafe class A
@@ -155,11 +155,11 @@ public class B: A
 }
 ```
 
-Aqui, pois `F`da assinatura inclui um tipo de ponteiro, ele só pode ser gravado em um contexto inseguro. No entanto, o contexto não seguro pode ser introduzido, ambos fazendo a classe inteira não seguro, como é o caso na `A`, ou com a inclusão de um `unsafe` modificador na declaração de método, como é o caso no `B`.
+Aqui, como a assinatura do `F` inclui um tipo de ponteiro, ela só pode ser gravada em um contexto sem segurança. No entanto, o contexto não seguro pode ser introduzido, tornando a classe inteira insegura, como é o caso no `A`, ou incluindo um modificador `unsafe` na declaração do método, como é o caso no `B`.
 
 ## <a name="pointer-types"></a>Tipos de ponteiro
 
-Em um contexto inseguro, um *tipo* ([tipos](types.md)) pode ser um *pointer_type* , bem como a *value_type* ou uma *reference_type* . No entanto, uma *pointer_type* também pode ser usado em uma `typeof` expressão ([expressões de criação de objeto anônimo](expressions.md#anonymous-object-creation-expressions)) fora de um contexto não seguro como tal uso não é não seguro.
+Em um contexto não seguro, um *tipo* ([tipos](types.md)) pode ser um *pointer_type* , bem como um *value_type* ou um *reference_type*. No entanto, um *pointer_type* também pode ser usado em uma expressão `typeof` ([expressões de criação de objeto anônimo](expressions.md#anonymous-object-creation-expressions)) fora de um contexto sem segurança, pois tal uso não é seguro.
 
 ```antlr
 type_unsafe
@@ -167,7 +167,7 @@ type_unsafe
     ;
 ```
 
-Um *pointer_type* é gravado como um *unmanaged_type* ou a palavra-chave `void`, seguido por um `*` token:
+Um *pointer_type* é escrito como um *unmanaged_type* ou a palavra-chave `void`, seguido por um token `*`:
 
 ```antlr
 pointer_type
@@ -180,50 +180,50 @@ unmanaged_type
     ;
 ```
 
-O tipo especificado antes do `*` em um ponteiro de tipo é chamado de ***tipo referentes*** do tipo ponteiro. Ele representa o tipo da variável para o qual um valor do tipo ponteiro aponta.
+O tipo especificado antes do `*` em um tipo de ponteiro é chamado de ***tipo Referent*** do tipo de ponteiro. Representa o tipo da variável para a qual um valor do tipo de ponteiro aponta.
 
-Ao contrário de referências (valores de tipos de referência), ponteiros não são rastreados pelo coletor de lixo, pois o coletor de lixo não tem conhecimento dos ponteiros e os dados aos quais eles apontam. Por esse motivo, um ponteiro não é permitido para apontar para uma referência ou para um struct que contém referências e o tipo de referentes a de um ponteiro deve ser um *unmanaged_type*.
+Ao contrário das referências (valores de tipos de referência), os ponteiros não são rastreados pelo coletor de lixo – o coletor de lixo não tem conhecimento de ponteiros e dos dados para os quais eles apontam. Por esse motivo, um ponteiro não tem permissão para apontar para uma referência ou para uma struct que contém referências, e o tipo Referent de um ponteiro deve ser um *unmanaged_type*.
 
-Uma *unmanaged_type* é qualquer tipo que não é um *reference_type* ou o tipo construído e não contém *reference_type* ou construído de campos de tipo em qualquer nível de aninhamento. Em outras palavras, uma *unmanaged_type* é um dos seguintes:
+Um *unmanaged_type* é qualquer tipo que não seja um tipo *reference_type* ou construído e não contém *reference_type* ou campos de tipo construído em qualquer nível de aninhamento. Em outras palavras, um *unmanaged_type* é um dos seguintes:
 
-*  `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, `decimal`, ou `bool`.
+*  `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, 0, 1 ou 2.
 *  Qualquer *enum_type*.
 *  Qualquer *pointer_type*.
-*  Qualquer definidos pelo usuário *struct_type* que não é um tipo construído e contém campos de *unmanaged_type*somente s.
+*  Qualquer *struct_type* definida pelo usuário que não seja um tipo construído e contém campos de *unmanaged_type*s.
 
-A regra intuitiva para a mixagem de ponteiros e referências é que referents de referências (objetos) são permitidos para conter os ponteiros, mas referents de ponteiros não são permitidos para conter referências.
+A regra intuitiva para a combinação de ponteiros e referências é que referents de referências (objetos) têm permissão para conter ponteiros, mas referents de ponteiros não tem permissão para conter referências.
 
 Alguns exemplos de tipos de ponteiro são fornecidos na tabela a seguir:
 
 | __Exemplo__ | __Descrição__                               |
 |-------------|-----------------------------------------------|
-| `byte*`     | ponteiro para `byte`                             |
-| `char*`     | ponteiro para `char`                             |
-| `int**`     | Ponteiro para ponteiro `int`                   |
+| `byte*`     | Ponteiro para `byte`                             |
+| `char*`     | Ponteiro para `char`                             |
+| `int**`     | Ponteiro para ponteiro para `int`                   |
 | `int*[]`    | Matriz unidimensional de ponteiros para `int` |
 | `void*`     | Ponteiro para tipo desconhecido                       |
 
 Para uma determinada implementação, todos os tipos de ponteiro devem ter o mesmo tamanho e representação.
 
-Ao contrário do C e C++, quando vários ponteiros são declarados na mesma declaração, em c# a `*` é gravada junto com o tipo subjacente apenas, não como um pontuador do prefixo no nome de cada ponteiro. Por exemplo
+Ao contrário de C++C e, quando vários ponteiros são declarados na C# mesma declaração, no `*` é gravado juntamente com o tipo subjacente, não como um pontuador de prefixo em cada nome de ponteiro. Por exemplo
 
 ```csharp
 int* pi, pj;    // NOT as int *pi, *pj;
 ```
 
-O valor de um ponteiro que têm o tipo `T*` representa o endereço de uma variável do tipo `T`. O operador de indireção de ponteiro `*` ([indireção de ponteiro](unsafe-code.md#pointer-indirection)) pode ser usado para acessar essa variável. Por exemplo, dada uma variável `P` do tipo `int*`, a expressão `*P` denota a `int` variável encontrada no endereço contido na `P`.
+O valor de um ponteiro com o tipo `T*` representa o endereço de uma variável do tipo `T`. O operador de indireção de ponteiro `*` ([indireção de ponteiro](unsafe-code.md#pointer-indirection)) pode ser usado para acessar essa variável. Por exemplo, dada uma variável `P` do tipo `int*`, a expressão `*P` denota que a variável `int` foi encontrada no endereço contido em `P`.
 
-Como uma referência de objeto, um ponteiro pode estar `null`. Aplicando o operador de indireção a um `null` ponteiro resulta no comportamento definido pela implementação. Um ponteiro com o valor `null` é representado por zeros bits.
+Como uma referência de objeto, um ponteiro pode ser `null`. A aplicação do operador de indireção a um ponteiro `null` resulta em comportamento definido pela implementação. Um ponteiro com o valor `null` é representado por todos os bits-zero.
 
-O `void*` tipo representa um ponteiro para um tipo desconhecido. Como o tipo referentes é desconhecido, o operador de indireção não pode ser aplicado a um ponteiro de tipo `void*`, nem qualquer aritmética pode ser realizada em tal um ponteiro. No entanto, um ponteiro de tipo `void*` pode ser convertido em qualquer outro tipo de ponteiro (e vice-versa).
+O tipo `void*` representa um ponteiro para um tipo desconhecido. Como o tipo Referent é desconhecido, o operador de indireção não pode ser aplicado a um ponteiro do tipo `void*`, nem qualquer aritmética pode ser executada nesse ponteiro. No entanto, um ponteiro do tipo `void*` pode ser convertido em qualquer outro tipo de ponteiro (e vice-versa).
 
-Tipos de ponteiro são uma categoria separada de tipos. Diferentemente dos tipos de referência e tipos de valor, tipos de ponteiro não herdam `object` e não há nenhuma conversão entre tipos de ponteiro e `object`. Em particular, conversões boxing e unboxing ([conversões Boxing e unboxing](types.md#boxing-and-unboxing)) não têm suporte para ponteiros. No entanto, as conversões são permitidas entre diferentes tipos de ponteiro e entre tipos de ponteiro e tipos integrais. Isso é descrito em [conversões de ponteiro](unsafe-code.md#pointer-conversions).
+Os tipos de ponteiro são uma categoria separada de tipos. Diferentemente dos tipos de referência e tipos de valor, os tipos de ponteiro não herdam de `object` e nenhuma conversões existe entre os tipos de ponteiro e `object`. Em particular, boxing e unboxing ([boxing e unboxing](types.md#boxing-and-unboxing)) não têm suporte para ponteiros. No entanto, as conversões são permitidas entre diferentes tipos de ponteiro e entre os tipos de ponteiro e os tipos integrais. Isso é descrito em [conversões de ponteiro](unsafe-code.md#pointer-conversions).
 
-Um *pointer_type* não pode ser usado como um argumento de tipo ([construído tipos](types.md#constructed-types)) e Inferência de tipo ([inferência de tipo](expressions.md#type-inference)) Falha em chamadas de método genérico que seriam ter inferido um tipo de argumento seja um tipo de ponteiro.
+Um *pointer_type* não pode ser usado como um argumento de tipo ([tipos construídos](types.md#constructed-types)), e a inferência de tipos ([inferência](expressions.md#type-inference)de tipos) falha em chamadas de método genérico que teriam inferido um argumento de tipo para ser um tipo de ponteiro.
 
 Um *pointer_type* pode ser usado como o tipo de um campo volátil ([campos voláteis](classes.md#volatile-fields)).
 
-Embora os ponteiros podem ser passados como `ref` ou `out` parâmetros, fazer isso pode causar um comportamento indefinido, uma vez que o ponteiro pode também ser definida para apontar para uma variável local que não existe mais quando é retornado do método chamado ou o objeto fixo para o qual ele usado para apontar, não é fixo. Por exemplo:
+Embora os ponteiros possam ser passados como parâmetros `ref` ou `out`, fazer isso pode causar um comportamento indefinido, já que o ponteiro pode ser bem definido para apontar para uma variável local que não existe mais quando o método chamado retorna ou o objeto fixo ao qual ele costumava apontar , não é mais fixo. Por exemplo:
 
 ```csharp
 using System;
@@ -257,7 +257,7 @@ class Test
 }
 ```
 
-Um método pode retornar um valor de algum tipo, e esse tipo pode ser um ponteiro. Por exemplo, ao receber um ponteiro para uma sequência contígua de `int`s, contagem de elementos da sequência que e alguns outros `int` valor, o método a seguir retorna o endereço desse valor na sequência, se ocorrer uma correspondência; caso contrário, retornará `null`:
+Um método pode retornar um valor de algum tipo, e esse tipo pode ser um ponteiro. Por exemplo, quando um ponteiro é fornecido para uma sequência contígua de `int`s, a contagem de elementos dessa sequência e algum outro valor de `int`, o método a seguir retorna o endereço desse valor nessa sequência, se ocorrer uma correspondência; caso contrário, ele retornará `null`:
 
 ```csharp
 unsafe static int* Find(int* pi, int size, int value) {
@@ -270,56 +270,56 @@ unsafe static int* Find(int* pi, int size, int value) {
 }
 ```
 
-Em um contexto inseguro, várias construções estão disponíveis para a operação em ponteiros:
+Em um contexto não seguro, várias construções estão disponíveis para operar em ponteiros:
 
-*  O `*` operador pode ser usado para executar indireção de ponteiro ([indireção de ponteiro](unsafe-code.md#pointer-indirection)).
-*  O `->` operador pode ser usado para acessar um membro de um struct através de um ponteiro ([acesso de membro do ponteiro](unsafe-code.md#pointer-member-access)).
-*  O `[]` operador pode ser usado para indexar um ponteiro ([acesso de elemento de ponteiro](unsafe-code.md#pointer-element-access)).
-*  O `&` operador pode ser usado para obter o endereço de uma variável ([o operador address-of](unsafe-code.md#the-address-of-operator)).
-*  O `++` e `--` operadores podem ser usados para ponteiros de incremento e decremento ([ponteiro incremento e decremento](unsafe-code.md#pointer-increment-and-decrement)).
-*  O `+` e `-` operadores podem ser usados para realizar aritmética de ponteiro ([aritmética de ponteiro](unsafe-code.md#pointer-arithmetic)).
-*  O `==`, `!=`, `<`, `>`, `<=`, e `=>` operadores podem ser usados para comparar ponteiros ([comparação de ponteiros](unsafe-code.md#pointer-comparison)).
-*  O `stackalloc` operador pode ser usado para alocar memória da pilha de chamadas ([buffers de tamanho fixo](unsafe-code.md#fixed-size-buffers)).
-*  O `fixed` instrução pode ser usada para corrigir temporariamente uma variável para que seu endereço pode ser obtido ([a instrução fixed](unsafe-code.md#the-fixed-statement)).
+*  O operador `*` pode ser usado para executar o indireção de ponteiro ([indireção de ponteiro](unsafe-code.md#pointer-indirection)).
+*  O operador `->` pode ser usado para acessar um membro de uma struct por meio de um ponteiro ([acesso de membro de ponteiro](unsafe-code.md#pointer-member-access)).
+*  O operador `[]` pode ser usado para indexar um ponteiro ([acesso de elemento de ponteiro](unsafe-code.md#pointer-element-access)).
+*  O operador `&` pode ser usado para obter o endereço de uma variável ([o operador address-of](unsafe-code.md#the-address-of-operator)).
+*  Os operadores `++` e `--` podem ser usados para incrementar e decrementar ponteiros ([incremento de ponteiro e decréscimo](unsafe-code.md#pointer-increment-and-decrement)).
+*  Os operadores `+` e `-` podem ser usados para executar aritmética de ponteiro ([aritmética de ponteiro](unsafe-code.md#pointer-arithmetic)).
+*  Os operadores `==`, `!=`, `<`, `>`, `<=` e `=>` podem ser usados para comparar ponteiros ([comparação de ponteiros](unsafe-code.md#pointer-comparison)).
+*  O operador `stackalloc` pode ser usado para alocar memória da pilha de chamadas ([buffers de tamanho fixo](unsafe-code.md#fixed-size-buffers)).
+*  A instrução `fixed` pode ser usada para corrigir temporariamente uma variável para que seu endereço possa ser obtido ([a instrução Fixed](unsafe-code.md#the-fixed-statement)).
 
 ## <a name="fixed-and-moveable-variables"></a>Variáveis fixas e móveis
 
-O operador address-of ([o operador address-of](unsafe-code.md#the-address-of-operator)) e o `fixed` instrução ([a instrução fixed](unsafe-code.md#the-fixed-statement)) dividir as variáveis em duas categorias: ***Corrigido variáveis*** e ***variáveis moveable***.
+O operador address-of ([o operador address-of](unsafe-code.md#the-address-of-operator)) e a instrução `fixed` ([a instrução Fixed](unsafe-code.md#the-fixed-statement)) dividem variáveis em duas categorias: ***Variáveis fixas*** e ***variáveis móveis***.
 
-Variáveis fixas residem em locais de armazenamento que não são afetados pela operação do coletor de lixo. (Exemplos de variáveis fixas incluem variáveis locais, parâmetros de valor e variáveis criadas por desreferenciar ponteiros.) Por outro lado, as variáveis moveable residem em locais de armazenamento que estão sujeitos a realocação ou a eliminação pelo coletor de lixo. (Variáveis moveable exemplos de campos em elementos de matrizes e objetos.)
+As variáveis fixas residem em locais de armazenamento que não são afetados pela operação do coletor de lixo. (Exemplos de variáveis fixas incluem variáveis locais, parâmetros de valor e variáveis criadas pela desreferenciação de ponteiros.) Por outro lado, as variáveis móveis residem em locais de armazenamento que estão sujeitos a realocação ou descarte pelo coletor de lixo. (Exemplos de variáveis móveis incluem campos em objetos e elementos de matrizes.)
 
-O `&` operador ([o operador address-of](unsafe-code.md#the-address-of-operator)) permite que o endereço de uma variável fixa a ser obtido sem restrições. No entanto, como uma variável móvel está sujeito a realocação ou a eliminação pelo coletor de lixo, o endereço de uma variável móvel só pode ser obtido usando um `fixed` instrução ([a instrução fixed](unsafe-code.md#the-fixed-statement)) e esse endereço permanece válido apenas para a duração do que `fixed` instrução.
+O operador `&` ([o operador address-of](unsafe-code.md#the-address-of-operator)) permite que o endereço de uma variável fixa seja obtido sem restrições. No entanto, como uma variável móvel está sujeita a realocação ou alienação pelo coletor de lixo, o endereço de uma variável móvel só pode ser obtido usando uma instrução `fixed` ([a instrução Fixed](unsafe-code.md#the-fixed-statement)) e esse endereço permanece válido somente para o duração da instrução `fixed`.
 
-Em termos de precisos, uma variável fixa é um dos seguintes:
+Em termos precisos, uma variável fixa é uma das seguintes:
 
-*  Uma variável resultante de uma *simple_name* ([nomes simples](expressions.md#simple-names)) que se refere a uma variável local ou um parâmetro de valor, a menos que a variável é capturada por uma função anônima.
-*  Uma variável resultante de uma *member_access* ([acesso de membro](expressions.md#member-access)) do formulário `V.I`, onde `V` é uma variável fixa de um *struct_type*.
-*  Uma variável resultante de uma *pointer_indirection_expression* ([indireção de ponteiro](unsafe-code.md#pointer-indirection)) do formulário `*P`, uma *pointer_member_access* ([Acesso de membro do ponteiro](unsafe-code.md#pointer-member-access)) no formato `P->I`, ou uma *pointer_element_access* ([acesso de elemento de ponteiro](unsafe-code.md#pointer-element-access)) do formulário `P[E]`.
+*  Uma variável resultante de um *Simple_name* ([nomes simples](expressions.md#simple-names)) que se refere a uma variável local ou a um parâmetro de valor, a menos que a variável seja capturada por uma função anônima.
+*  Uma variável resultante de um *member_access* ([acesso de membro](expressions.md#member-access)) do formulário `V.I`, em que `V` é uma variável fixa de um *struct_type*.
+*  Uma variável resultante de um *pointer_indirection_expression* ([indireção de ponteiro](unsafe-code.md#pointer-indirection)) do formulário `*P`, um *pointer_member_access* (acesso de[membro de ponteiro](unsafe-code.md#pointer-member-access)) do formato `P->I` ou um *pointer_element_access* ( [Acesso de elemento de ponteiro](unsafe-code.md#pointer-element-access)) do formulário `P[E]`.
 
-Todas as outras variáveis são classificados como moveable variáveis.
+Todas as outras variáveis são classificadas como variáveis móveis.
 
-Observe que um campo estático é classificado como uma variável móvel. Observe também que um `ref` ou `out` parâmetro é classificado como uma variável móvel, mesmo se o argumento fornecido para o parâmetro é uma variável fixa. Por fim, observe que uma variável produzido por um ponteiro de remoção de referência sempre é classificado como uma variável fixa.
+Observe que um campo estático é classificado como uma variável móvel. Observe também que um parâmetro `ref` ou `out` é classificado como uma variável móvel, mesmo que o argumento fornecido para o parâmetro seja uma variável fixa. Por fim, observe que uma variável produzida por desreferenciar um ponteiro é sempre classificada como uma variável fixa.
 
 ## <a name="pointer-conversions"></a>Conversões de ponteiro
 
-Em um contexto inseguro, o conjunto de conversões implícitas disponíveis ([conversões implícitas](conversions.md#implicit-conversions)) é estendido para incluir as conversões de ponteiro implícitas a seguir:
+Em um contexto sem segurança, o conjunto de conversões implícitas disponíveis ([conversões implícitas](conversions.md#implicit-conversions)) é estendido para incluir as seguintes conversões de ponteiro implícitas:
 
 *  De qualquer *pointer_type* para o tipo `void*`.
-*  Dos `null` literal a qualquer *pointer_type*.
+*  Do `null` literal para qualquer *pointer_type*.
 
 Além disso, em um contexto não seguro, o conjunto de conversões explícitas disponíveis ([conversões explícitas](conversions.md#explicit-conversions)) é estendido para incluir as seguintes conversões de ponteiro explícitas:
 
-*  De qualquer *pointer_type* a qualquer outra *pointer_type*.
-*  Partir `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, ou `ulong` para qualquer *pointer_type*.
-*  De qualquer *pointer_type* à `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, ou `ulong`.
+*  De qualquer *pointer_type* para qualquer outro *pointer_type*.
+*  De `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long` ou `ulong` para qualquer *pointer_type*.
+*  De qualquer *pointer_type* para `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long` ou `ulong`.
 
-Por fim, em um contexto não seguro, o conjunto de conversões implícitas padrão ([conversões implícitas padrão](conversions.md#standard-implicit-conversions)) inclui a conversão de ponteiro a seguir:
+Por fim, em um contexto não seguro, o conjunto de conversões implícitas padrão ([conversões implícitas padrão](conversions.md#standard-implicit-conversions)) inclui a seguinte conversão de ponteiro:
 
 *  De qualquer *pointer_type* para o tipo `void*`.
 
-Conversões entre dois tipos de ponteiro nunca altere o valor do ponteiro real. Em outras palavras, uma conversão de tipo de um ponteiro para outro não tem efeito no endereço base fornecido pelo ponteiro.
+As conversões entre dois tipos de ponteiro nunca alteram o valor real do ponteiro. Em outras palavras, uma conversão de um tipo de ponteiro para outro não tem nenhum efeito sobre o endereço subjacente fornecido pelo ponteiro.
 
-Quando um tipo de ponteiro é convertido para outro, se o ponteiro resultante não está alinhado corretamente para o tipo apontado, o comportamento será indefinido se o resultado for desreferenciado. Em geral, o conceito de "alinhado corretamente" é transitivo: se um ponteiro para o tipo `A` esteja alinhada corretamente para um ponteiro para o tipo `B`, que, por sua vez, está alinhado corretamente com um ponteiro para o tipo `C`, em seguida, um ponteiro para tipo `A`esteja alinhada corretamente para um ponteiro para o tipo `C`.
+Quando um tipo de ponteiro é convertido em outro, se o ponteiro resultante não estiver alinhado corretamente para o tipo apontado, o comportamento será indefinido se o resultado for de referência. Em geral, o conceito "alinhado corretamente" é transitiva: se um ponteiro para digitar `A` estiver corretamente alinhado para um ponteiro para digitar `B`, que, por sua vez, está alinhado corretamente para um ponteiro para digitar `C`, então um ponteiro para digitar `A` está alinhado corretamente para um Ponteiro para o tipo `C`.
 
 Considere o seguinte caso em que uma variável com um tipo é acessada por meio de um ponteiro para um tipo diferente:
 
@@ -332,7 +332,7 @@ int i = *pi;         // undefined
 *pi = 123456;        // undefined
 ```
 
-Quando um tipo de ponteiro é convertido em um ponteiro para um byte, os pontos de resultado para o menor byte endereçado da variável. Incrementos sucessivos do resultado, até o tamanho da variável, produzem ponteiros para os bytes restantes da variável. Por exemplo, o método a seguir exibe cada um dos oito bytes em um duplo como um valor hexadecimal:
+Quando um tipo de ponteiro é convertido em um ponteiro para byte, o resultado aponta para o byte de endereçamento mais baixo da variável. Incrementos sucessivos do resultado, até o tamanho da variável, geram ponteiros para os bytes restantes dessa variável. Por exemplo, o método a seguir exibe cada um dos oito bytes em um duplo como um valor hexadecimal:
 
 ```csharp
 using System;
@@ -351,26 +351,26 @@ class Test
 }
 ```
 
-Obviamente, a saída produzida depende de ordenação de bits.
+É claro que a saída produzida depende da ordenação.
 
-Mapeamentos entre os ponteiros e inteiros são definidos pela implementação. No entanto, em 32 * e arquiteturas de CPU de 64 bits com um espaço de endereço linear, conversões de ponteiros de tipos integrais geralmente se comporta exatamente como as conversões de `uint` ou `ulong` valores, respectivamente, para ou a partir dos tipos integrais.
+Os mapeamentos entre ponteiros e inteiros são definidos pela implementação. No entanto, em arquiteturas de CPU de 32 * e 64 bits com um espaço de endereço linear, conversões de ponteiros para ou de tipos integrais normalmente se comportam exatamente como conversões de valores `uint` ou `ulong`, respectivamente, de ou para esses tipos integral.
 
 ### <a name="pointer-arrays"></a>Matrizes de ponteiro
 
-Em um contexto inseguro, matrizes de ponteiros podem ser construídos. Apenas algumas das conversões que se aplicam a outros tipos de matriz são permitidas em matrizes de ponteiro:
+Em um contexto não seguro, matrizes de ponteiros podem ser construídas. Somente algumas das conversões que se aplicam a outros tipos de matriz são permitidas em matrizes de ponteiro:
 
-*  A conversão de referência implícita ([conversões de referência implícita](conversions.md#implicit-reference-conversions)) de qualquer *array_type* para `System.Array` e as interfaces que ele implementa também se aplica a matrizes de ponteiro. No entanto, qualquer tentativa de acessar os elementos de matriz por meio `System.Array` ou as interfaces que ele implementa resultará em uma exceção em tempo de execução, como tipos de ponteiro não são conversíveis `object`.
-*  Conversões de referência implícita e explícita ([conversões de referência implícita](conversions.md#implicit-reference-conversions), [conversões de referência explícita](conversions.md#explicit-reference-conversions)) de um tipo de matriz unidimensional `S[]` para `System.Collections.Generic.IList<T>` e suas interfaces de base genéricos nunca se aplicam a matrizes de ponteiro, como tipos de ponteiro não podem ser usados como argumentos de tipo e não há nenhuma conversões de tipos de ponteiro para os tipos de não ponteiro.
-*  A conversão de referência explícita ([conversões de referência explícita](conversions.md#explicit-reference-conversions)) do `System.Array` e as interfaces que ele implementa a qualquer *array_type* se aplica a matrizes de ponteiro.
-*  As conversões de referência explícita ([conversões de referência explícita](conversions.md#explicit-reference-conversions)) do `System.Collections.Generic.IList<S>` e sua base de interfaces para um tipo de matriz unidimensional `T[]` nunca se aplica a matrizes de ponteiro, como tipos de ponteiro não podem ser usados como argumentos de tipo, e não há nenhuma conversões de tipos de ponteiro para os tipos de não ponteiro.
+*  A conversão de referência implícita ([conversões de referência implícitas](conversions.md#implicit-reference-conversions)) de qualquer *array_type* para `System.Array` e as interfaces que ele implementa também se aplica a matrizes de ponteiro. No entanto, qualquer tentativa de acessar os elementos da matriz por meio de `System.Array` ou das interfaces que ele implementa resultará em uma exceção em tempo de execução, pois os tipos de ponteiro não são conversíveis para `object`.
+*  As conversões de referência implícita e explícita (conversões de[referência implícita](conversions.md#implicit-reference-conversions), [conversões de referência explícitas](conversions.md#explicit-reference-conversions)) de um tipo de matriz unidimensional `S[]` a `System.Collections.Generic.IList<T>` e suas interfaces base genéricas nunca se aplicam a matrizes de ponteiros, como os tipos de ponteiro não podem ser usados como argumentos de tipo, e não há conversões de tipos de ponteiro para tipos que não sejam ponteiros.
+*  A conversão de referência explícita ([conversões de referência explícitas](conversions.md#explicit-reference-conversions)) do `System.Array` e das interfaces que ele implementa para qualquer *array_type* se aplica a matrizes de ponteiro.
+*  As conversões de referência explícita ([conversões de referência explícitas](conversions.md#explicit-reference-conversions)) de `System.Collections.Generic.IList<S>` e suas interfaces base para um tipo de matriz unidimensional `T[]` nunca se aplicam a matrizes de ponteiro, pois tipos de ponteiro não podem ser usados como argumentos de tipo, e há Não há conversões de tipos de ponteiro para tipos sem ponteiro.
 
-Essas restrições significam que a expansão para o `foreach` instrução em matrizes descrito [a instrução foreach](statements.md#the-foreach-statement) não pode ser aplicado às matrizes de ponteiro. Em vez disso, uma instrução foreach do formulário
+Essas restrições significam que a expansão para a instrução `foreach` sobre matrizes descritas na [instrução foreach](statements.md#the-foreach-statement) não pode ser aplicada a matrizes de ponteiro. Em vez disso, uma instrução foreach do formulário
 
 ```csharp
 foreach (V v in x) embedded_statement
 ```
 
-em que o tipo de `x` é um tipo de matriz no formato `T[,,...,]`, `N` é o número de dimensões menos 1 e `T` ou `V` é um tipo de ponteiro, é expandido com o uso de loops aninhados da seguinte maneira:
+onde o tipo de `x` é um tipo de matriz do formulário `T[,,...,]`, `N` é o número de dimensões menos 1 e `T` ou `V` é um tipo de ponteiro, é expandido usando loops for aninhado da seguinte maneira:
 
 ```csharp
 {
@@ -385,13 +385,13 @@ em que o tipo de `x` é um tipo de matriz no formato `T[,,...,]`, `N` é o núme
 }
 ```
 
-As variáveis `a`, `i0`, `i1`,..., `iN` não estão visíveis nem acessíveis ao `x` ou o *embedded_statement* ou qualquer outro código-fonte do programa. A variável `v` é somente leitura na instrução inserida. Se não houver uma conversão explícita ([conversões de ponteiro](unsafe-code.md#pointer-conversions)) do `T` (o tipo de elemento) para `V`, um erro é produzido e nenhuma outra etapa será efetuada. Se `x` tem o valor `null`, um `System.NullReferenceException` é gerada em tempo de execução.
+As variáveis `a`, `i0`, `i1`,..., `iN` não são visíveis ou acessíveis para `x` ou *embedded_statement* ou qualquer outro código-fonte do programa. A variável `v` é somente leitura na instrução incorporada. Se não houver uma conversão explícita ([conversões de ponteiro](unsafe-code.md#pointer-conversions)) de `T` (o tipo de elemento) para `V`, um erro será produzido e nenhuma etapa adicional será executada. Se `x` tiver o valor `null`, um `System.NullReferenceException` será lançado em tempo de execução.
 
 ## <a name="pointers-in-expressions"></a>Ponteiros em expressões
 
-Em um contexto não seguro, uma expressão pode produzir um resultado de um tipo de ponteiro, mas fora de um contexto não seguro é um erro de tempo de compilação para uma expressão é de um tipo de ponteiro. Em termos de precisos, fora de um contexto sem segurança um erro de tempo de compilação ocorre se houver *simple_name* ([nomes simples](expressions.md#simple-names)), *member_access* ([acesso de membro ](expressions.md#member-access)), *invocation_expression* ([expressões de invocação](expressions.md#invocation-expressions)), ou *element_access* ([acesso de elemento](expressions.md#element-access)) é de um tipo de ponteiro.
+Em um contexto não seguro, uma expressão pode gerar um resultado de um tipo de ponteiro, mas fora de um contexto sem segurança, é um erro de tempo de compilação para uma expressão ser de um tipo de ponteiro. Em termos precisos, fora de um contexto sem segurança, um erro de tempo de compilação ocorrerá se qualquer *Simple_name* ([nomes simples](expressions.md#simple-names)), *member_access* ([acesso de membro](expressions.md#member-access)), *invocation_expression* ([expressões de invocação](expressions.md#invocation-expressions)) ou  *element_access* ([acesso de elemento](expressions.md#element-access)) é de um tipo de ponteiro.
 
-Em um contexto inseguro, a *primary_no_array_creation_expression* ([expressões primárias](expressions.md#primary-expressions)) e *unary_expression* ([osoperadoresunários](expressions.md#unary-operators)) produções permitem as seguintes construções adicionais:
+Em um contexto sem segurança, as produções *primary_no_array_creation_expression* ([expressões primárias](expressions.md#primary-expressions)) e *unary_expression* ([operadores unários](expressions.md#unary-operators)) permitem as seguintes construções adicionais:
 
 ```antlr
 primary_no_array_creation_expression_unsafe
@@ -406,7 +406,7 @@ unary_expression_unsafe
     ;
 ```
 
-Essas construções são descritas nas seções a seguir. Precedência e associatividade dos operadores unsafe é indicado pela gramática.
+Essas construções são descritas nas seções a seguir. A precedência e a Associação dos operadores inseguros é implícita pela gramática.
 
 ### <a name="pointer-indirection"></a>Indireção de ponteiro
 
@@ -418,17 +418,17 @@ pointer_indirection_expression
     ;
 ```
 
-O operador unário `*` operador denota indireção de ponteiro e é usado para obter a variável para o qual um ponteiro aponta. O resultado da avaliação `*P`, onde `P` é uma expressão de um tipo de ponteiro `T*`, é uma variável do tipo `T`. Ele é um erro de tempo de compilação para aplicar o operador unário `*` operador em uma expressão de tipo `void*` ou como uma expressão que não seja de um tipo de ponteiro.
+O operador unário `*` denota indireção de ponteiro e é usado para obter a variável para a qual um ponteiro aponta. O resultado da avaliação de `*P`, em que `P` é uma expressão de um tipo de ponteiro `T*`, é uma variável do tipo `T`. É um erro de tempo de compilação para aplicar o operador unário `*` a uma expressão do tipo `void*` ou a uma expressão que não é de um tipo de ponteiro.
 
-O efeito de aplicar o operador unário `*` operador para um `null` ponteiro é definido pela implementação. Em particular, não há nenhuma garantia de que essa operação lançar um `System.NullReferenceException`.
+O efeito de aplicar o operador `*` unário a um ponteiro `null` é definido pela implementação. Em particular, não há nenhuma garantia de que essa operação gere um `System.NullReferenceException`.
 
-Se tiver sido atribuído a um valor inválido para o ponteiro, o comportamento do operador unário `*` operador é indefinido. Entre os valores inválidos para desreferenciar um ponteiro, o operador unário `*` operadores têm um endereço alinhado de forma inadequada para o tipo apontado (consulte o exemplo [conversões de ponteiro](unsafe-code.md#pointer-conversions)) e o endereço de uma variável após o fim do seu tempo de vida.
+Se um valor inválido tiver sido atribuído ao ponteiro, o comportamento do operador unário `*` será indefinido. Entre os valores inválidos para desreferenciar um ponteiro pelo operador `*` unário são um endereço alinhado incorretamente para o tipo apontado (consulte o exemplo em [conversões de ponteiro](unsafe-code.md#pointer-conversions)) e o endereço de uma variável após o término de seu tempo de vida.
 
-Para fins de análise de atribuição definitiva, uma variável produzidos ao avaliar uma expressão do formulário `*P` é considerada inicialmente atribuída ([inicialmente atribuída variáveis](variables.md#initially-assigned-variables)).
+Para fins de análise de atribuição definitiva, uma variável produzida pela avaliação de uma expressão do formulário `*P` é considerada inicialmente atribuída ([variáveis inicialmente atribuídas](variables.md#initially-assigned-variables)).
 
-### <a name="pointer-member-access"></a>Acesso de membro do ponteiro
+### <a name="pointer-member-access"></a>Acesso de membro de ponteiro
 
-Um *pointer_member_access* consiste em um *primary_expression*, seguido por um "`->`" token, seguido por um *identificador* e um opcional *type_argument_list*.
+Um *pointer_member_access* consiste em um *primary_expression*, seguido por um token "`->`", seguido por um *identificador* e um *type_argument_list*opcional.
 
 ```antlr
 pointer_member_access
@@ -436,9 +436,9 @@ pointer_member_access
     ;
 ```
 
-Em um acesso de membro do ponteiro do formulário `P->I`, `P` deve ser uma expressão de um tipo de ponteiro diferente de `void*`, e `I` deve indicar um membro acessível do tipo ao qual `P` pontos.
+Em um membro de ponteiro, o acesso do formulário `P->I`, `P` deve ser uma expressão de um tipo de ponteiro diferente de `void*` e `I` deve indicar um membro acessível do tipo para o qual `P` aponta.
 
-Um acesso de membro do ponteiro do formulário `P->I` é avaliado exatamente como `(*P).I`. Para obter uma descrição do operador de indireção de ponteiro (`*`), consulte [indireção de ponteiro](unsafe-code.md#pointer-indirection). Para obter uma descrição do operador de acesso de membro (`.`), consulte [acesso de membro](expressions.md#member-access).
+Um acesso de membro de ponteiro do formulário `P->I` é avaliado exatamente como `(*P).I`. Para obter uma descrição do operador de indireção de ponteiro (`*`), consulte [indireção de ponteiro](unsafe-code.md#pointer-indirection). Para obter uma descrição do operador de acesso de membro (`.`), consulte [acesso de membro](expressions.md#member-access).
 
 No exemplo
 
@@ -469,7 +469,7 @@ class Test
 }
 ```
 
-o `->` operador é usado para acessar os campos e invocar um método de um struct através de um ponteiro. Porque a operação `P->I` é precisamente equivalente a `(*P).I`, o `Main` método poderia igualmente bem ter sido escrito:
+o operador `->` é usado para acessar campos e invocar um método de uma struct por meio de um ponteiro. Como a operação `P->I` é precisamente equivalente a `(*P).I`, o método `Main` poderia igualmente ter sido escrito:
 
 ```csharp
 class Test
@@ -488,7 +488,7 @@ class Test
 
 ### <a name="pointer-element-access"></a>Acesso de elemento de ponteiro
 
-Um *pointer_element_access* consiste em um *primary_no_array_creation_expression* seguido por uma expressão entre "`[`"e"`]`".
+Um *pointer_element_access* consiste em um *primary_no_array_creation_expression* seguido por uma expressão colocada em "`[`" e "`]`".
 
 ```antlr
 pointer_element_access
@@ -496,9 +496,9 @@ pointer_element_access
     ;
 ```
 
-Em um acesso de elemento de ponteiro do formulário `P[E]`, `P` deve ser uma expressão de um tipo de ponteiro diferente de `void*`, e `E` deve ser uma expressão que pode ser convertida implicitamente em `int`, `uint`, `long`, ou `ulong`.
+Em um elemento de ponteiro, o acesso ao formulário `P[E]`, `P` deve ser uma expressão de um tipo de ponteiro diferente de `void*`, e `E` deve ser uma expressão que possa ser convertida implicitamente em `int`, `uint`, `long` ou `ulong`.
 
-Um acesso de elemento de ponteiro do formulário `P[E]` é avaliado exatamente como `*(P + E)`. Para obter uma descrição do operador de indireção de ponteiro (`*`), consulte [indireção de ponteiro](unsafe-code.md#pointer-indirection). Para obter uma descrição do operador de adição de ponteiro (`+`), consulte [aritmética de ponteiro](unsafe-code.md#pointer-arithmetic).
+Um elemento de ponteiro acesso ao formulário `P[E]` é avaliado exatamente como `*(P + E)`. Para obter uma descrição do operador de indireção de ponteiro (`*`), consulte [indireção de ponteiro](unsafe-code.md#pointer-indirection). Para obter uma descrição do operador de adição de ponteiro (`+`), consulte [aritmética de ponteiro](unsafe-code.md#pointer-arithmetic).
 
 No exemplo
 
@@ -514,7 +514,7 @@ class Test
 }
 ```
 
-um acesso de elemento de ponteiro é usado para inicializar o buffer de caracteres em um `for` loop. Porque a operação `P[E]` é precisamente equivalente a `*(P + E)`, o exemplo poderia igualmente bem ter sido escrito:
+um acesso de elemento de ponteiro é usado para inicializar o buffer de caracteres em um loop `for`. Como a operação `P[E]` é precisamente equivalente a `*(P + E)`, o exemplo poderia igualmente ter sido escrito:
 
 ```csharp
 class Test
@@ -528,11 +528,11 @@ class Test
 }
 ```
 
-O operador de acesso de elemento de ponteiro não verifica se existe fora dos limites erros e o comportamento ao acessar um fora dos limites de elemento é indefinido. Isso é o mesmo que o C e C++.
+O operador de acesso de elemento de ponteiro não verifica erros fora de limites e o comportamento ao acessar um elemento fora dos limites é indefinido. Isso é o mesmo que C e C++.
 
 ### <a name="the-address-of-operator"></a>O operador address-of
 
-Uma *addressof_expression* consiste em um e comercial (`&`) seguido por um *unary_expression*.
+Um *addressof_expression* consiste em um e comercial (`&`) seguido por um *unary_expression*.
 
 ```antlr
 addressof_expression
@@ -540,9 +540,9 @@ addressof_expression
     ;
 ```
 
-Considerando uma expressão `E` que é do tipo `T` e é classificado como uma variável fixa ([fixo e variáveis moveable](unsafe-code.md#fixed-and-moveable-variables)), a construção `&E` calcula o endereço da variável fornecida pelo `E`. O tipo do resultado é `T*` e é classificado como um valor. Ocorrerá um erro de tempo de compilação se `E` não é classificado como uma variável, se `E` é classificado como uma variável local somente leitura, ou se `E` denota uma variável móvel. No último caso, uma instrução fixed ([a instrução fixed](unsafe-code.md#the-fixed-statement)) pode ser usado para "corrigir" temporariamente a variável antes de obter seu endereço. Conforme mencionado na [acesso de membro](expressions.md#member-access), fora de um construtor de instância ou um construtor estático para um struct ou classe que define um `readonly` campo, esse campo é considerado um valor, não uma variável. Como tal, seu endereço não pode ser removido. Da mesma forma, o endereço de uma constante não pode ser executado.
+Dada uma expressão `E` que é de um tipo `T` e é classificado como uma variável fixa ([variáveis fixas e móveis](unsafe-code.md#fixed-and-moveable-variables)), a construção `&E` computa o endereço da variável fornecida pelo `E`. O tipo do resultado é `T*` e é classificado como um valor. Ocorrerá um erro de tempo de compilação se `E` não for classificado como uma variável, se `E` for classificado como uma variável local somente leitura ou se `E` denotar uma variável móvel. No último caso, uma instrução fixa ([a instrução Fixed](unsafe-code.md#the-fixed-statement)) pode ser usada para "corrigir" temporariamente a variável antes de obter seu endereço. Conforme indicado no [acesso de membro](expressions.md#member-access), fora de um construtor de instância ou construtor estático para uma struct ou classe que define um campo `readonly`, esse campo é considerado um valor, e não uma variável. Como tal, seu endereço não pode ser obtido. Da mesma forma, o endereço de uma constante não pode ser obtido.
 
-O `&` operador não requer seu argumento ser definitivamente atribuído, mas seguir uma `&` operação, a variável à qual o operador é aplicado é considerada definitivamente atribuída no caminho de execução em que a operação ocorre. É responsabilidade do programador garantir que a inicialização correta da variável ocorrem realmente nessa situação.
+O operador `&` não exige que seu argumento seja definitivamente atribuído, mas após uma operação `&`, a variável à qual o operador é aplicado é considerada definitivamente atribuída no caminho de execução no qual a operação ocorre. É de responsabilidade do programador garantir que a inicialização correta da variável realmente ocorra nessa situação.
 
 No exemplo
 
@@ -562,26 +562,26 @@ class Test
 }
 ```
 
-`i` é considerado atribuído definitivamente seguindo a `&i` operação usada para inicializar `p`. A atribuição ao `*p` em vigor inicializa `i`, mas a inclusão dessa inicialização é responsabilidade do programador, e nenhum erro de tempo de compilação ocorrerá se a atribuição foi removida.
+`i` é considerado definitivamente atribuído após a operação de `&i` usada para inicializar `p`. A atribuição para `*p` em vigor Inicializa `i`, mas a inclusão dessa inicialização é responsabilidade do programador e nenhum erro de tempo de compilação ocorrerá se a atribuição tiver sido removida.
 
-As regras de atribuição definitiva para o `&` operador existe, de modo que pode ser evitada com redundância de inicialização de variáveis locais. Por exemplo, muitas APIs externas levam um ponteiro para uma estrutura que será preenchida pela API. Chamadas para essas APIs normalmente passam o endereço de uma variável local de struct, e sem a regra, com redundância de inicialização da variável struct seria necessária.
+As regras de atribuição definitiva para o operador `&` existem, de modo que a inicialização redundante de variáveis locais pode ser evitada. Por exemplo, muitas APIs externas usam um ponteiro para uma estrutura que é preenchida pela API. Chamadas para essas APIs normalmente passam o endereço de uma variável de struct local e sem a regra, a inicialização redundante da variável de struct seria necessária.
 
-### <a name="pointer-increment-and-decrement"></a>Decremento e incremento do ponteiro
+### <a name="pointer-increment-and-decrement"></a>Incrementar e decrementar ponteiros
 
-Em um contexto inseguro, a `++` e `--` operadores ([incremento de sufixo e operadores de decremento](expressions.md#postfix-increment-and-decrement-operators) e [incremento de prefixo e operadores de decremento](expressions.md#prefix-increment-and-decrement-operators)) pode ser aplicado a ponteiro variáveis de todos os tipos exceto `void*`. Assim, para cada tipo de ponteiro `T*`, os operadores a seguir são definidos implicitamente:
+Em um contexto sem segurança, os operadores `++` e `--` ([incremento de sufixo e diminuir](expressions.md#postfix-increment-and-decrement-operators) os operadores e [incremento de prefixo e decrementar](expressions.md#prefix-increment-and-decrement-operators)) podem ser aplicados a variáveis de ponteiro de todos os tipos, exceto `void*`. Portanto, para cada tipo de ponteiro `T*`, os seguintes operadores são definidos implicitamente:
 
 ```csharp
 T* operator ++(T* x);
 T* operator --(T* x);
 ```
 
-Os operadores produzem os mesmos resultados que `x + 1` e `x - 1`, respectivamente ([aritmética de ponteiro](unsafe-code.md#pointer-arithmetic)). Em outras palavras, para uma variável de ponteiro do tipo `T*`, o `++` operador adiciona `sizeof(T)` para o endereço contido na variável e o `--` operador subtrai `sizeof(T)` do endereço contido na variável.
+Os operadores produzem os mesmos resultados que `x + 1` e `x - 1`, respectivamente ([aritmética de ponteiro](unsafe-code.md#pointer-arithmetic)). Em outras palavras, para uma variável de ponteiro do tipo `T*`, o operador `++` adiciona `sizeof(T)` ao endereço contido na variável, e o operador `--` subtrai `sizeof(T)` do endereço contido na variável.
 
-Se um incremento de ponteiro ou decremento operação estoura o domínio do tipo ponteiro, o resultado é definido pela implementação, mas nenhuma exceção é produzidas.
+Se uma operação de incremento ou diminuição de ponteiro estourar o domínio do tipo de ponteiro, o resultado será definido pela implementação, mas nenhuma exceção será produzida.
 
-### <a name="pointer-arithmetic"></a>Aritmética de ponteiro
+### <a name="pointer-arithmetic"></a>Aritmética do ponteiro
 
-Em um contexto inseguro, a `+` e `-` operadores ([operador de adição](expressions.md#addition-operator) e [operador de subtração](expressions.md#subtraction-operator)) podem ser aplicadas a valores de todos os tipos de ponteiro, exceto `void*`. Assim, para cada tipo de ponteiro `T*`, os operadores a seguir são definidos implicitamente:
+Em um contexto sem segurança, os operadores `+` e `-` ([operador de adição](expressions.md#addition-operator) e [subtração](expressions.md#subtraction-operator)) podem ser aplicados a valores de todos os tipos de ponteiro, exceto `void*`. Portanto, para cada tipo de ponteiro `T*`, os seguintes operadores são definidos implicitamente:
 
 ```csharp
 T* operator +(T* x, int y);
@@ -602,9 +602,9 @@ T* operator -(T* x, ulong y);
 long operator -(T* x, T* y);
 ```
 
-Considerando uma expressão `P` de um tipo de ponteiro `T*` e uma expressão `N` do tipo `int`, `uint`, `long`, ou `ulong`, as expressões `P + N` e `N + P` computar o valor do ponteiro do tipo `T*` resultante da adição `N * sizeof(T)` para o endereço fornecido pelo `P`. Da mesma forma, a expressão `P - N` calcula o valor do ponteiro do tipo `T*` que resulta da subtração `N * sizeof(T)` do endereço, fornecido por `P`.
+Dada uma expressão `P` de um tipo de ponteiro `T*` e uma expressão `N` do tipo `int`, `uint`, `long` ou `ulong`, as expressões `P + N` e `N + P` calculam o valor de ponteiro do tipo `T*` que resulta da adição de 0 ao endereço fornecido por 1. Da mesma forma, a expressão `P - N` computa o valor do ponteiro do tipo `T*` resultante da subtração `N * sizeof(T)` do endereço fornecido pelo `P`.
 
-Duas expressões, dadas `P` e `Q`, de um tipo de ponteiro `T*`, a expressão `P - Q` calcula a diferença entre os endereços dados pelos `P` e `Q` e, em seguida, divide essa diferença pelo `sizeof(T)`. O tipo do resultado é sempre `long`. Na verdade, `P - Q` é computado como `((long)(P) - (long)(Q)) / sizeof(T)`.
+Dadas duas expressões, `P` e `Q`, de um tipo de ponteiro `T*`, a expressão `P - Q` computa a diferença entre os endereços fornecidos por `P` e `Q` e, em seguida, divide essa diferença por `sizeof(T)`. O tipo do resultado é sempre `long`. Na verdade, `P - Q` é computado como `((long)(P) - (long)(Q)) / sizeof(T)`.
 
 Por exemplo:
 
@@ -627,16 +627,16 @@ class Test
 
 que produz a saída:
 
-```
+```console
 p - q = -14
 q - p = 14
 ```
 
-Se uma operação aritmética de ponteiro estoura o domínio do tipo de ponteiro, o resultado será truncado de maneira definida pela implementação, mas nenhuma exceção é produzidas.
+Se uma operação aritmética de ponteiro estoura o domínio do tipo de ponteiro, o resultado é truncado de maneira definida pela implementação, mas nenhuma exceção é produzida.
 
-### <a name="pointer-comparison"></a>Comparação de ponteiros
+### <a name="pointer-comparison"></a>Comparação de ponteiro
 
-Em um contexto inseguro, a `==`, `!=`, `<`, `>`, `<=`, e `=>` operadores ([operadores de teste de tipo e relacional](expressions.md#relational-and-type-testing-operators)) pode ser aplicada a valores de todos os tipos de ponteiro. Os operadores de comparação de ponteiro são:
+Em um contexto sem segurança, os operadores `==`, `!=`, `<`, `>`, `<=` e `=>` ([operadores relacionais e de teste de tipo](expressions.md#relational-and-type-testing-operators)) podem ser aplicados a valores de todos os tipos de ponteiro. Os operadores de comparação de ponteiro são:
 
 ```csharp
 bool operator ==(void* x, void* y);
@@ -647,11 +647,11 @@ bool operator <=(void* x, void* y);
 bool operator >=(void* x, void* y);
 ```
 
-Porque existe uma conversão implícita de qualquer tipo de ponteiro para o `void*` tipo, os operandos de qualquer tipo de ponteiro pode ser comparado usando esses operadores. Os operadores de comparação comparam os endereços dados pelos dois operandos, como se fossem inteiros sem sinal.
+Como existe uma conversão implícita de qualquer tipo de ponteiro para o tipo `void*`, os operandos de qualquer tipo de ponteiro podem ser comparados usando esses operadores. Os operadores de comparação comparam os endereços fornecidos pelos dois operandos como se fossem inteiros sem sinal.
 
 ### <a name="the-sizeof-operator"></a>O operador sizeof
 
-O `sizeof` operador retorna o número de bytes ocupados por uma variável de um determinado tipo. O tipo especificado como um operando `sizeof` deve ser um *unmanaged_type* ([tipos de ponteiro](unsafe-code.md#pointer-types)).
+O operador `sizeof` retorna o número de bytes ocupados por uma variável de um determinado tipo. O tipo especificado como um operando para `sizeof` deve ser um *unmanaged_type* ([tipos de ponteiro](unsafe-code.md#pointer-types)).
 
 ```antlr
 sizeof_expression
@@ -659,7 +659,7 @@ sizeof_expression
     ;
 ```
 
-O resultado do `sizeof` operador é um valor do tipo `int`. Para determinados tipos predefinidos, o `sizeof` operador produz um valor constante, como mostrado na tabela a seguir.
+O resultado do operador `sizeof` é um valor do tipo `int`. Para determinados tipos predefinidos, o operador `sizeof` produz um valor constante, conforme mostrado na tabela a seguir.
 
 
 | __Expressão__   | __Result__ |
@@ -677,17 +677,17 @@ O resultado do `sizeof` operador é um valor do tipo `int`. Para determinados ti
 | `sizeof(double)` | `8`        |
 | `sizeof(bool)`   | `1`        |
 
-Para todos os outros tipos, o resultado do `sizeof` operador é definido pela implementação e é classificado como um valor, não uma constante.
+Para todos os outros tipos, o resultado do operador `sizeof` é definido pela implementação e é classificado como um valor, não uma constante.
 
-A ordem na qual os membros são incluídos em um struct é especificada.
+A ordem na qual os membros são empacotados em um struct não é especificada.
 
-Para fins de alinhamento, pode haver sem nome no início de um struct, dentro de um struct e no final da estrutura de preenchimento. O conteúdo dos bits usados como o preenchimento é indeterminado.
+Para fins de alinhamento, pode haver um preenchimento sem nome no início de uma struct, dentro de uma struct e no final da estrutura. O conteúdo dos bits usados como preenchimento é indeterminado.
 
-Quando aplicado a um operando que tem o tipo de struct, o resultado é o número total de bytes em uma variável desse tipo, incluindo qualquer preenchimento.
+Quando aplicado a um operando que tem o tipo struct, o resultado é o número total de bytes em uma variável desse tipo, incluindo qualquer preenchimento.
 
-## <a name="the-fixed-statement"></a>A instrução fixed
+## <a name="the-fixed-statement"></a>A instrução Fixed
 
-Em um contexto inseguro, a *embedded_statement* ([instruções](statements.md)) produção permite que uma construção adicional, o `fixed` instrução, que é usada para "corrigir" uma variável móvel, de modo que seu endereço permanecerá constante para a duração da instrução.
+Em um contexto não seguro, a produção *embedded_statement* ([instruções](statements.md)) permite um constructo adicional, a instrução `fixed`, que é usada para "corrigir" uma variável móvel, de modo que seu endereço permaneça constante durante a instrução .
 
 ```antlr
 fixed_statement
@@ -708,20 +708,20 @@ fixed_pointer_initializer
     ;
 ```
 
-Cada *fixed_pointer_declarator* declara uma variável local da determinado *pointer_type* e inicializa a variável local com o endereço computado pelo correspondente *fixed_ pointer_initializer*. Uma variável local declarada em um `fixed` instrução é acessível em qualquer *fixed_pointer_initializer*s ocorrendo para a direita da declaração da variável e, no *embedded_statement* da `fixed` instrução. Uma variável local declarada por um `fixed` instrução é considerada como somente leitura. Um erro de tempo de compilação ocorrerá se a instrução inserida tenta modificar essa variável local (por meio da atribuição ou o `++` e `--` operadores) ou passá-lo como um `ref` ou `out` parâmetro.
+Cada *fixed_pointer_declarator* declara uma variável local do *pointer_type* especificado e inicializa essa variável local com o endereço computado pelo *fixed_pointer_initializer*correspondente. Uma variável local declarada em uma instrução `fixed` é acessível em qualquer *fixed_pointer_initializer*s que ocorre à direita da declaração dessa variável e no *embedded_statement* da instrução `fixed`. Uma variável local declarada por uma instrução `fixed` é considerada somente leitura. Ocorrerá um erro de tempo de compilação se a instrução inserida tentar modificar essa variável local (por meio de atribuição ou os operadores `++` e `--`) ou passá-la como um parâmetro `ref` ou `out`.
 
-Um *fixed_pointer_initializer* pode ser uma das seguintes opções:
+Um *fixed_pointer_initializer* pode ser um dos seguintes:
 
-*  O token "`&`" seguido por um *variable_reference* ([regras precisas para determinar a atribuição definitiva](variables.md#precise-rules-for-determining-definite-assignment)) para uma variável móvel ([fixo e variáveis moveable](unsafe-code.md#fixed-and-moveable-variables)) de um tipo não gerenciado `T`, fornecido o tipo `T*` é implicitamente conversível para o tipo de ponteiro fornecido no `fixed` instrução. Nesse caso, o inicializador calcula o endereço da variável determinada, e a variável é assegurada de permanecer em um endereço fixo durante a `fixed` instrução.
-*  Uma expressão de um *array_type* com os elementos de um tipo não gerenciado `T`, fornecido o tipo `T*` é implicitamente conversível para o tipo de ponteiro fornecido no `fixed` instrução. Nesse caso, o inicializador calcula o endereço do primeiro elemento na matriz, e toda a matriz é assegurada de permanecer em um endereço fixo durante a `fixed` instrução. Se a expressão de matriz é nula ou se a matriz com zero elementos, o inicializador calcula endereço igual a zero.
-*  Uma expressão do tipo `string`, fornecido o tipo `char*` é implicitamente conversível para o tipo de ponteiro fornecido no `fixed` instrução. Nesse caso, o inicializador calcula o endereço do primeiro caractere na cadeia de caracteres e cadeia de caracteres inteira é garantido que permanecem em um endereço fixo durante a `fixed` instrução. O comportamento do `fixed` instrução é definido pela implementação se a expressão de cadeia de caracteres for nula.
-*  Um *simple_name* ou *member_access* que faz referência a um membro de buffer de tamanho fixo de uma variável móvel, desde que o tipo do membro de buffer de tamanho fixo é implicitamente conversível para o tipo de ponteiro fornecido no `fixed` instrução. Nesse caso, o inicializador calcula um ponteiro para o primeiro elemento do buffer de tamanho fixo ([buffers de tamanho fixo em expressões](unsafe-code.md#fixed-size-buffers-in-expressions)), e o buffer de tamanho fixo é assegurado de permanecer em um endereço fixo durante a `fixed`instrução.
+*  O token "`&`" seguido por um *variable_reference* ([regras precisas para determinar a atribuição definitiva](variables.md#precise-rules-for-determining-definite-assignment)) para uma variável móvel ([variáveis fixas e móveis](unsafe-code.md#fixed-and-moveable-variables)) de um tipo não gerenciado `T`, desde que o tipo `T*` seja implicitamente conversível para o tipo de ponteiro fornecido na instrução `fixed`. Nesse caso, o inicializador computa o endereço da variável fornecida, e a variável é garantida para permanecer em um endereço fixo durante a instrução `fixed`.
+*  Uma expressão de um *array_type* com elementos de um tipo não gerenciado `T`, desde que o tipo `T*` seja implicitamente conversível no tipo de ponteiro fornecido na instrução `fixed`. Nesse caso, o inicializador computa o endereço do primeiro elemento na matriz e toda a matriz é garantida para permanecer em um endereço fixo durante a instrução `fixed`. Se a expressão de matriz for nula ou se a matriz tiver zero elementos, o inicializador computará um endereço igual a zero.
+*  Uma expressão do tipo `string`, desde que o tipo `char*` seja implicitamente conversível para o tipo de ponteiro fornecido na instrução `fixed`. Nesse caso, o inicializador computa o endereço do primeiro caractere na cadeia de caracteres e toda a cadeia de caracteres é garantida para permanecer em um endereço fixo durante a instrução `fixed`. O comportamento da instrução `fixed` será definido pela implementação se a expressão de cadeia de caracteres for nula.
+*  Um *Simple_name* ou *member_access* que faz referência a um membro de buffer de tamanho fixo de uma variável móvel, desde que o tipo do membro de buffer de tamanho fixo seja implicitamente conversível para o tipo de ponteiro fornecido na instrução `fixed`. Nesse caso, o inicializador computa um ponteiro para o primeiro elemento do buffer de tamanho fixo ([buffers de tamanho fixo em expressões](unsafe-code.md#fixed-size-buffers-in-expressions)) e o buffer de tamanho fixo é garantido para permanecer em um endereço fixo durante a instrução `fixed`.
 
-Para cada endereço computado por um *fixed_pointer_initializer* o `fixed` instrução garante que a variável referenciada pelo endereço não está sujeita às realocação ou a eliminação pelo coletor de lixo durante a `fixed` instrução. Por exemplo, se o endereço é calculado por uma *fixed_pointer_initializer* faz referência a um campo de um objeto ou um elemento de uma instância de matriz, o `fixed` instrução garante que a instância do objeto contentor não for realocada ou descartado durante a vida útil da instrução.
+Para cada endereço calculado por um *fixed_pointer_initializer* , a instrução `fixed` garante que a variável referenciada pelo endereço não esteja sujeita a realocação ou descarte pelo coletor de lixo pela duração da instrução `fixed`. Por exemplo, se o endereço computado por um *fixed_pointer_initializer* referenciar um campo de um objeto ou um elemento de uma instância de matriz, a instrução `fixed` garante que a instância de objeto recipiente não seja realocada ou descartada durante o tempo de vida da instrução.
 
-É responsabilidade do programador para garantir que os ponteiros criado pelo `fixed` instruções não sobrevivem além da execução dessas instruções. Por exemplo, quando ponteiros criada por `fixed` declarações são passadas para APIs externas, é responsabilidade do programador garantir que as APIs de mantenham nenhuma memória desses ponteiros.
+É responsabilidade do programador garantir que os ponteiros criados pelas instruções `fixed` não sobrevivem além da execução dessas instruções. Por exemplo, quando os ponteiros criados pelas instruções `fixed` são passados para APIs externas, é responsabilidade do programador garantir que as APIs não mantenham memória desses ponteiros.
 
-Objetos fixo podem causar a fragmentação do heap (porque eles não podem ser movidos). Por esse motivo, os objetos devem ser corrigidos somente quando absolutamente necessário e, em seguida, apenas para a menor quantidade de tempo possível.
+Os objetos fixos podem causar a fragmentação do heap (porque eles não podem ser movidos). Por esse motivo, os objetos devem ser corrigidos somente quando absolutamente necessário e, em seguida, apenas pelo menor tempo possível.
 
 O exemplo
 
@@ -748,11 +748,11 @@ class Test
 }
 ```
 
-demonstra vários usos do `fixed` instrução. A primeira instrução correções e obtém o endereço de um campo estático, a segunda instrução correções e obtém o endereço de um campo de instância e a terceira instrução correções e obtém o endereço de um elemento de matriz. Em cada caso ele teria sido um erro usar regulares `&` operador, pois as variáveis são classificadas como variáveis moveable.
+demonstra vários usos da instrução `fixed`. A primeira instrução corrige e Obtém o endereço de um campo estático, a segunda instrução corrige e Obtém o endereço de um campo de instância, e a terceira instrução corrige e Obtém o endereço de um elemento de matriz. Em cada caso, seria um erro para usar o operador regular `&`, uma vez que as variáveis são todas classificadas como variáveis móveis.
 
-O quarto `fixed` instrução no exemplo acima produz um resultado semelhante ao terceiro.
+A quarta instrução `fixed` no exemplo acima produz um resultado semelhante ao terceiro.
 
-Este exemplo do `fixed` instrução usa `string`:
+Este exemplo da instrução `fixed` usa `string`:
 
 ```csharp
 class Test
@@ -773,7 +773,7 @@ class Test
 }
 ```
 
-Em um contexto inseguro elementos da matriz de matrizes unidimensionais são armazenados em ordem crescente de índice, começando com o índice `0` e terminando com um índice `Length - 1`. Para matrizes multidimensionais, matriz, de modo que os índices da dimensão mais à direita são aumentados em primeiro lugar, os elementos são armazenados e em seguida, a próxima esquerda dimensão, e assim por diante para a esquerda. Dentro de um `fixed` instrução que obtém um ponteiro `p` a uma instância de matriz `a`, os valores de ponteiro que variam de `p` para `p + a.Length - 1` representam endereços dos elementos na matriz. Da mesma forma, as variáveis desde `p[0]` para `p[a.Length - 1]` representam os elementos da matriz real. Dada a maneira na qual as matrizes são armazenadas, é possível tratar uma matriz de qualquer dimensão como se fosse linear.
+Em um contexto não seguro, os elementos de matrizes unidimensionais são armazenados em ordem de índice crescente, começando com o índice `0` e terminando com o índice `Length - 1`. Para matrizes multidimensionais, os elementos de matriz são armazenados de modo que os índices da dimensão mais à direita sejam aumentados primeiro, depois a dimensão à esquerda e assim por diante à esquerda. Dentro de uma instrução `fixed` que obtém um ponteiro `p` para uma instância de matriz `a`, os valores de ponteiro que variam de `p` a `p + a.Length - 1` representam endereços dos elementos na matriz. Da mesma forma, as variáveis que variam de `p[0]` a `p[a.Length - 1]` representam os elementos reais da matriz. Devido à maneira como as matrizes são armazenadas, podemos tratar uma matriz de qualquer dimensão como se ela fosse linear.
 
 Por exemplo:
 
@@ -803,7 +803,7 @@ class Test
 
 que produz a saída:
 
-```
+```console
 [0,0,0] =  0 [0,0,1] =  1 [0,0,2] =  2 [0,0,3] =  3
 [0,1,0] =  4 [0,1,1] =  5 [0,1,2] =  6 [0,1,3] =  7
 [0,2,0] =  8 [0,2,1] =  9 [0,2,2] = 10 [0,2,3] = 11
@@ -830,7 +830,7 @@ class Test
 }
 ```
 
-um `fixed` instrução é usada para corrigir uma matriz, portanto, seu endereço pode ser passado para um método que usa um ponteiro.
+uma instrução `fixed` é usada para corrigir uma matriz para que seu endereço possa ser passado para um método que usa um ponteiro.
 
 No exemplo:
 
@@ -863,21 +863,21 @@ class Test
 }
 ```
 
-uma instrução fixed é usada para corrigir um buffer de tamanho fixo de um struct para que seu endereço possa ser usado como um ponteiro.
+uma instrução Fixed é usada para corrigir um buffer de tamanho fixo de uma struct para que seu endereço possa ser usado como um ponteiro.
 
-Um `char*` valor produzido por corrigir a uma instância de cadeia de caracteres sempre aponta para uma cadeia de caracteres terminada em nulo. Dentro de uma instrução fixa que obtém um ponteiro `p` a uma instância de cadeia de caracteres `s`, os valores de ponteiro desde `p` ao `p + s.Length - 1` representam endereços dos caracteres na cadeia de caracteres e o valor do ponteiro `p + s.Length` sempre aponta para um caractere nulo (o caractere com valor `'\0'`).
+Um valor `char*` produzido pela correção de uma instância de cadeia de caracteres sempre aponta para uma cadeia de caracteres terminada em nulo. Dentro de uma instrução fixa que obtém um ponteiro `p` a uma instância de cadeia de caracteres `s`, os valores de ponteiro que variam de `p` a `p + s.Length - 1` representam endereços dos caracteres na cadeia de caracteres e o valor do ponteiro `p + s.Length` sempre aponta para um caractere nulo (o caractere com valor `'\0'`).
 
-Modificação de objetos do tipo gerenciado por meio de ponteiros fixos pode resulta em comportamento inesperado. Por exemplo, como cadeias de caracteres são imutáveis, é responsabilidade do programador garantir que os caracteres referenciados por um ponteiro para uma cadeia de caracteres fixa não são modificados.
+Modificar objetos de tipo gerenciado por meio de ponteiros fixos pode resultar em um comportamento indefinido. Por exemplo, como as cadeias de caracteres são imutáveis, é responsabilidade do programador garantir que o caractere referenciado por um ponteiro para uma cadeia de caracteres fixa não seja modificado.
 
-A terminação null automática de cadeias de caracteres é especialmente conveniente ao chamar as APIs externas que esperam cadeias de caracteres "C-style". No entanto, observe que uma instância de cadeia de caracteres pode conter caracteres nulos. Se tais caracteres nulos estão presentes, a cadeia de caracteres apareçam truncada quando tratada como uma terminação nula `char*`.
+A terminação nula automática de cadeias de caracteres é particularmente conveniente ao chamar APIs externas que esperam cadeias de caracteres "estilo C". Observe, no entanto, que uma instância de cadeia de caracteres tem permissão para conter caracteres nulos. Se esses caracteres nulos estiverem presentes, a cadeia de caracteres aparecerá truncada quando tratada como um `char*` terminada em nulo.
 
 ## <a name="fixed-size-buffers"></a>Buffers de tamanho fixo
 
-Buffers de tamanho fixo são usados para declarar matrizes na linha de "Estilo C" como membros de structs e são úteis principalmente para fazer interface com APIs não gerenciadas.
+Buffers de tamanho fixo são usados para declarar matrizes em linha "C style" como membros de structs e são principalmente úteis para a interface com APIs não gerenciadas.
 
 ### <a name="fixed-size-buffer-declarations"></a>Declarações de buffer de tamanho fixo
 
-Um ***buffer de tamanho fixo*** é um membro que representa o armazenamento para um buffer de comprimento fixo de variáveis de um determinado tipo. Uma declaração de buffer de tamanho fixo apresenta um ou mais buffers de tamanho fixo de um tipo de elemento especificado. Buffers de tamanho fixo são permitidos somente em declarações de struct e podem ocorrer somente em contextos não seguros ([contextos não seguros](unsafe-code.md#unsafe-contexts)).
+Um ***buffer de tamanho fixo*** é um membro que representa o armazenamento de um buffer de comprimento fixo de variáveis de um determinado tipo. Uma declaração de buffer de tamanho fixo apresenta um ou mais buffers de tamanho fixo de um determinado tipo de elemento. Buffers de tamanho fixo só são permitidos em declarações struct e só podem ocorrer em contextos não seguros ([contextos não seguros](unsafe-code.md#unsafe-contexts)).
 
 ```antlr
 struct_member_declaration_unsafe
@@ -906,17 +906,17 @@ fixed_size_buffer_declarator
     ;
 ```
 
-Uma declaração de buffer de tamanho fixo pode incluir um conjunto de atributos ([atributos](attributes.md)), um `new` modificador ([modificadores](classes.md#modifiers)), uma combinação válida de as quatro modificadores de acesso ([tipo parâmetros e restrições](classes.md#type-parameters-and-constraints)) e uma `unsafe` modificador ([contextos não seguros](unsafe-code.md#unsafe-contexts)). Os atributos e modificadores se aplicam a todos os membros declarados pela declaração de buffer de tamanho fixo. É um erro para o mesmo modificador aparecer várias vezes em uma declaração de buffer de tamanho fixo.
+Uma declaração de buffer de tamanho fixo pode incluir um conjunto de atributos ([atributos](attributes.md)), um modificador `new` ([modificadores](classes.md#modifiers)), uma combinação válida dos quatro modificadores de acesso ([parâmetros de tipo e restrições](classes.md#type-parameters-and-constraints)) e um modificador de `unsafe` ([não seguro contextos](unsafe-code.md#unsafe-contexts)). Os atributos e os modificadores se aplicam a todos os membros declarados pela declaração de buffer de tamanho fixo. É um erro para que o mesmo modificador apareça várias vezes em uma declaração de buffer de tamanho fixo.
 
-Uma declaração de buffer de tamanho fixo não é permitida para incluir o `static` modificador.
+Uma declaração de buffer de tamanho fixo não tem permissão para incluir o modificador `static`.
 
-O tipo de elemento do buffer de uma declaração de buffer de tamanho fixo Especifica o tipo de elemento do buffer (s) introduzidas pela declaração. O tipo de elemento do buffer deve ser um dos tipos predefinidos `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, ou `bool`.
+O tipo de elemento de buffer de uma declaração de buffer de tamanho fixo especifica o tipo de elemento dos buffers introduzidos pela declaração. O tipo de elemento de buffer deve ser um dos tipos predefinidos `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, 0 ou 1.
 
-O tipo de elemento do buffer é seguido por uma lista de declaradores de buffer de tamanho fixo, cada uma delas apresenta um novo membro. Um Declarador de buffer de tamanho fixo consiste em um identificador que nomeia o membro, seguido por uma expressão constante entre `[` e `]` tokens. A expressão de constante denota o número de elementos no membro introduzidos por esse Declarador de buffer de tamanho fixo. O tipo da expressão constante deve ser implicitamente conversível para o tipo `int`, e o valor deve ser um número inteiro positivo diferente de zero.
+O tipo de elemento buffer é seguido por uma lista de declaradores de buffer de tamanho fixo, e cada um deles introduz um novo membro. Um Declarador de buffer de tamanho fixo consiste em um identificador que nomeia o membro, seguido por uma expressão constante entre os tokens `[` e `]`. A expressão constante denota o número de elementos no membro introduzidos pelo Declarador de buffer de tamanho fixo. O tipo da expressão constante deve ser conversível implicitamente no tipo `int`, e o valor deve ser um inteiro positivo diferente de zero.
 
-Os elementos de um buffer de tamanho fixo têm garantia de ser dispostos sequencialmente na memória.
+Os elementos de um buffer de tamanho fixo têm garantia de serem dispostos em sequência na memória.
 
-Uma declaração de buffer de tamanho fixo que declara vários buffers de tamanho fixo é equivalente a várias declarações de uma declaração de buffer de tamanho fixo único com os mesmos atributos e tipos de elemento. Por exemplo
+Uma declaração de buffer de tamanho fixo que declara vários buffers de tamanho fixo é equivalente a várias declarações de uma única declaração de buffer de tamanho fixo com os mesmos atributos e tipos de elemento. Por exemplo
 
 ```csharp
 unsafe struct A
@@ -938,22 +938,22 @@ unsafe struct A
 
 ### <a name="fixed-size-buffers-in-expressions"></a>Buffers de tamanho fixo em expressões
 
-Pesquisa de membro ([operadores](expressions.md#operators)) de tamanho fixo membro buffer continua exatamente como a pesquisa de membro de um campo.
+A pesquisa de Membros ([operadores](expressions.md#operators)) de um membro de buffer de tamanho fixo prossegue exatamente como a pesquisa de membros de um campo.
 
-Um buffer de tamanho fixo pode ser referenciado em uma expressão que usa um *simple_name* ([inferência](expressions.md#type-inference)) ou uma *member_access* ([verificação de tempo de compilação resolução de sobrecarga dinâmico](expressions.md#compile-time-checking-of-dynamic-overload-resolution)).
+Um buffer de tamanho fixo pode ser referenciado em uma expressão usando um *Simple_name* ([inferência de tipos](expressions.md#type-inference)) ou um *member_access* ([verificação de tempo de compilação de resolução dinâmica de sobrecarga](expressions.md#compile-time-checking-of-dynamic-overload-resolution)).
 
-Quando um membro de buffer de tamanho fixo é referenciado como um nome simples, o efeito é o mesmo que um acesso de membro do formulário `this.I`, onde `I` é o membro de buffer de tamanho fixo.
+Quando um membro de buffer de tamanho fixo é referenciado como um nome simples, o efeito é o mesmo que um membro de acesso do formulário `this.I`, em que `I` é o membro do buffer de tamanho fixo.
 
-Em um acesso de membro do formulário `E.I`, se `E` é de um tipo de struct e uma pesquisa de membro de `I` em que o tipo de struct identifica um membro de tamanho fixo, em seguida, `E.I` é avaliada uma classificados da seguinte maneira:
+Em um acesso de membro do formulário `E.I`, se `E` for de um tipo struct e uma pesquisa de membro de `I` nesse tipo struct identificar um membro de tamanho fixo, `E.I` será avaliado como classificado a seguir:
 
-*  Se a expressão `E.I` não ocorre em um contexto inseguro, ocorre um erro de tempo de compilação.
-*  Se `E` é classificado como um valor, ocorre um erro de tempo de compilação.
-*  Caso contrário, se `E` for uma variável móvel ([fixo e variáveis moveable](unsafe-code.md#fixed-and-moveable-variables)) e a expressão `E.I` não é um *fixed_pointer_initializer* ([fixa instrução](unsafe-code.md#the-fixed-statement)), ocorre um erro de tempo de compilação.
-*  Caso contrário, `E` faz referência a uma variável fixa e o resultado da expressão é um ponteiro para o primeiro elemento do membro de buffer de tamanho fixo `I` em `E`. O resultado é do tipo `S*`, onde `S` é o tipo de elemento de `I`e é classificado como um valor.
+*  Se a expressão `E.I` não ocorrer em um contexto sem segurança, ocorrerá um erro em tempo de compilação.
+*  Se `E` for classificado como um valor, ocorrerá um erro em tempo de compilação.
+*  Caso contrário, se `E` for uma variável móvel ([variáveis fixas e móveis](unsafe-code.md#fixed-and-moveable-variables)) e a expressão `E.I` não for um *fixed_pointer_initializer* ([a instrução fixa](unsafe-code.md#the-fixed-statement)), ocorrerá um erro em tempo de compilação.
+*  Caso contrário, `E` faz referência a uma variável fixa e o resultado da expressão é um ponteiro para o primeiro elemento do membro de buffer de tamanho fixo `I` em `E`. O resultado é do tipo `S*`, em que `S` é o tipo de elemento de `I` e é classificado como um valor.
 
-Os elementos subsequentes do buffer de tamanho fixo podem ser acessados usando operações de ponteiro do primeiro elemento. Ao contrário de acesso a matrizes, o acesso aos elementos de um buffer de tamanho fixo é uma operação não segura e não é verificado de intervalo.
+Os elementos subsequentes do buffer de tamanho fixo podem ser acessados usando operações de ponteiro do primeiro elemento. Ao contrário do acesso a matrizes, o acesso aos elementos de um buffer de tamanho fixo é uma operação não segura e não é verificado.
 
-O exemplo a seguir declara e usa uma estrutura com um membro de buffer de tamanho fixo.
+O exemplo a seguir declara e usa uma struct com um membro de buffer de tamanho fixo.
 
 ```csharp
 unsafe struct Font
@@ -980,15 +980,15 @@ class Test
 }
 ```
 
-### <a name="definite-assignment-checking"></a>Verificando a atribuição definida
+### <a name="definite-assignment-checking"></a>Verificação de atribuição definitiva
 
-Buffers de tamanho fixo não estão sujeitos a verificação de atribuição definitiva ([atribuição definitiva](variables.md#definite-assignment)), e membros de buffer de tamanho fixo são ignorados para fins de verificação de variáveis do tipo struct de atribuição definitiva.
+Os buffers de tamanho fixo não estão sujeitos à verificação de atribuição definitiva ([atribuição definitiva](variables.md#definite-assignment)) e os membros do buffer de tamanho fixo são ignorados para fins de verificação de atribuição definitiva de variáveis de tipo struct.
 
-Quando a variável de estrutura que contém mais externo de um membro de buffer de tamanho fixo é uma variável estática, uma variável de instância de uma instância da classe ou um elemento de matriz, os elementos do buffer de tamanho fixo são inicializados automaticamente para seus valores padrão ([Valores padrão](variables.md#default-values)). Em todos os outros casos, o conteúdo inicial de um buffer de tamanho fixo é indefinido.
+Quando o que contém a variável de struct mais externa de um membro de buffer de tamanho fixo é uma variável estática, uma variável de instância de uma instância de classe ou um elemento de matriz, os elementos do buffer de tamanho fixo são inicializados automaticamente para seus valores padrão ([padrão valores](variables.md#default-values)). Em todos os outros casos, o conteúdo inicial de um buffer de tamanho fixo é indefinido.
 
-## <a name="stack-allocation"></a>Alocação da pilha
+## <a name="stack-allocation"></a>Alocação de pilha
 
-Em um contexto inseguro, uma declaração de variável local ([declarações de variável Local](statements.md#local-variable-declarations)) pode conter um inicializador de alocação de pilha que aloca memória da pilha de chamadas.
+Em um contexto não seguro, uma declaração de variável local ([declarações de variável local](statements.md#local-variable-declarations)) pode incluir um inicializador de alocação de pilha que aloca memória da pilha de chamadas.
 
 ```antlr
 local_variable_initializer_unsafe
@@ -1000,15 +1000,15 @@ stackalloc_initializer
     ;
 ```
 
-O *unmanaged_type* indica o tipo dos itens que serão armazenados no local alocado recentemente, e o *expressão* indica o número desses itens. Juntos, eles especificam o tamanho de alocação necessários. Uma vez que o tamanho de uma alocação de pilha não pode ser negativo, ele é um erro de tempo de compilação para especificar o número de itens como um *constant_expression* que é avaliada como um valor negativo.
+O *unmanaged_type* indica o tipo dos itens que serão armazenados no local alocado recentemente e a *expressão* indica o número desses itens. Em conjunto, eles especificam o tamanho de alocação necessário. Como o tamanho de uma alocação de pilha não pode ser negativo, é um erro de tempo de compilação para especificar o número de itens como um *constant_expression* que é avaliado como um valor negativo.
 
-Um inicializador de alocação da pilha do formulário `stackalloc T[E]` requer `T` para ser um tipo não gerenciado ([tipos de ponteiro](unsafe-code.md#pointer-types)) e `E` como uma expressão do tipo `int`. A construção aloca `E * sizeof(T)` bytes da chamada de pilha e retorna um ponteiro, do tipo `T*`, para o bloco recém-alocada. Se `E` é um valor negativo, em seguida, o comportamento será indefinido. Se `E` for zero, então nenhuma alocação é feita, e o ponteiro retornado é definido pela implementação. Se não houver memória suficiente disponível para alocar um bloco de determinado tamanho, um `System.StackOverflowException` é gerada.
+Um inicializador de alocação de pilha do formulário `stackalloc T[E]` requer que `T` seja um tipo não gerenciado ([tipos de ponteiro](unsafe-code.md#pointer-types)) e `E` seja uma expressão do tipo `int`. A construção aloca `E * sizeof(T)` bytes da pilha de chamadas e retorna um ponteiro, do tipo `T*`, para o bloco recentemente alocado. Se `E` for um valor negativo, o comportamento será indefinido. Se `E` for zero, nenhuma alocação será feita e o ponteiro retornado será definido pela implementação. Se não houver memória suficiente disponível para alocar um bloco de determinado tamanho, um `System.StackOverflowException` será lançado.
 
 O conteúdo da memória recém-alocada é indefinido.
 
-Inicializadores de alocação de pilha não são permitidos em `catch` ou `finally` blocos ([a instrução try](statements.md#the-try-statement)).
+Inicializadores de alocação de pilha não são permitidos em blocos `catch` ou `finally` ([a instrução try](statements.md#the-try-statement)).
 
-Não é possível liberar explicitamente a memória alocada usando `stackalloc`. Todos os blocos de memória alocado por pilha criados durante a execução de um membro da função são descartados automaticamente quando essa função membro retorna. Isso corresponde à `alloca` função, uma extensão geralmente encontrados em implementações de C e C++.
+Não há nenhuma maneira de liberar explicitamente a memória alocada usando `stackalloc`. Todos os blocos de memória alocada na pilha criados durante a execução de um membro de função são automaticamente descartados quando esse membro de função retorna. Isso corresponde à função `alloca`, uma extensão normalmente encontrada em C e C++ implementações.
 
 No exemplo
 
@@ -1038,11 +1038,11 @@ class Test
 }
 ```
 
-uma `stackalloc` inicializador é usado no `IntToString` método alocar um buffer de 16 caracteres na pilha. O buffer é descartado automaticamente quando o método retorna.
+um inicializador `stackalloc` é usado no método `IntToString` para alocar um buffer de 16 caracteres na pilha. O buffer é descartado automaticamente quando o método retorna.
 
 ## <a name="dynamic-memory-allocation"></a>Alocação de memória dinâmica
 
-Exceto para o `stackalloc` operador, c# não fornece construções nenhum predefinidas para gerenciamento de memória de não-lixo coletada. Esses serviços normalmente são fornecidos, oferecendo suporte a bibliotecas de classes ou importados diretamente do sistema operacional subjacente. Por exemplo, o `Memory` classe abaixo ilustra como as funções de heap de um sistema operacional subjacente podem ser acessadas do c#:
+Exceto pelo operador `stackalloc`, C# o não fornece construções predefinidas para gerenciar memória não coletada pelo lixo. Esses serviços normalmente são fornecidos pelo suporte a bibliotecas de classes ou importados diretamente do sistema operacional subjacente. Por exemplo, a classe `Memory` abaixo ilustra como as funções de heap de um sistema operacional subjacente podem ser acessadas de C#:
 
 ```csharp
 using System;
@@ -1120,7 +1120,7 @@ public unsafe class Memory
 }
 ```
 
-Um exemplo que usa o `Memory` classe é fornecido abaixo:
+Um exemplo que usa a classe `Memory` é fornecido abaixo:
 
 ```csharp
 class Test
@@ -1142,4 +1142,4 @@ class Test
 }
 ```
 
-O exemplo aloca 256 bytes de memória por meio de `Memory.Alloc` e inicializa o bloco de memória com valores de aumento de 0 a 255. Em seguida, aloca uma matriz de bytes de 256 elemento e usa `Memory.Copy` para copiar o conteúdo do bloco de memória para a matriz de bytes. Por fim, o bloco de memória é liberado usando `Memory.Free` e o conteúdo da matriz de bytes é a saída no console.
+O exemplo aloca 256 bytes de memória por meio de `Memory.Alloc` e inicializa o bloco de memória com valores que aumentam de 0 a 255. Em seguida, ele aloca uma matriz de bytes do elemento 256 e usa `Memory.Copy` para copiar o conteúdo do bloco de memória para a matriz de bytes. Por fim, o bloco de memória é liberado usando `Memory.Free` e o conteúdo da matriz de bytes é apresentado no console.

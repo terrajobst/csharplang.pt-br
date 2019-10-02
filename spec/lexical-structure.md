@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fbe0267b5b33b1a24dbdca493d118c576092573
-ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.openlocfilehash: 4676bcd3f0a92260b4e5e20a0aa5b5ec00bf204e
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876919"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704065"
 ---
 # <a name="lexical-structure"></a>Estrutura lexical
 
@@ -429,8 +429,8 @@ Como uma questão de estilo, é recomendável que "`L`" seja usado em vez de`l`"
 
 Para permitir que os menores `int` valores `long` e possíveis sejam gravados como literais inteiros decimais, existem as duas seguintes regras:
 
-* Quando um *decimal_integer_literal* com o valor 2147483648 (2 ^ 31) e nenhum *integer_type_suffix* aparece como o token imediatamente após um token do operador menos unário ([operador menos unário](expressions.md#unary-minus-operator)), o resultado é uma constante do tipo `int`com o valor-2147483648 (-2 ^ 31). Em todas as outras situações, tal *decimal_integer_literal* é do tipo `uint`.
-* Quando um *decimal_integer_literal* com o valor 9.223.372.036.854.775.808 (2 ^ 63) e nenhum *integer_type_suffix* ou *integer_type_suffix* `L` ou `l` aparece como o token imediatamente após um sinal de menos unário token do operador ([operador menos unário](expressions.md#unary-minus-operator)), o resultado é uma constante `long` do tipo com o valor-9.223.372.036.854.775.808 (-2 ^ 63). Em todas as outras situações, tal *decimal_integer_literal* é do tipo `ulong`.
+* Quando um *decimal_integer_literal* com o valor 2147483648 (2 ^ 31) e nenhum *integer_type_suffix* aparece como o token imediatamente após um token do operador menos unário ([operador menos unário](expressions.md#unary-minus-operator)), o resultado é uma constante do tipo `int` com o valor-2147483648 (-2 ^ 31). Em todas as outras situações, tal *decimal_integer_literal* é do tipo `uint`.
+* Quando um *decimal_integer_literal* com o valor 9.223.372.036.854.775.808 (2 ^ 63) e nenhum *integer_type_suffix* ou *integer_type_suffix* `L` ou `l` aparece como o token imediatamente após um token do operador menos unário ([ Operador de subtração unário](expressions.md#unary-minus-operator)), o resultado é uma constante do tipo `long` com o valor-9.223.372.036.854.775.808 (-2 ^ 63). Em todas as outras situações, tal *decimal_integer_literal* é do tipo `ulong`.
 
 #### <a name="real-literals"></a>Literais reais
 
@@ -516,7 +516,7 @@ Uma sequência de escape simples representa uma codificação de caractere Unico
 |---------------------|--------------------|----------------------|
 | `\'`                | Aspas simples       | `0x0027`             | 
 | `\"`                | Aspas duplas       | `0x0022`             | 
-| `\\`| Barra invertida |`0x005C`             | 
+| `\\`                | Barra invertida          | `0x005C`             | 
 | `\0`                | Nulo               | `0x0000`             | 
 | `\a`                | Alerta              | `0x0007`             | 
 | `\b`                | Backspace          | `0x0008`             | 
@@ -575,7 +575,7 @@ quote_escape_sequence
     ;
 ```
 
-Um`\`caractere que segue um caractere de barra invertida () em um *regular_string_literal_character* deve ser um dos seguintes `'` `\`caracteres `0`: `"`, `a`,,, `b` , , `f`, `n`, `r`, `t`, `u`, `U`, `x`, `v`. Caso contrário, ocorrerá um erro de tempo de compilação.
+Um caractere que segue um caractere de barra invertida (`\`) em um *regular_string_literal_character* deve ser um dos seguintes caracteres: `'`, `"`, `\`, `0`, `a`, `b`, `f`, `n`, 0, 1, @no__ t-12, 3, 4, 5. Caso contrário, ocorrerá um erro de tempo de compilação.
 
 O exemplo
 ```csharp
@@ -782,7 +782,7 @@ single_verbatim_balanced_text_character
 
 Um token *interpolated_string_literal* é reinterpretado como vários tokens e outros elementos Input da seguinte maneira, em ordem de ocorrência no *interpolated_string_literal*:
 
-* As ocorrências dos seguintes são reinterpretadas como tokens individuais separados: o `$` sinal à esquerda, *interpolated_regular_string_whole*, *interpolated_regular_string_start*, *interpolated_regular_string_mid*, *interpolated_regular_string_end*, *interpolated_verbatim_string_whole*, *interpolated_verbatim_string_start*, *interpolated_verbatim_string_mid* e *interpolated_verbatim_string_end*.
+* As ocorrências dos seguintes são reinterpretadas como tokens individuais separados: o sinal `$` à esquerda, *interpolated_regular_string_whole*, *interpolated_regular_string_start*, *interpolated_regular_string_mid*,  *interpolated_regular_string_end*, *interpolated_verbatim_string_whole*, *interpolated_verbatim_string_start*, *interpolated_verbatim_string_mid* e *interpolated_verbatim_string_end*.
 * Ocorrências de *regular_balanced_text* e *verbatim_balanced_text* entre elas são reprocessadas como um *input_section* ([análise lexical](lexical-structure.md#lexical-analysis)) e são reinterpretadas como a sequência resultante de elementos de entrada. Isso pode, por sua vez, incluir tokens literais de cadeia de caracteres interpolados a serem reinterpretados.
 
 A análise sintática recombinará os tokens em um *interpolated_string_expression* ([cadeias de caracteres interpoladas](expressions.md#interpolated-strings)).
@@ -1054,13 +1054,13 @@ Conforme indicado pela sintaxe, as diretivas de compilação condicional devem s
 
 Um *pp_conditional* seleciona no máximo um dos *conditional_section*s independentes para processamento lexical normal:
 
-*  As *pp_expression*s das `#if` diretivas e `#elif` são `true`avaliadas na ordem até que um resulte. Se uma expressão produz `true`, o *conditional_section* da diretiva correspondente é selecionado.
-*  Se todos os *pp_expression*s `false`produzirem e se `#else` uma diretiva `#else` estiver presente, o *conditional_section* da diretiva será selecionado.
+*  As *pp_expression*s das diretivas `#if` e `#elif` são avaliadas na ordem até que uma gere `true`. Se uma expressão produz `true`, o *conditional_section* da diretiva correspondente é selecionado.
+*  Se todos os *pp_expression*de s produzirem `false` e se uma diretiva `#else` estiver presente, o *conditional_section* da diretiva `#else` será selecionado.
 *  Caso contrário, nenhum *conditional_section* será selecionado.
 
 O *conditional_section*selecionado, se houver, é processado como um *input_section*normal: o código-fonte contido na seção deve aderir à gramática léxica; os tokens são gerados a partir do código-fonte na seção; e as diretivas de pré-processamento na seção têm os efeitos prescritos.
 
-Os *conditional_section*s restantes, se houver, são processados como *skipped_section*s: exceto pelas diretivas de pré-processamento, o código-fonte na seção não precisa aderir à gramática léxica; nenhum token é gerado a partir do código-fonte na seção; e as diretivas de pré-processamento na seção devem estar lexicalmente corretas, mas não são processadas de outra forma. Em um *conditional_section* que está sendo processado como um *skipped_section*, qualquer *conditional_section*aninhado (contido em aninhado `#if`... `#endif` e`#region`... construções) também são processadas como *skipped_section s.* `#endregion`
+Os *conditional_section*s restantes, se houver, são processados como *skipped_section*s: exceto pelas diretivas de pré-processamento, o código-fonte na seção não precisa aderir à gramática léxica; nenhum token é gerado a partir do código-fonte na seção; e as diretivas de pré-processamento na seção devem estar lexicalmente corretas, mas não são processadas de outra forma. Em um *conditional_section* que está sendo processado como um *skipped_section*, todos os *conditional_section*aninhados (contidos nas construções aninhadas `#if`... `#endif` e `#region`... `#endregion`) também são processados como *skipped_ seção*s.
 
 O exemplo a seguir ilustra como as diretivas de compilação condicional podem ser aninhadas:
 ```csharp
@@ -1115,7 +1115,7 @@ class Hello
 }
 ```
 resulta na saída:
-```
+```console
 hello,
 #if Debug
         world
@@ -1180,7 +1180,7 @@ pp_end_region
     ;
 ```
 
-Nenhum significado semântico é anexado a uma região; as regiões são destinadas ao uso pelo programador ou por ferramentas automatizadas para marcar uma seção do código-fonte. A mensagem especificada em uma `#region` diretiva `#endregion` ou, da mesma forma, não tem significado semântico; ela simplesmente serve para identificar a região. A `#region` correspondência `#endregion` e as diretivas podem ter *pp_message*s diferentes.
+Nenhum significado semântico é anexado a uma região; as regiões são destinadas ao uso pelo programador ou por ferramentas automatizadas para marcar uma seção do código-fonte. A mensagem especificada em uma `#region` diretiva `#endregion` ou, da mesma forma, não tem significado semântico; ela simplesmente serve para identificar a região. As diretivas `#region` e `#endregion` correspondentes podem ter *pp_message*s diferentes.
 
 O processamento lexical de uma região:
 ```csharp
@@ -1222,13 +1222,13 @@ file_name_character
     ;
 ```
 
-Quando não `#line` há diretivas presentes, o compilador relata os números de linha verdadeiros e os nomes de arquivo de origem em sua saída. Ao processar uma `#line` diretiva que inclui um *line_indicator* que não `default`é, o compilador trata a linha após a diretiva como tendo o número de linha fornecido (e o nome do arquivo, se especificado).
+Quando não `#line` há diretivas presentes, o compilador relata os números de linha verdadeiros e os nomes de arquivo de origem em sua saída. Ao processar uma diretiva `#line` que inclui um *line_indicator* que não é `default`, o compilador trata a linha após a diretiva como tendo o número de linha fornecido (e o nome do arquivo, se especificado).
 
 Uma `#line default` diretiva reverte o efeito de todas as diretivas de #line anteriores. O compilador relata informações de linha verdadeiras para linhas subsequentes, precisamente como `#line` se nenhuma das diretivas tivesse sido processada.
 
 Uma `#line hidden` diretiva não tem efeito sobre o arquivo e os números de linha relatados em mensagens de erro, mas afeta a depuração de nível de origem. Durante a depuração, todas as linhas `#line hidden` entre uma diretiva e `#line` a diretiva subsequente (que `#line hidden`não é) não têm nenhuma informação de número de linha. Ao percorrer o código no depurador, essas linhas serão ignoradas inteiramente.
 
-Observe que um *file_name* é diferente de um literal de cadeia de caracteres regular, pois os caracteres de escape não são processados; o caractere`\`"" simplesmente designa um caractere de barra invertida comum em um *nome_do_arquivo*.
+Observe que um *file_name* é diferente de um literal de cadeia de caracteres regular, pois os caracteres de escape não são processados; o caractere "`\`" simplesmente designa um caractere de barra invertida comum em um *nome_do_arquivo*.
 
 ### <a name="pragma-directives"></a>Diretivas pragma
 

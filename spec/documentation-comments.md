@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: adf81842e3c763c7bbdd3f10bb884dc1207b9099
-ms.sourcegitcommit: 0489cb64b7dfb328813d757f4d447a15b85a5851
+ms.openlocfilehash: 2026fc1bf9d3576b967cbc2e9a670aa44b7eab3a
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70912433"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704019"
 ---
 # <a name="documentation-comments"></a>Comentários de documentação
 
@@ -28,7 +28,7 @@ delimited_doc_comment
     ;
 ```
 
-Em um *single_line_doc_comment*, se houver um caractere de *espaço* em branco `///` após os caracteres em cada um dos *single_line_doc_comments*adjacentes ao *single_line_doc_comment*atual, issoo caractere de espaço em branco não está incluído na saída XML.
+Em um *single_line_doc_comment*, se houver um caractere de *espaço em branco* após o `///` caracteres em cada um dos *single_line_doc_comments*adjacentes ao *single_line_doc_comment*atual, esse espaço em *branco* o caractere não está incluído na saída XML.
 
 Em um delimitado-doc-Comment, se o primeiro caractere que não seja espaço em branco na segunda linha for um asterisco e o mesmo padrão de caracteres de espaço em branco opcionais e um caractere de asterisco for repetido no início de cada linha dentro do comentário delimitado-doc-Comment, em seguida, os caracteres do padrão repetido não são incluídos na saída XML. O padrão pode incluir caracteres de espaço em branco após, bem como antes, o caractere de asterisco.
 
@@ -186,7 +186,7 @@ Essa marca permite incluir informações de um documento XML externo ao arquivo 
 
 __Sintaxe__
 
-```
+```xml
 <include file="filename" path="xpath" />
 ```
 

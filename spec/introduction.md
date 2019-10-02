@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 8bc4bf6310fb8a8457beee167f18d30aaca10a8e
-ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.openlocfilehash: 300d5fc2a2fadd98472d73c122226146605b01dd
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876907"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703990"
 ---
 # <a name="introduction"></a>Introdução
 
@@ -36,11 +36,11 @@ class Hello
 ```
 
 Os arquivos de origem em C# normalmente têm a extensão de arquivo `.cs`. Supondo que o programa "Olá, mundo" esteja armazenado no arquivo `hello.cs`, o programa pode ser compilado com o compilador C# da Microsoft usando a linha de comando
-```
+```console
 csc hello.cs
 ```
 que produz um assembly executável chamado `hello.exe`. A saída produzida por este aplicativo quando é executada é
-```
+```console
 Hello, World
 ```
 
@@ -91,7 +91,7 @@ namespace Acme.Collections
 ```
 declara uma classe chamada `Stack` em um namespace chamado. `Acme.Collections` O nome totalmente qualificado dessa classe é `Acme.Collections.Stack`. A classe contém vários membros: um campo chamado `top`, dois métodos chamados `Push` e `Pop` e uma classe aninhada chamada `Entry`. A classe `Entry` ainda contém três membros: um campo chamado `next`, um campo chamado `data`e um construtor. Supondo que o código-fonte do exemplo seja armazenado no arquivo `acme.cs`, a linha de comando
 
-```
+```console
 csc /t:library acme.cs
 ```
 compila o exemplo como uma biblioteca (o código sem um ponto de entrada `Main`) e produz um assembly denominado `acme.dll`.
@@ -119,12 +119,12 @@ class Test
 ```
 Se o programa estiver `test.cs`armazenado no arquivo, quando `test.cs` for compilado, o `acme.dll` assembly poderá ser referenciado usando a opção do `/r` compilador:
 
-```
+```console
 csc /r:acme.dll test.cs
 ```
 Isso cria um assembly executável denominado `test.exe`, que, quando executado, produz a saída:
 
-```
+```console
 100
 10
 1
@@ -277,12 +277,12 @@ A tabela a seguir resume C#os operadores, listando as categorias de operador em 
 |                                  | `x >> y`          | Shift direito |
 | Teste de tipo e relacional      | `x < y`           | Menor que |
 |                                  | `x > y`           | Maior que |
-|                                  | `x <= y`          | Menor que ou igual a |
+|                                  | `x <= y`          | Menor ou igual a |
 |                                  | `x >= y`          | Maior que ou igual a |
 |                                  | `x is T`          | Retorna `true` se `x` for um `T`, caso contrário, `false` |
 |                                  | `x as T`          | Retorna `x` digitado como `T` ou `null`, se `x` não for um `T` |
-| Igualdade                         | `x == y`          | Igual      |
-|                                  | `x != y`          | Não é igual a |
+| Igualdade                         | `x == y`          | Igual a      |
+|                                  | `x != y`          | Diferente de |
 | AND lógico                      | `x & y`           | AND bit a bit inteiro, AND lógico booliano |
 | XOR lógico                      | `x ^ y`           | XOR bit a bit inteiro, XOR lógico booliano |
 | OR lógico                       | <code>x &#124; y</code> | OR bit a bit inteiro, OR lógico booliano |
