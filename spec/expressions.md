@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: f61039abd6bd557ac0ea625e6aac1c8bafa57b02
-ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
+ms.sourcegitcommit: e134bb7058e9848120b93b345f96d6ac0cb8c815
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 01/17/2020
 ms.locfileid: "71704084"
 ---
 # <a name="expressions"></a>{1&gt;Expressões&lt;1}
@@ -124,7 +124,7 @@ A tabela a seguir resume todos os operadores em ordem de precedência do mais al
 
 | __Section__                                                                                   | __Categoria__                | __Operadores__ | 
 |-----------------------------------------------------------------------------------------------|-----------------------------|---------------|
-| [Expressões primárias](expressions.md#primary-expressions)                                     | Primária                     | `x.y`  `f(x)`  `a[x]`  `x++`  `x--`  `new`  `typeof`  `default`  `checked`  `unchecked`  `delegate` | 
+| [Expressões primárias](expressions.md#primary-expressions)                                     | Primary                     | `x.y`  `f(x)`  `a[x]`  `x++`  `x--`  `new`  `typeof`  `default`  `checked`  `unchecked`  `delegate` | 
 | [Operadores unários](expressions.md#unary-operators)                                             | Unário                       | `+`  `-`  `!`  `~`  `++x`  `--x`  `(T)x` | 
 | [Operadores aritméticos](expressions.md#arithmetic-operators)                                   | Multiplicativo              | `*`  `/`  `%` | 
 | [Operadores aritméticos](expressions.md#arithmetic-operators)                                   | Aditivo                    | `+`  `-`      | 
@@ -351,7 +351,7 @@ Membros de função são membros que contêm instruções Executáveis. Membros 
 
 *  {1&gt;Métodos&lt;1}
 *  {1&gt;Propriedades&lt;1}
-*  Eventos
+*  Events
 *  Indexadores
 *  Operadores definidos pelo usuário
 *  Construtores de instância
@@ -1886,7 +1886,7 @@ O resultado da avaliação de uma expressão de criação de matriz é classific
 *  Todos os elementos da nova instância de matriz são inicializados para seus valores padrão ([valores padrão](variables.md#default-values)).
 *  Se a expressão de criação de matriz contiver um inicializador de matriz, cada expressão no inicializador de matriz será avaliada e atribuída ao elemento de matriz correspondente. As avaliações e as atribuições são executadas na ordem em que as expressões são gravadas no inicializador de matriz – em outras palavras, os elementos são inicializados em ordem de índice crescente, com a dimensão mais à direita aumentando primeiro. Se a avaliação de uma determinada expressão ou a atribuição subsequente ao elemento de matriz correspondente causar uma exceção, nenhum elemento adicional será inicializado (e os elementos restantes terão, portanto, seus valores padrão).
 
-Uma expressão de criação de matriz permite instanciação de uma matriz com elementos de um tipo de matriz, mas os elementos de tal matriz devem ser inicializados manualmente. Por exemplo, a instrução
+Uma expressão de criação de matriz permite instanciação de uma matriz com elementos de um tipo de matriz, mas os elementos de tal matriz devem ser inicializados manualmente. Por exemplo, a instrução:
 ```csharp
 int[][] a = new int[100][];
 ```
@@ -2708,9 +2708,9 @@ Os operadores de multiplicação predefinidos estão listados abaixo. Todos os o
 
    |      |      |      |     |     |      |      |     |
    |:----:|-----:|:----:|:---:|:---:|:----:|:----:|:----|
-   |      | \+ y   | -y   | +0  | -0  | +inf | -inf | {1&gt;NaN&lt;1} | 
+   |      | +y   | -y   | +0  | -0  | +inf | -inf | {1&gt;NaN&lt;1} | 
    | {1&gt;+&lt;1}x   | +z   | -z   | +0  | -0  | +inf | -inf | {1&gt;NaN&lt;1} | 
-   | {1&gt;-&lt;1}x   | -z   | +z   | -0  | +0  | -inf | +inf | {1&gt;NaN&lt;1} | 
+   | -x   | -z   | +z   | -0  | +0  | -inf | +inf | {1&gt;NaN&lt;1} | 
    | +0   | +0   | -0   | +0  | -0  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
    | -0   | -0   | +0   | -0  | +0  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
    | +inf | +inf | -inf | {1&gt;NaN&lt;1} | {1&gt;NaN&lt;1} | +inf | -inf | {1&gt;NaN&lt;1} | 
@@ -2760,9 +2760,9 @@ Os operadores de divisão predefinidos estão listados abaixo. Todos os operador
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | \+ y   | -y   | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
+   |      | +y   | -y   | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
    | {1&gt;+&lt;1}x   | +z   | -z   | +inf | -inf | +0   | -0   | {1&gt;NaN&lt;1}  | 
-   | {1&gt;-&lt;1}x   | -z   | +z   | -inf | +inf | -0   | +0   | {1&gt;NaN&lt;1}  | 
+   | -x   | -z   | +z   | -inf | +inf | -0   | +0   | {1&gt;NaN&lt;1}  | 
    | +0   | +0   | -0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | +0   | -0   | {1&gt;NaN&lt;1}  | 
    | -0   | -0   | +0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | -0   | +0   | {1&gt;NaN&lt;1}  | 
    | +inf | +inf | -inf | +inf | -inf | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
@@ -2810,9 +2810,9 @@ Os operadores restantes predefinidos estão listados abaixo. Todos os operadores
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | \+ y   | -y   | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
+   |      | +y   | -y   | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
    | {1&gt;+&lt;1}x   | +z   | +z   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | x    | x    | {1&gt;NaN&lt;1}  | 
-   | {1&gt;-&lt;1}x   | -z   | -z   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;-&lt;1}x   | {1&gt;-&lt;1}x   | {1&gt;NaN&lt;1}  | 
+   | -x   | -z   | -z   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | -x   | -x   | {1&gt;NaN&lt;1}  | 
    | +0   | +0   | +0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | +0   | +0   | {1&gt;NaN&lt;1}  | 
    | -0   | -0   | -0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | -0   | -0   | {1&gt;NaN&lt;1}  | 
    | +inf | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
@@ -2859,7 +2859,7 @@ Os operadores de adição predefinidos são listados abaixo. Para tipos numéric
    |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|
    |      | {1&gt;y&lt;1}    | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
-   | x    | z    | x    | x    | +inf | -inf | {1&gt;NaN&lt;1}  | 
+   | x    | {1&gt;de&lt;1}    | x    | x    | +inf | -inf | {1&gt;NaN&lt;1}  | 
    | +0   | {1&gt;y&lt;1}    | +0   | +0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
    | -0   | {1&gt;y&lt;1}    | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1}  | 
    | +inf | +inf | +inf | +inf | +inf | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
@@ -2952,7 +2952,7 @@ Os operadores de subtração predefinidos estão listados abaixo. Os operadores 
    |      |      |      |      |      |      |     |
    |:----:|:----:|:----:|:----:|:----:|:----:|:---:|
    |      | {1&gt;y&lt;1}    | +0   | -0   | +inf | -inf | {1&gt;NaN&lt;1} | 
-   | x    | z    | x    | x    | -inf | +inf | {1&gt;NaN&lt;1} | 
+   | x    | {1&gt;de&lt;1}    | x    | x    | -inf | +inf | {1&gt;NaN&lt;1} | 
    | +0   | -y   | +0   | +0   | -inf | +inf | {1&gt;NaN&lt;1} | 
    | -0   | -y   | -0   | +0   | -inf | +inf | {1&gt;NaN&lt;1} | 
    | +inf | +inf | +inf | +inf | {1&gt;NaN&lt;1}  | +inf | {1&gt;NaN&lt;1} | 
@@ -3546,7 +3546,7 @@ Os operadores `&&` e `||` são versões condicionais dos operadores `&` e `|`:
 
 Se um operando de um operador lógico condicional tiver o tipo de tempo de compilação `dynamic`, a expressão será vinculada dinamicamente ([associação dinâmica](expressions.md#dynamic-binding)). Nesse caso, o tipo de tempo de compilação da expressão é `dynamic`e a resolução descrita abaixo ocorrerá em tempo de execução usando o tipo de tempo de execução desses operandos que têm o tipo de tempo de compilação `dynamic`.
 
-Uma operação do formulário `x && y` ou `x || y` é processada pela aplicação da resolução de sobrecarga ([resolução de sobrecarga do operador binário](expressions.md#binary-operator-overload-resolution)) como se a operação fosse gravada `x & y` ou `x | y`. Clique
+Uma operação do formulário `x && y` ou `x || y` é processada pela aplicação da resolução de sobrecarga ([resolução de sobrecarga do operador binário](expressions.md#binary-operator-overload-resolution)) como se a operação fosse gravada `x & y` ou `x | y`. E, em seguida,
 
 *  Se a resolução de sobrecarga não encontrar um único operador melhor, ou se a resolução de sobrecarga selecionar um dos operadores lógicos inteiros predefinidos, ocorrerá um erro de tempo de associação.
 *  Caso contrário, se o operador selecionado for um dos operadores lógicos boolianos predefinidos ([operadores lógicos boolianos](expressions.md#boolean-logical-operators)) ou operadores lógicos boolianos anuláveis ([operadores lógicos boolianos anuláveis](expressions.md#nullable-boolean-logical-operators)), a operação será processada conforme descrito em [operadores lógicos condicionais boolianos](expressions.md#boolean-conditional-logical-operators).
@@ -3913,7 +3913,7 @@ static D[] F() {
     return result;
 }
 ```
-a saída é:
+a saída será:
 ```console
 5
 5
@@ -4724,7 +4724,7 @@ struct Rectangle
     }
 }
 ```
-No exemplo
+no exemplo
 ```csharp
 Point p = new Point();
 p.X = 100;
@@ -4747,7 +4747,7 @@ as atribuições são todas inválidas, pois `r.A` e `r.B` não são variáveis.
 
 Se o operando esquerdo de uma atribuição composta estiver no formato `E.P` ou `E[Ei]` em que `E` tem o tipo de tempo de compilação `dynamic`, a atribuição será vinculada dinamicamente ([associação dinâmica](expressions.md#dynamic-binding)). Nesse caso, o tipo de tempo de compilação da expressão de atribuição é `dynamic`e a resolução descrita abaixo ocorrerá em tempo de execução com base no tipo de tempo de execução de `E`.
 
-Uma operação do formulário `x op= y` é processada pela aplicação da resolução de sobrecarga do operador binário ([resolução de sobrecarga do operador binário](expressions.md#binary-operator-overload-resolution)) como se a operação fosse gravada `x op y`. Clique
+Uma operação do formulário `x op= y` é processada pela aplicação da resolução de sobrecarga do operador binário ([resolução de sobrecarga do operador binário](expressions.md#binary-operator-overload-resolution)) como se a operação fosse gravada `x op y`. E, em seguida,
 
 *  Se o tipo de retorno do operador selecionado for implicitamente conversível para o tipo de `x`, a operação será avaliada como `x = x op y`, exceto que `x` é avaliada apenas uma vez.
 *  Caso contrário, se o operador selecionado for um operador predefinido, se o tipo de retorno do operador selecionado for explicitamente conversível para o tipo de `x`, e se `y` for implicitamente conversível no tipo de `x` ou se o operador for um operador de deslocamento, a operação será avaliada como `x = (T)(x op y)`, em que `T` é o tipo de `x`, exceto que `x` é avaliado apenas uma vez.
@@ -4869,7 +4869,7 @@ Expressões constantes ocorrem nos contextos listados abaixo. Nesses contextos, 
 
 Uma conversão de expressão constante implícita ([conversões de expressão de constante implícita](conversions.md#implicit-constant-expression-conversions)) permite que uma expressão constante do tipo `int` seja convertida em `sbyte`, `byte`, `short`, `ushort`, `uint`ou `ulong`, desde que o valor da expressão constante esteja dentro do intervalo do tipo de destino.
 
-## <a name="boolean-expressions"></a>expressões Boolianas
+## <a name="boolean-expressions"></a>expressões boolianas
 
 Uma *Boolean_expression* é uma expressão que produz um resultado do tipo `bool`; diretamente ou por meio da aplicação de `operator true` em determinados contextos, conforme especificado no seguinte.
 
