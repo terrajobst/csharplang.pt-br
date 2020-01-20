@@ -6,7 +6,7 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 01/17/2020
 ms.locfileid: "71704084"
 ---
-# <a name="expressions"></a>{1&gt;Expressões&lt;1}
+# <a name="expressions"></a>Expressões
 
 Uma expressão é uma sequência de operadores e operandos. Este capítulo define a sintaxe, a ordem de avaliação de operandos e operadores e o significado de expressões.
 
