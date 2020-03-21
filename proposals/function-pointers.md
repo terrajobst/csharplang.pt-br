@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d9080202f9413f8beb80db222d47f5fc082ae641
-ms.sourcegitcommit: f3170512e7a3193efbcea52ec330648375e36915
+ms.openlocfilehash: 8bf3a18dc42e225e64bd3ccda2106aed89b421ed
+ms.sourcegitcommit: 9aa177443b83116fe1be2ab28e2c7291947fe32d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79485500"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108383"
 ---
 # <a name="function-pointers"></a>Ponteiros de função
 
@@ -174,7 +174,8 @@ Em um contexto sem segurança, um método `M` é compatível com um tipo de pont
 Em um contexto não seguro, existe uma conversão implícita de uma expressão de endereço cujo destino é um grupo de métodos `E` a um tipo de ponteiro de função compatível `F` se `E` contiver pelo menos um método aplicável em seu formato normal a uma lista de argumentos construída pelo uso dos tipos de parâmetro e modificadores de `F`, conforme descrito no seguinte.
 - Um único método `M` é selecionado correspondente a uma invocação de método do formulário `E(A)` com as seguintes modificações:
    - A lista de argumentos `A` é uma lista de expressões, cada uma classificada como uma variável e com o tipo e o modificador (`ref`, `out`ou `in`) do _parâmetro\_formal correspondente\_lista_ de `D`.
-   - Os métodos candidatos são apenas aqueles métodos que são aplicáveis em seu formato normal, não aqueles aplicáveis em sua forma expandida.
+   - Os métodos candidatos são apenas os métodos que são aplicáveis em seu formato normal, não aqueles aplicáveis em sua forma expandida.
+   - Os métodos candidatos são apenas os métodos que são estáticos.
 - Se o algoritmo das invocações de método produzir um erro, ocorrerá um erro de tempo de compilação. Caso contrário, o algoritmo produz um único método melhor `M` ter o mesmo número de parâmetros que `F` e a conversão é considerada como existe.
 - O método selecionado `M` deve ser compatível (conforme definido acima) com o tipo de ponteiro de função `F`. Caso contrário, ocorrerá um erro de tempo de compilação.
 - O resultado da conversão é um ponteiro de função do tipo `F`.
