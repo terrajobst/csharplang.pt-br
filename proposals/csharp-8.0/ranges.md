@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d6519ff57b4a98c4eec8ccbf310303432ac3255e
-ms.sourcegitcommit: 65ea1e6dc02853e37e7f2088e2b6cc08d01d1044
+ms.openlocfilehash: 50f2bd2d0a84064cfe35fe65b9e5c59c052d19ac
+ms.sourcegitcommit: 1dbb8e82bed5012a58a3a035bf2c3737ed570d07
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "79485024"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80122944"
 ---
 # <a name="ranges"></a>Intervalos
 
@@ -100,7 +100,7 @@ C#Não tem uma forma sintática de acessar "intervalos" ou "fatias" de coleçõe
 
 A linguagem introduzirá um novo operador Range `x..y`. É um operador binário infixo que aceita duas expressões. Ambos os operandos podem ser omitidos (exemplos abaixo) e devem ser conversíveis para `System.Index`. Ele será reduzido para a chamada de método de fábrica de `System.Range` apropriada.
 
--Substituimos as C# regras de gramática por *multiplicative_expression* pelo seguinte (para introduzir um novo nível de precedência):
+Substituimos as C# regras de gramática por *multiplicative_expression* pelo seguinte (para introduzir um novo nível de precedência):
 
 ```antlr
 range_expression
@@ -149,7 +149,7 @@ O idioma fornecerá um membro do indexador de instância com um único parâmetr
 
 Um tipo é ***contável*** se tiver uma propriedade chamada `Length` ou `Count` com um getter acessível e um tipo de retorno de `int`. O idioma pode fazer uso dessa propriedade para converter uma expressão do tipo `Index` em um `int` no ponto da expressão sem a necessidade de usar o tipo `Index` de forma alguma. Caso ambas `Length` e `Count` estejam presentes, `Length` será preferível. Para simplificar o futuro, a proposta usará o nome `Length` para representar `Count` ou `Length`.
 
-Para esses tipos, a linguagem funcionará como se houver um membro de índice do formulário `T this[Index index]` em que `T` é o tipo de retorno do indexador baseado em `int`, incluindo quaisquer anotações de estilo `ref`. O novo membro terá o mesmo `get` e `set` Membros com a acessibilidade correspondente como o indexador de `int`. 
+Para esses tipos, a linguagem agirá como se houver um membro do indexador no formato `T this[Index index]` em que `T` é o tipo de retorno do indexador baseado em `int`, incluindo quaisquer anotações de estilo `ref`. O novo membro terá o mesmo `get` e `set` Membros com a acessibilidade correspondente como o indexador de `int`. 
 
 O novo indexador será implementado convertendo o argumento do tipo `Index` em um `int` e emitindo uma chamada para o indexador baseado em `int`. Para fins de discussão, vamos usar o exemplo de `receiver[expr]`. A conversão de `expr` para `int` ocorrerá da seguinte maneira:
 
@@ -205,11 +205,11 @@ O idioma fornecerá um membro do indexador de instância com um único parâmetr
 - O tipo tem um membro acessível chamado `Slice` que tem dois parâmetros do tipo `int`.
 - O tipo não tem um indexador de instância que usa um único `Range` como o primeiro parâmetro. O `Range` deve ser o único parâmetro ou os parâmetros restantes devem ser opcionais.
 
-Para esses tipos, a linguagem será vinculada como se houver um membro de índice do formulário `T this[Range range]` em que `T` é o tipo de retorno do método `Slice`, incluindo quaisquer anotações de estilo `ref`. O novo membro também terá a acessibilidade correspondente com o `Slice`. 
+Para esses tipos, a linguagem será vinculada como se houver um membro do indexador no formato `T this[Range range]` em que `T` é o tipo de retorno do método `Slice`, incluindo quaisquer anotações de estilo `ref`. O novo membro também terá a acessibilidade correspondente com o `Slice`. 
 
 Quando o indexador baseado em `Range` está associado em uma expressão chamada `receiver`, ele será reduzido convertendo a expressão `Range` em dois valores que são passados para o método `Slice`. Para fins de discussão, vamos usar o exemplo de `receiver[expr]`.
 
-O primeiro argumento de `Slice` será obtido convertendo a expressão tipada da seguinte maneira:
+O primeiro argumento de `Slice` será obtido convertendo a expressão com tipo de intervalo da seguinte maneira:
 
 - Quando `expr` estiver no formato `expr1..expr2` (onde `expr2` pode ser omitido) e `expr1` tiver o tipo `int`, ele será emitido como `expr1`.
 - Quando `expr` estiver no formato `^expr1..expr2` (onde `expr2` pode ser omitido), ele será emitido como `receiver.Length - expr1`.
@@ -223,7 +223,7 @@ Esse valor será reutilizado no cálculo do segundo argumento `Slice`. Ao fazer 
 - Quando `expr` estiver no formato `expr1..` (onde `expr1` pode ser omitido), ele será emitido como `receiver.Length - start`.
 - Caso contrário, ele será emitido como `expr.End.GetOffset(receiver.Length) - start`.
 
-As expressões `receiver`, `Length` e `expr` serão despejadas conforme apropriado para garantir que os efeitos colaterais sejam executados apenas uma vez. Por exemplo:
+As expressões `receiver`, `Length`e `expr` serão despejadas conforme apropriado para garantir que os efeitos colaterais sejam executados apenas uma vez. Por exemplo:
 
 ``` csharp
 class Collection {
