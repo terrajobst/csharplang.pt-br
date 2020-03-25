@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 38740069a2e105f920fa275c443f4560055e2901
-ms.sourcegitcommit: 9aa177443b83116fe1be2ab28e2c7291947fe32d
+ms.openlocfilehash: 07b4afe4a3fcbf10c978f05e642dfd8a47d53ea5
+ms.sourcegitcommit: 194a043db72b9244f8db45db326cc82de6cec965
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80108358"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80217197"
 ---
 
 # <a name="target-typed-new-expressions"></a>Expressões de `new` de tipo de destino
@@ -80,35 +80,36 @@ Action a = new(() => {}); // "new" is redundant
 
 (int a, int b) t = new(); // ruled out by "use of struct default constructor"
 Action a = new(); // no constructor found
+```
 
-### Miscellaneous
+### <a name="miscellaneous"></a>Diversos
 
-`throw new()` is disallowed.
+`throw new()` não é permitido.
 
-Target-typed `new` is not allowed with binary operators.
+O `new` de tipo de destino não é permitido com operadores binários.
 
-It is disallowed when there is no type to target: unary operators, collection of a `foreach`, in a `using`, in a deconstruction, in an `await` expression, as an anonymous type property (`new { Prop = new() }`), in a `lock` statement, in a `sizeof`, in a `fixed` statement, in a member access (`new().field`), in a dynamically dispatched operation (`someDynamic.Method(new())`), in a LINQ query, as the operand of the `is` operator, as the left operand of the `??` operator,  ...
+Não é permitido quando não há tipo para destino: operadores unários, coleção de um `foreach`, em uma `using`, em uma deconstrução, em uma expressão `await`, como uma propriedade de tipo anônimo (`new { Prop = new() }`), em uma instrução `lock`, em uma `sizeof`, em uma instrução `fixed`, em um acesso de membro (`new().field`), em uma operação expedida dinamicamente (`someDynamic.Method(new())`), em uma consulta LINQ, como o operando do operador `is`, como operando esquerdo do operador `??` ,  ...
 
-It is also disallowed as a `ref`.
+Ele também não é permitido como um `ref`.
 
-## Drawbacks
+## <a name="drawbacks"></a>Desvantagens
 [drawbacks]: #drawbacks
 
-There were some concerns with target-typed `new` creating new categories of breaking changes, but we already have that with `null` and `default`, and that has not been a significant problem.
+Houve algumas preocupações com o tipo de destino `new` criar novas categorias de alterações significativas, mas já temos isso com `null` e `default`, e isso não foi um problema significativo.
 
-## Alternatives
+## <a name="alternatives"></a>Alternativas
 [alternatives]: #alternatives
 
-Most of complaints about types being too long to duplicate in field initialization is about *type arguments* not the type itself, we could infer only type arguments like `new Dictionary(...)` (or similar) and infer type arguments locally from arguments or the collection initializer.
+A maioria das reclamações sobre os tipos muito longos para duplicar na inicialização de campo é sobre os *argumentos de tipo* , não o tipo em si, poderíamos inferir apenas argumentos de tipo como `new Dictionary(...)` (ou semelhantes) e inferir argumentos de tipo localmente a partir de argumentos ou o inicializador de coleção.
 
-## Questions
+## <a name="questions"></a>Perguntas
 [questions]: #questions
 
-- Should we forbid usages in expression trees? (no)
-- How the feature interacts with `dynamic` arguments? (no special treatment)
-- How IntelliSense should work with `new()`? (only when there is a single target-type)
+- Devemos proibir usos em árvores de expressão? foi
+- Como o recurso interage com `dynamic` argumentos? (sem tratamento especial)
+- Como o IntelliSense deve funcionar com `new()`? (somente quando há um único tipo de destino)
 
-## Design meetings
+## <a name="design-meetings"></a>Criar reuniões
 
 - [LDM-2017-10-18](https://github.com/dotnet/csharplang/blob/master/meetings/2017/LDM-2017-10-18.md#100)
 - [LDM-2018-05-21](https://github.com/dotnet/csharplang/blob/master/meetings/2018/LDM-2018-05-21.md)
