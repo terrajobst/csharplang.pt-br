@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 25756c1811d5e6dc97512ce70f99ab7fefa91c4a
-ms.sourcegitcommit: 2a6dffb60718065ece95df75e1cc7eb509e48a8d
+ms.openlocfilehash: 258ae6865c5b2c3103a0cdf7e1e5a2cdee11e740
+ms.sourcegitcommit: 1e1c7c72b156e2fbc54d6d6ac8d21bca9934d8d2
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "79485234"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80281951"
 ---
 # <a name="records-work-in-progress"></a>Registros de trabalho em andamento
 
@@ -56,7 +56,7 @@ Em tempo de execução, o construtor primário
 
 [] TODO: Adicionar sintaxe de chamada base e especificação sobre como escolher o construtor base por meio da resolução de sobrecarga
 
-### <a name="properties"></a>{1&gt;Propriedades&lt;1}
+### <a name="properties"></a>Propriedades
 
 Para cada parâmetro de registro de uma declaração de tipo de registro, há um membro de propriedade pública correspondente cujo nome e tipo são tirados da declaração de parâmetro de valor. Se nenhuma propriedade concreta (ou seja, não abstrata) com um acessador get e com esse nome e tipo for explicitamente declarada ou herdada, ela será produzida pelo compilador da seguinte maneira:
 
@@ -78,3 +78,31 @@ Os tipos de registro produzem implementações sintetizadas para os seguintes m�
 ```C#
 override Equals(object o) => Equals(o as T);
 ```
+
+## <a name="with-expression"></a>Expressão `with`
+
+Uma expressão `with` é uma nova expressão usando a sintaxe a seguir.
+
+```antlr
+with_expression
+    : switch_expression
+    | switch_expression 'with' anonymous_object_initializer
+```
+
+Uma expressão `with` permite a "mutação não destrutiva", projetada para produzir uma cópia da expressão do destinatário com modificações nas propriedades listadas na `anonymous_object_initializer`.
+
+Uma expressão de `with` válida tem um receptor com um tipo não void. O tipo de receptor deve conter um método de instância acessível chamado `With` com os parâmetros e o tipo de retorno apropriados. Ocorrerá um erro se houver vários métodos de `With` não substituição. Se houver várias substituições `With`, deverá haver um método `With` não substituir, que é o método de destino. Caso contrário, deve haver exatamente um método `With`.
+
+No lado direito da `with` expressão é um `anonymous_object_initializer` com uma sequência de atribuições com um campo ou Propriedade do destinatário no lado esquerdo da atribuição, e uma expressão arbitrária no lado direito, que é implicitamente conversível para o tipo do lado esquerdo da ordem de entrega.
+
+Dado um método de `With` de destino, o tipo de retorno deve ser o tipo do tipo de expressão do receptor ou um tipo de base dele. Para cada parâmetro do método `With`, deve haver um campo de instância correspondente acessível ou uma propriedade legível no tipo de receptor com o mesmo nome e o mesmo tipo. Cada propriedade ou campo no lado direito da expressão with também deve corresponder a um parâmetro de mesmo nome no método `With`.
+
+Dado um método de `With` válido, a avaliação de uma expressão `with` é equivalente a chamar o método `With` com as expressões no `anonymous_object_initializer` substituído para o parâmetro do mesmo nome que a propriedade no lado esquerdo. Se não houver nenhuma propriedade correspondente para um determinado parâmetro na `anonymous_object_initializer`, o argumento será a avaliação do campo ou da Propriedade do mesmo nome no receptor.
+
+A ordem de avaliação de efeitos colaterais é a seguinte, com cada expressão avaliada exatamente uma vez:
+
+1. Expressão do destinatário
+
+2. Expressões no `anonymous_object_initializer`, em ordem lexical
+
+3. A avaliação de todas as propriedades que correspondem aos parâmetros do método `With`, em ordem de definição dos parâmetros do método `With`.

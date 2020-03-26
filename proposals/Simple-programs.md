@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b9697fc1d772ba59ed3b1de339a5a3d4eb24b1bd
-ms.sourcegitcommit: 36b028f4d6e88bd7d4a843c6d384d1b63cc73334
+ms.openlocfilehash: 54ae4ffabde6dca49b7e6bfb626d65837eabc8f5
+ms.sourcegitcommit: 1e1c7c72b156e2fbc54d6d6ac8d21bca9934d8d2
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "79485220"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80281938"
 ---
 # <a name="simple-programs"></a>Programas simples
 
@@ -50,18 +50,16 @@ compilation_unit
     ;
 ```
 
-Em todos, exceto um *compilation_unit* a *instrução*s deve ser declarações de função local. 
+Somente um *compilation_unit* pode ter a *instrução*s. 
 
 Exemplo:
 
 ``` c#
-// File 1 - any statements
-if (args.Length == 0
-    || !int.TryParse(args[0], out int n)
+if (System.Environment.CommandLine.Length == 0
+    || !int.TryParse(System.Environment.CommandLine, out int n)
     || n < 0) return;
 Console.WriteLine(Fib(n).curr);
 
-// File 2 - only local functions
 (int curr, int prev) Fib(int i)
 {
     if (i == 0) return (1, 0);
@@ -79,18 +77,14 @@ static class Program
 {
     static async Task Main()
     {
-        // File 1 statements
-        // File 2 local functions
-        // ...
+        // statements
     }
 }
 ```
 
 Observe que os nomes "Program" e "Main" são usados apenas para fins ilustrativos, os nomes reais usados pelo compilador são dependentes de implementação e nem o tipo, nem o método pode ser referenciado pelo nome do código-fonte.
 
-O método é designado como o ponto de entrada do programa. Métodos explicitamente declarados que por convenção podem ser considerados como candidatos de ponto de entrada são ignorados. Um aviso é relatado quando isso acontece. É um erro especificar `-main:<type>` switch do compilador.
-
-Se qualquer uma das unidades de compilação tiver instruções diferentes das declarações de função local, as instruções dessa unidade de compilação ocorrerão primeiro. Isso faz com que ele seja válido para funções locais em um arquivo para referenciar variáveis locais em outra. A ordem das contribuições de instrução (que seriam todas as funções locais) de outras unidades de compilação é indefinida.
+O método é designado como o ponto de entrada do programa. Métodos explicitamente declarados que por convenção podem ser considerados como candidatos de ponto de entrada são ignorados. Um aviso é relatado quando isso acontece. É um erro especificar `-main:<type>` switch de compilador quando há instruções de nível superior.
 
 Operações assíncronas são permitidas em instruções de nível superior para o grau em que são permitidas em instruções dentro de um método de ponto de entrada assíncrono regular. No entanto, eles não são necessários, se `await` expressões e outras operações assíncronas forem omitidas, nenhum aviso será produzido. Em vez disso, a assinatura do método de ponto de entrada gerado é equivalente a 
 ``` c#
@@ -104,13 +98,11 @@ static class $Program
 {
     static void $Main()
     {
-        // Statements from File 1
-        if (args.Length == 0
-            || !int.TryParse(args[0], out int n)
+        if (System.Environment.CommandLine.Length == 0
+            || !int.TryParse(System.Environment.CommandLine, out int n)
             || n < 0) return;
         Console.WriteLine(Fib(n).curr);
         
-        // Local functions from File 2
         (int curr, int prev) Fib(int i)
         {
             if (i == 0) return (1, 0);
@@ -123,7 +115,6 @@ static class $Program
 
 Ao mesmo tempo, um exemplo como este:
 ``` c#
-// File 1
 await System.Threading.Tasks.Task.Delay(1000);
 System.Console.WriteLine("Hi!");
 ```
@@ -134,7 +125,6 @@ static class $Program
 {
     static async Task $Main()
     {
-        // Statements from File 1
         await System.Threading.Tasks.Task.Delay(1000);
         System.Console.WriteLine("Hi!");
     }
@@ -143,7 +133,7 @@ static class $Program
 
 ### <a name="scope-of-top-level-local-variables-and-local-functions"></a>Escopo de variáveis locais de nível superior e funções locais
 
-Embora as variáveis e funções locais de nível superior sejam "encapsuladas" no método de ponto de entrada gerado, elas ainda devem estar no escopo durante todo o programa.
+Embora as variáveis e funções locais de nível superior sejam "encapsuladas" no método de ponto de entrada gerado, elas ainda devem estar no escopo em todo o programa em cada unidade de compilação.
 Para fins de avaliação de nome simples, depois que o namespace global for atingido:
 - Primeiro, é feita uma tentativa de avaliar o nome dentro do método de ponto de entrada gerado e somente se essa tentativa falhar 
 - A avaliação "regular" dentro da declaração de namespace global é executada. 
